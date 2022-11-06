@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints" >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Nombre de usuario"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textViewAlias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Alias de usuario"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textViewEdad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Edad de usuario"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textViewPais"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Pais de usuario"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="Email"
+                android:textSize="18dp"/>
+
+            <Button
+                android:id="@+id/btnSignout"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#EF7FA7"
+                android:text="Cerrar Sesión"
+                android:textStyle="bold"
+                android:textColor="#2664CF" />
+
+
+            />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

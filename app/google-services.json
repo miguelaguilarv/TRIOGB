@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1055224466621",
+    "project_id": "triogb-b266b",
+    "storage_bucket": "triogb-b266b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1055224466621:android:92375d686e6a3979ea7bd4",
+        "android_client_info": {
+          "package_name": "com.vocesdelolimpo.triogb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1055224466621-lmrblct0s80urong63klh91e4hf2h7hn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkFTZ9T2iyItQpr3L95uTA7UNn-nd2JfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1055224466621-lmrblct0s80urong63klh91e4hf2h7hn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
