@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
+        android:background="#25A385"
         tools:ignore="MissingConstraints" >
 
 
@@ -26,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
                 android:text="Nombre de usuario"
                 android:textSize="18dp"/>
 
@@ -34,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
                 android:text="Alias de usuario"
                 android:textSize="18dp"/>
 
@@ -42,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
                 android:text="Edad de usuario"
                 android:textSize="18dp"/>
 
@@ -50,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
                 android:text="Pais de usuario"
                 android:textSize="18dp"/>
 
@@ -58,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
                 android:text="Email"
                 android:textSize="18dp"/>
 
@@ -69,6 +75,18 @@
                 android:layout_gravity="center"
                 android:backgroundTint="#EF7FA7"
                 android:text="Cerrar Sesión"
+                android:fontFamily="@font/triogb"
+                android:textStyle="bold"
+                android:textColor="#2664CF" />
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#8BC34A"
+                android:text="Volver"
+                android:fontFamily="@font/triogb"
                 android:textStyle="bold"
                 android:textColor="#2664CF" />
 

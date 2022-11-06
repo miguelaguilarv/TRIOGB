@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000102"
     android:padding="20dp"
     tools:context=".RegistroActivity">
 
@@ -27,6 +28,7 @@
             android:textColorHint="#D1D1D1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/triogb"
             android:backgroundTint="#4058D5"
             android:hint="Nombre" />
 
@@ -35,6 +37,7 @@
             android:textColorHint="#D1D1D1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/triogb"
             android:backgroundTint="#10CFC9"
             android:hint="Alias" />
 
@@ -43,6 +46,7 @@
             android:textColorHint="#D1D1D1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/triogb"
             android:backgroundTint="#653B9F"
             android:hint="Edad" />
 
@@ -51,6 +55,7 @@
             android:textColorHint="#D1D1D1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/triogb"
             android:backgroundTint="#4058D5"
             android:hint="Pais" />
 
@@ -59,6 +64,7 @@
             android:textColorHint="#D1D1D1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/triogb"
             android:backgroundTint="#10CFC9"
             android:hint="Correo Electrónico" />
 
@@ -67,6 +73,7 @@
             android:textColorHint="#D1D1D1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/triogb"
             android:backgroundTint="#653B9F"
             android:hint="Contraseña"/>
 
@@ -82,6 +89,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:backgroundTint="#FFC107"
+            android:fontFamily="@font/triogb"
             android:text="Registrar Usuario"
             android:textStyle="bold"
             android:textColor="#240829" />

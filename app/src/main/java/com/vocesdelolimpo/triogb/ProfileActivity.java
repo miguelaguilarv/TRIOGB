@@ -24,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView mTextViewEdad;
     private TextView mTextViewPais;
     private Button mButtonSignout;
+    private Button mButtonBack;
     private FirebaseAuth mAuth;
 
     private DatabaseReference mDatabase;
@@ -38,12 +39,19 @@ public class ProfileActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mButtonSignout = (Button) findViewById(R.id.btnSignout);
+        mButtonBack = (Button) findViewById(R.id.btnBack);
         mTextViewName = (TextView) findViewById(R.id.textViewName);
         mTextViewAlias = (TextView) findViewById(R.id.textViewAlias);
         mTextViewEdad = (TextView) findViewById(R.id.textViewEdad);
         mTextViewPais = (TextView) findViewById(R.id.textViewPais);
         mTextViewEmail = (TextView) findViewById(R.id.textViewEmail);
 
+        mButtonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+            }
+        });
 
         mButtonSignout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,11 +61,11 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         getUserInfo();
-
-
     }
+
+
+
 
     private void getUserInfo(){
         String id = mAuth.getCurrentUser().getUid();
