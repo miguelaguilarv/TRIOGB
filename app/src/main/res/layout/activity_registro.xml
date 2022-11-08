@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000102"
+    android:background="#96C3F1"
     android:padding="20dp"
     tools:context=".RegistroActivity">
 
@@ -25,7 +25,7 @@
 
         <EditText
             android:id="@+id/editTextName"
-            android:textColorHint="#D1D1D1"
+            android:textColorHint="#518819"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
@@ -34,7 +34,7 @@
 
         <EditText
             android:id="@+id/editTextAlias"
-            android:textColorHint="#D1D1D1"
+            android:textColorHint="#518819"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
@@ -43,7 +43,7 @@
 
         <EditText
             android:id="@+id/editTextEdad"
-            android:textColorHint="#D1D1D1"
+            android:textColorHint="#518819"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
@@ -52,7 +52,7 @@
 
         <EditText
             android:id="@+id/editTextPais"
-            android:textColorHint="#D1D1D1"
+            android:textColorHint="#518819"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
@@ -61,7 +61,7 @@
 
         <EditText
             android:id="@+id/editTextEmail"
-            android:textColorHint="#D1D1D1"
+            android:textColorHint="#518819"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
@@ -70,7 +70,7 @@
 
         <EditText
             android:id="@+id/editTextPassword"
-            android:textColorHint="#D1D1D1"
+            android:textColorHint="#518819"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
