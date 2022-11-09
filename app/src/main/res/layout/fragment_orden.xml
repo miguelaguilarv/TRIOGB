@@ -144,13 +144,19 @@
                 </LinearLayout>
                 <TextView
                     android:id="@+id/texto"
-                    android:layout_width="match_parent"
-                    android:layout_height="77dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/triogb"
+                    android:textSize="18dp"
+                    android:textColor="#0E195A"
+                    android:layout_gravity="center"/>
                 <Button
                     android:id="@+id/btnValidar"
+                    android:layout_marginTop="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#7FCA16"
+                    android:fontFamily="@font/triogb"
                     android:layout_gravity="center"
                     android:text="Ordenar"/>
                 <TextView
@@ -158,6 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/triogb"
                     android:layout_gravity="center"
                     />
 
