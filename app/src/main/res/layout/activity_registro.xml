@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#96C3F1"
+    android:background="#433D3D"
     android:padding="20dp"
     tools:context=".RegistroActivity">
 
@@ -25,56 +25,63 @@
 
         <EditText
             android:id="@+id/editTextName"
-            android:textColorHint="#518819"
+            android:textColorHint="#838383"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
+            android:textColor="@color/white"
             android:backgroundTint="#4058D5"
             android:hint="Nombre" />
 
         <EditText
             android:id="@+id/editTextAlias"
-            android:textColorHint="#518819"
+            android:textColorHint="#838383"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
+            android:textColor="@color/white"
             android:backgroundTint="#10CFC9"
             android:hint="Alias" />
 
         <EditText
             android:id="@+id/editTextEdad"
-            android:textColorHint="#518819"
+            android:textColorHint="#838383"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
+            android:textColor="@color/white"
             android:backgroundTint="#653B9F"
             android:hint="Edad" />
 
         <EditText
             android:id="@+id/editTextPais"
-            android:textColorHint="#518819"
+            android:textColorHint="#838383"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
+            android:textColor="@color/white"
             android:backgroundTint="#4058D5"
             android:hint="Pais" />
 
         <EditText
             android:id="@+id/editTextEmail"
-            android:textColorHint="#518819"
+            android:textColorHint="#838383"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
+            android:textColor="@color/white"
             android:backgroundTint="#10CFC9"
             android:hint="Correo Electrónico" />
 
         <EditText
             android:id="@+id/editTextPassword"
-            android:textColorHint="#518819"
+            android:textColorHint="#838383"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
             android:backgroundTint="#653B9F"
+            android:textColor="@color/white"
+            android:inputType="numberPassword"
             android:hint="Contraseña"/>
 
         <LinearLayout
