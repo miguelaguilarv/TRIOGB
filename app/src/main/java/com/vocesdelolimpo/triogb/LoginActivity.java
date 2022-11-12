@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                     loginUser();
                 }
                 else{
-                    Toast.makeText(LoginActivity.this, "Complete todos los campos pues", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                     finish();
                 }
                 else{
-                    Toast.makeText(LoginActivity.this, "Jue! te equivocaste en algo, o capaz que no estás nah registrao' tu oye! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Datos erroneos, o talvez no estas registrado! ", Toast.LENGTH_SHORT).show();
                 }
             }
         });

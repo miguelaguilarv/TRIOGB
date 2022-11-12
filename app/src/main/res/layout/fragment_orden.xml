@@ -7,9 +7,22 @@
     android:background="#FDCD6E"
     tools:context=".Juegos.OrdenFragment">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Primer Nivel Ordenamiento"
-            android:textSize="20dp"/>
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/triogb"
+                    android:gravity="center"
+                    android:text="Ordenamiento"
+                    android:textColor="#C12020"
+                    android:textSize="24dp"/>
+
+        </LinearLayout>
+
+
 </RelativeLayout>

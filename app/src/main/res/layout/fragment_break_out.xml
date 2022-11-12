@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical">
 
@@ -16,11 +17,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Juego BreakOut"
             android:fontFamily="@font/triogb"
+            android:layout_marginTop="50dp"
+            android:text="BREAKOUT"
             android:textColor="#FFFFFF"
-            android:textSize="24dp"
+            android:textSize="40dp"
             android:visibility="visible" />
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnJugar"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="#EDAA62"
+            android:layout_gravity="center"
+            android:text="J U G A R"
+            android:textSize="30dp"
+            android:fontFamily="@font/triogb"
+            android:textStyle="bold"
+            android:textColor="#2664CF" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:src="@drawable/bo" />
+
+
     </LinearLayout>
 
 </FrameLayout>
