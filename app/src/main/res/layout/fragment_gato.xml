@@ -20,6 +20,30 @@
             android:fontFamily="@font/triogb"
             android:textColor="#C12020"
             android:textSize="24dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnJugar"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="#EDAA62"
+            android:layout_gravity="center"
+            android:text="J U G A R"
+            android:textSize="30dp"
+            android:fontFamily="@font/triogb"
+            android:textStyle="bold"
+            android:textColor="#2664CF" />
+
+
+
     </LinearLayout>
 
 </FrameLayout>

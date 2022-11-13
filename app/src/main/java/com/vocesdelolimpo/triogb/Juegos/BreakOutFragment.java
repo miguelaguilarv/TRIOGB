@@ -30,7 +30,7 @@ public class BreakOutFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getActivity(), BreakoutActivity.class);
-                in.putExtra("algo", "Cosas");
+                //in.putExtra("algo", "Cosas");
                 startActivity(in);
             }
         });
