@@ -13,6 +13,14 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".Breakout.BreakoutActivity"
+            android:exported="false"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PuntajeGato"
             android:exported="false">
             <meta-data
@@ -20,7 +28,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".GatoActivity"
+            android:name=".Gato.GatoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -29,14 +37,6 @@
         <activity
             android:name=".PuntajeBreakout"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".BreakoutActivity"
-            android:exported="false"
-            android:screenOrientation="landscape">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

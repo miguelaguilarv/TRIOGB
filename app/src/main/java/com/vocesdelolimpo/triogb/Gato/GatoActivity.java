@@ -1,4 +1,4 @@
-package com.vocesdelolimpo.triogb;
+package com.vocesdelolimpo.triogb.Gato;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.vocesdelolimpo.triogb.PuntajeGato;
+import com.vocesdelolimpo.triogb.R;
 
 public class GatoActivity extends AppCompatActivity {
     Button arreglo [][];
@@ -93,7 +96,7 @@ public class GatoActivity extends AppCompatActivity {
     protected void ganador(){
         String mensaje;
         mensaje= "Ok";
-        Intent in = new Intent(this,PuntajeGato.class);
+        Intent in = new Intent(this, PuntajeGato.class);
         Bundle b = new Bundle();
         b.putString("mensaje",mensaje);
         in.putExtras(b);

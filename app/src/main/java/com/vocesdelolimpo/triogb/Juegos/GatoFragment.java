@@ -10,8 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.vocesdelolimpo.triogb.BreakoutActivity;
-import com.vocesdelolimpo.triogb.GatoActivity;
+import com.vocesdelolimpo.triogb.Gato.GatoActivity;
 import com.vocesdelolimpo.triogb.R;
 
 public class GatoFragment extends Fragment {

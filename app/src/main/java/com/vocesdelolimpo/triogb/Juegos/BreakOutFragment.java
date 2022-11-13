@@ -10,10 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.vocesdelolimpo.triogb.BreakoutActivity;
-import com.vocesdelolimpo.triogb.LoginActivity;
+import com.vocesdelolimpo.triogb.Breakout.BreakoutActivity;
 import com.vocesdelolimpo.triogb.R;
-import com.vocesdelolimpo.triogb.RegistroActivity;
 
 
 public class BreakOutFragment extends Fragment {

@@ -1,4 +1,4 @@
-package com.vocesdelolimpo.triogb;
+package com.vocesdelolimpo.triogb.Breakout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,9 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 
-public class BreakoutActivity extends AppCompatActivity {
+import com.vocesdelolimpo.triogb.R;
+
+public class  BreakoutActivity extends AppCompatActivity {
 
     BreakoutEngine breakoutEngine;
 
