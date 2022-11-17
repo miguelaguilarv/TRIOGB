@@ -1,6 +1,7 @@
 package com.vocesdelolimpo.triogb.Juegos;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,7 @@ import com.vocesdelolimpo.triogb.Gato.GatoActivity;
 import com.vocesdelolimpo.triogb.R;
 
 public class GatoFragment extends Fragment {
-
+    MediaPlayer mPlayer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,12 +27,12 @@ public class GatoFragment extends Fragment {
         btnJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent in = new Intent(getActivity(), GatoActivity.class);
                 //in.putExtra("algo", "Cosas");
                 startActivity(in);
             }
         });
-
         return v;
     }
 }

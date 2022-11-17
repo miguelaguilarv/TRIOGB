@@ -3,6 +3,8 @@ package com.vocesdelolimpo.triogb.Gato;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,12 +14,17 @@ import com.vocesdelolimpo.triogb.R;
 
 public class GatoActivity extends AppCompatActivity {
     Button arreglo [][];
-    int turno=1;
 
+    int turno=1;
+    int contador=0;
+    SoundPool sp;
+    int sonido_de_Repoduccion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gato);
+        sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 1);
+       sonido_de_Repoduccion= sp.load (this ,R.raw.cat,1);
 
         arreglo = new Button[3][3];
         arreglo[0][0]=this.findViewById(R.id.button00);
@@ -33,65 +40,73 @@ public class GatoActivity extends AppCompatActivity {
     }
 
     public void darvalor(int fila, int columna) {
+
         if (arreglo[fila][columna].getText().equals("")) { //revisa si el boton esta vacio
             if (turno == 1) {
+                sp.play(sonido_de_Repoduccion, 1, 1, 1, 0, 1);
                 arreglo[fila][columna].setText("X");
                 turno = 2;
+                contador++;
                 comprobar();
             } else {
                 arreglo[fila][columna].setText("O");
+                sp.play(sonido_de_Repoduccion, 1, 1, 1, 0, 1);
                 turno = 1;
+                contador++;
                 comprobar();
             }
         }
     }
     public void comprobar() {
-        //int ganador=
+
         //horizontal X________________________________________________________________
         if (arreglo[0][0].getText().equals("X") && arreglo[0][1].getText().equals("X") && arreglo[0][2].getText().equals("X")) {
             ganador();
-        }else if (arreglo[1][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[1][2].getText().equals("X")) {
+        } else if (arreglo[1][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[1][2].getText().equals("X")) {
             ganador();
-        }else if (arreglo[2][0].getText().equals("X") && arreglo[2][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+        } else if (arreglo[2][0].getText().equals("X") && arreglo[2][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
             ganador();
 
             //horizontal O________________________________________________________________
-        }else if (arreglo[0][0].getText().equals("O") && arreglo[0][1].getText().equals("O") && arreglo[0][2].getText().equals("O")) {
+        } else if (arreglo[0][0].getText().equals("O") && arreglo[0][1].getText().equals("O") && arreglo[0][2].getText().equals("O")) {
             ganador();
-        }else if (arreglo[1][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[1][2].getText().equals("O")) {
+        } else if (arreglo[1][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[1][2].getText().equals("O")) {
             ganador();
-        }else if (arreglo[2][0].getText().equals("O") && arreglo[2][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+        } else if (arreglo[2][0].getText().equals("O") && arreglo[2][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
             ganador();
 
             //Diagonal X________________________________________________________________
-        }else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+        } else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
             ganador();
-        }else if (arreglo[0][2].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
+        } else if (arreglo[0][2].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
             ganador();
 
             //Diagonal O________________________________________________________________
-        }else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+        } else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
             ganador();
-        }else if (arreglo[0][2].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
+        } else if (arreglo[0][2].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
             ganador();
 
             //Vertical x________________________________________________________________
-        }else if (arreglo[0][0].getText().equals("X") && arreglo[1][0].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
+        } else if (arreglo[0][0].getText().equals("X") && arreglo[1][0].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
             ganador();
-        }else if (arreglo[0][1].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][1].getText().equals("X")) {
+        } else if (arreglo[0][1].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][1].getText().equals("X")) {
             ganador();
-        }else if (arreglo[0][2].getText().equals("X") && arreglo[1][2].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+        } else if (arreglo[0][2].getText().equals("X") && arreglo[1][2].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
             ganador();
         }
 
         //Vertical O________________________________________________________________
         else if (arreglo[0][0].getText().equals("O") && arreglo[1][0].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
             ganador();
-        }else if (arreglo[0][1].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][1].getText().equals("O")) {
+        } else if (arreglo[0][1].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][1].getText().equals("O")) {
             ganador();
-        }else if (arreglo[0][2].getText().equals("O") && arreglo[1][2].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+        } else if (arreglo[0][2].getText().equals("O") && arreglo[1][2].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+            ganador();
+        }if(contador==9){
             ganador();
         }
+
     }
     protected void ganador(){
         String mensaje;
@@ -101,6 +116,7 @@ public class GatoActivity extends AppCompatActivity {
         b.putString("mensaje",mensaje);
         in.putExtras(b);
         startActivity(in);
+        finish();
     }
     //METODO que enlaza con el boton
     public void boton00(View view){
