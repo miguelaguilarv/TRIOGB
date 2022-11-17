@@ -52,6 +52,7 @@ public class PuntajeBreakout extends AppCompatActivity {
         mTextViewName = (TextView) findViewById(R.id.textViewName);
         mTextViewScore = (TextView) findViewById(R.id.textViewScore);
         mTextViewRes = (TextView) findViewById(R.id.textViewRes);
+
         if(vidasJ != 0){
             if (player == null){
                 player = MediaPlayer.create(this, R.raw.watc);
