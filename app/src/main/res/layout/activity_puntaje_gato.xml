@@ -7,6 +7,17 @@
     tools:context=".PuntajeGato">
 
     <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#82A4FA"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="203dp"
         android:layout_height="119dp"
         android:orientation="vertical"
@@ -20,10 +31,14 @@
             android:id="@+id/reiniciar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:onClick="rein"
             android:layout_marginBottom="24dp"
+            android:backgroundTint="#A3ED62"
+            android:fontFamily="@font/triogb"
+            android:onClick="rein"
+            android:text="REINICIAR"
+            android:textColor="#2664CF"
 
-            android:text="Reiniciar" />
+            android:textSize="20dp" />
 
 
         <Button
@@ -31,8 +46,23 @@
             android:layout_width="200dp"
             android:layout_height="45dp"
             android:layout_marginEnd="164dp"
-
-            android:text="salir" />
+            android:backgroundTint="#ED626E"
+            android:fontFamily="@font/triogb"
+            android:onClick="salir_home"
+            android:text="SALIR"
+            android:textColor="#2664CF"
+            android:textSize="20dp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="161dp"
+        android:layout_height="213dp"
+        android:src="@drawable/med"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
