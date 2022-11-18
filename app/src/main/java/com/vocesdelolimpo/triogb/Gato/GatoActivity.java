@@ -9,12 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.vocesdelolimpo.triogb.PuntajeGato;
 import com.vocesdelolimpo.triogb.R;
 
 public class GatoActivity extends AppCompatActivity {
     Button arreglo [][];
-
+    public int mensaje;
     int turno=1;
     int contador=0;
     SoundPool sp;
@@ -60,60 +59,78 @@ public class GatoActivity extends AppCompatActivity {
     public void comprobar() {
 
         //horizontal X________________________________________________________________
-        if (arreglo[0][0].getText().equals("X") && arreglo[0][1].getText().equals("X") && arreglo[0][2].getText().equals("X")) {
+             if (arreglo[0][0].getText().equals("X") && arreglo[0][1].getText().equals("X") && arreglo[0][2].getText().equals("X")) {
+            mensaje=1;
             ganador();
         } else if (arreglo[1][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[1][2].getText().equals("X")) {
+            mensaje=1;
             ganador();
         } else if (arreglo[2][0].getText().equals("X") && arreglo[2][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+            mensaje=1;
             ganador();
 
             //horizontal O________________________________________________________________
         } else if (arreglo[0][0].getText().equals("O") && arreglo[0][1].getText().equals("O") && arreglo[0][2].getText().equals("O")) {
+            mensaje=2;
             ganador();
         } else if (arreglo[1][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[1][2].getText().equals("O")) {
+            mensaje=2;
             ganador();
         } else if (arreglo[2][0].getText().equals("O") && arreglo[2][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+            mensaje=2;
             ganador();
 
             //Diagonal X________________________________________________________________
         } else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
-            ganador();
-        } else if (arreglo[0][2].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
+            mensaje=1;
             ganador();
 
+        } else if (arreglo[0][2].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
+            mensaje=1;
+            ganador();
+
+
             //Diagonal O________________________________________________________________
-        } else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+        } else if (arreglo[0][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+            mensaje=2;
             ganador();
         } else if (arreglo[0][2].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
+            mensaje=2;
             ganador();
 
             //Vertical x________________________________________________________________
         } else if (arreglo[0][0].getText().equals("X") && arreglo[1][0].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
+            mensaje=1;
             ganador();
         } else if (arreglo[0][1].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][1].getText().equals("X")) {
+            mensaje=1;
             ganador();
         } else if (arreglo[0][2].getText().equals("X") && arreglo[1][2].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+            mensaje=1;
             ganador();
+
         }
 
         //Vertical O________________________________________________________________
         else if (arreglo[0][0].getText().equals("O") && arreglo[1][0].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
+            mensaje=2;
             ganador();
         } else if (arreglo[0][1].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][1].getText().equals("O")) {
+            mensaje=2;
             ganador();
         } else if (arreglo[0][2].getText().equals("O") && arreglo[1][2].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
             ganador();
         }if(contador==9){
+            mensaje=3;
             ganador();
+
         }
 
     }
     protected void ganador(){
-        String mensaje;
-        mensaje= "Ok";
         Intent in = new Intent(this, PuntajeGato.class);
         Bundle b = new Bundle();
-        b.putString("mensaje",mensaje);
+        b.putInt("mensaje",mensaje);
         in.putExtras(b);
         startActivity(in);
         finish();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PuntajeGato">
+    tools:context=".Gato.PuntajeGato">
 
     <LinearLayout
         android:id="@+id/linearLayout6"
@@ -53,16 +53,41 @@
             android:textColor="#2664CF"
             android:textSize="20dp" />
     </LinearLayout>
-
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="161dp"
-        android:layout_height="213dp"
+        android:layout_width="412dp"
+        android:layout_height="378dp"
         android:src="@drawable/med"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/empate"
+        android:layout_width="412dp"
+        android:layout_height="378dp"
+        android:src="@drawable/empate2"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/inf_ganador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/triogb"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout6"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
