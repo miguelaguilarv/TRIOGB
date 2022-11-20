@@ -3,19 +3,19 @@ package com.vocesdelolimpo.triogb.Breakout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Point;
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.Display;
 
 import com.vocesdelolimpo.triogb.R;
 
-public class  BreakoutActivity extends AppCompatActivity {
-
+public class Breakout2Activity extends AppCompatActivity {
     BreakoutEngine breakoutEngine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_breakout);
+        setContentView(R.layout.activity_breakout2);
 
         // Obtener un ojecto Display poara acceder a los detalles de la pantalla
         Display display = getWindowManager().getDefaultDisplay();
@@ -24,14 +24,14 @@ public class  BreakoutActivity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
 
-
         //Inicializa gameView y se establece como vista
 
-        breakoutEngine = new BreakoutEngine(this, size.x, size.y);
         breakoutEngine.setSegundo(true);
+        breakoutEngine = new BreakoutEngine(this, size.x, size.y);
         setContentView(breakoutEngine);
 
     }
+
 
     //Este metodo se ejecuta cuando el jugador inicia el juego
     protected void onResume(){

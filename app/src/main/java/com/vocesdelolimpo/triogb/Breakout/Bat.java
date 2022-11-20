@@ -27,8 +27,8 @@ public class Bat {
     //Constructor, se crea un objeto desde esta clase y se pasa en la pantalla con una ancho y alto
     Bat(int screenX, int screenY){
 
-        length = 230;
-        float height = 20;
+        length = 200;
+        float height = 40;
 
         //Se pone la plataforma en el centro de la pantalla al inicio
         x = screenX / 2;
@@ -58,9 +58,11 @@ public class Bat {
     //Este metodo se llama desde BreakOutEngine en update, determina si la plataforma
     //necesita moverse y cambiar las coordenadas contenidas en rect is es necesario.
     void update(long fps){
+
         if (paddleMoving == LEFT){
 
             x = x - paddleSpeed / fps;
+
 
         }
         if(paddleMoving == RIGHT){

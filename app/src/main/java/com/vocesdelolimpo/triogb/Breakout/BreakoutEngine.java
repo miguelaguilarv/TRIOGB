@@ -16,16 +16,16 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import com.vocesdelolimpo.triogb.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BreakoutEngine extends SurfaceView implements Runnable{
 
     private Thread gameThread = null;
-
     private SurfaceHolder ourHolder;
+    private boolean segundo = false;
 
     //Un boolean que se va a establece o quitar cuando el juego este corriendo o no.
     private volatile boolean playing;
@@ -37,14 +37,21 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     private Canvas canvas;
     private Paint paint;
 
+    private Paint fire1;
+
     //Que tal ancha y alta es la pantalla
     private int screenX;
     private int screenY;
 
+    private int screenZ;
+    private Random random = new Random();
+
     //Variable para rastrear el frame rate del juego
-    private long fps;
+    private long fps, fps2;
     //Ayuda a calcular los fps
     private long timeThisFrame;
+
+    Fire fire;
 
     //Plataforma del jugador
     Bat bat;
@@ -55,6 +62,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     //Lista de Ladrillos
 
     ArrayList<Brick> bricks = new ArrayList<>();
+    ArrayList<Fire> fires = new ArrayList<>();
+    int numFires = 0;
 
     int numBricks = 0;
 
@@ -85,12 +94,15 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         //Inicializa screenX y screenY porque x e y son locales
         screenX = x;
         screenY = y;
-
         //Inicializa la plataforma del jugadro.
         bat = new Bat(screenX, screenY);
 
         //Crea la pelota
         ball = new Ball(screenX, screenY);
+
+        screenZ = screenX / 2 - random.nextInt(1000);
+
+        fire = new Fire(screenZ, screenY);
 
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
 
@@ -123,6 +135,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     }
 
+
+    public void setSegundo(boolean segundo) {
+        this.segundo = segundo;
+    }
+
     //Corre cuando el SO llama a onPause en el metodo BreaoutActivity
     public void pause(){
         playing = false;
@@ -145,6 +162,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     }
 
+
     @Override
     public void run() {
         while (playing){
@@ -165,7 +183,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             if(timeThisFrame >= 1 ){
 
                 fps = 1000 / timeThisFrame;
-
+                fps2 = 550 / timeThisFrame;
             }
         }
     }
@@ -175,7 +193,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         bat.update(fps);
 
         //Actualiza la pelota
-        ball.update(fps);
+        if (segundo == false){
+            ball.update(fps);
+        }else{
+            ball.update(fps2);
+            fire.update(fps);
+        }
+
+
 
 
         //Colision con el ladrillo
@@ -218,7 +243,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
             if(lives == 0){
                 paused = true;
-                enviarAPuntaje();
+                enviarAPuntajePierde();
                 restart();
             }
 
@@ -270,10 +295,12 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
                 numBricks++;
             }
         }
+
         score = 0;
         lives = 3;
 
     }
+
 
     private void draw(){
 
@@ -292,7 +319,16 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             //Se elige el color para dibujar
             paint.setColor(Color.argb(255, 175, 238, 77));
             //Dibuja la pelota
+
             canvas.drawRect(ball.getRect(), paint);
+
+            if (segundo == true){
+
+
+                paint.setColor(Color.argb(255, 231, 75, 40));
+                canvas.drawRect(fire.getRect(), paint);
+
+            }
 
             //Cambia el color del pincel para pintar los ladrillos
             paint.setColor(Color.argb(255, 238, 234, 77));
@@ -340,6 +376,23 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
         }
         return true;
+    }
+    private void enviarAPuntajePierde(){
+        scoreF = score;
+        String s ="";
+        s = (int)scoreF+"";
+        int vidas = lives;
+
+        Bundle bundle;
+        bundle = new Bundle();
+        bundle.putString("puntaje", s);
+        bundle.putInt("vidas", vidas);
+
+
+        Intent i = new Intent(getContext(), PuntajeBreakout.class);
+        i.putExtra("puntaje", s);
+        i.putExtra("vidas", vidas);
+        getContext().startActivity(i);
     }
     private void enviarAPuntaje(){
         scoreF = score;
