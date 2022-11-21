@@ -41,10 +41,9 @@ public class Fire {
 
 
     void reset (int x, int y){
-        rect.left = x / 2 + 55;
-        rect.top = y - 150;
-        rect.right = x / 2 + fireWidth + 60;
-        rect.bottom = y - 150 - fireHeight;
+
+        rect.top = y - 1500;
+
     }
 }
 

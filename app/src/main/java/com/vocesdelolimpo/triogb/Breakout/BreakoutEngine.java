@@ -43,15 +43,16 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     private int screenX;
     private int screenY;
 
+
     private int screenZ;
-    private Random random = new Random();
+    private Random random;
 
     //Variable para rastrear el frame rate del juego
     private long fps, fps2;
     //Ayuda a calcular los fps
     private long timeThisFrame;
 
-    Fire fire;
+    Fire fire, fire2, fire3, fire4;
 
     //Plataforma del jugador
     Bat bat;
@@ -62,8 +63,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     //Lista de Ladrillos
 
     ArrayList<Brick> bricks = new ArrayList<>();
-    ArrayList<Fire> fires = new ArrayList<>();
-    int numFires = 0;
+
 
     int numBricks = 0;
 
@@ -78,9 +78,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     //Puntaje
     public int score = 0;
+    public int cantBricks = 0;
 
     public int scoreF = 0;
     //Vidas
+
     int lives = 3;
 
 
@@ -100,9 +102,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         //Crea la pelota
         ball = new Ball(screenX, screenY);
 
-        screenZ = screenX / 2 - random.nextInt(1000);
+        randomFire();
+        randomFire2();
+        randomFire3();
+        randomFire4();
 
-        fire = new Fire(screenZ, screenY);
 
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
 
@@ -135,9 +139,43 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     }
 
+    private void randomFire(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(1000);
+
+        fire = new Fire(screenZ, screenY);
+    }
+    private void randomFire2(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(800);
+        fire2 = new Fire(screenZ, screenY/3);
+    }
+    private void randomFire3(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(800);
+        fire3 = new Fire(screenZ/3, screenY + 150);
+    }
+    private void randomFire4(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(1000);
+        fire4 = new Fire(screenZ/2 - 500, screenY - 300);
+    }
+
+    public void setLives(int lives){
+        this.lives = lives;
+    }
+
+    public void setScore(int score){
+        this.score = score;
+    }
+
 
     public void setSegundo(boolean segundo) {
         this.segundo = segundo;
+    }
+
+    public void setCantBricks(int cantBricks){
+        this.cantBricks = cantBricks;
     }
 
     //Corre cuando el SO llama a onPause en el metodo BreaoutActivity
@@ -178,6 +216,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             //Dibuja el frame (cuadro)
             draw();
 
+
             //Al calcular los fps de este cuadro, se puede usar el resultado para animaciones de tiempo y mas.
             timeThisFrame = System.currentTimeMillis() - startFrameTime;
             if(timeThisFrame >= 1 ){
@@ -198,9 +237,10 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         }else{
             ball.update(fps2);
             fire.update(fps);
+            fire2.update(fps);
+            fire3.update(fps);
+            fire4.update(fps);
         }
-
-
 
 
         //Colision con el ladrillo
@@ -212,9 +252,23 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
                     bricks.get(i).setInvisible();
                     ball.reverseYVelocity();
                     score = score + 10;
+                    cantBricks = cantBricks + 10;
                     soundPool.play(loselifeID, 1, 1, 0, 0, 1);
                 }
             }
+        }
+
+        if(RectF.intersects(bat.getRect(),fire.getRect())){
+            bat.setMovementState(bat.STOPPED);
+        }
+        if(RectF.intersects(bat.getRect(),fire2.getRect())){
+            bat.setMovementState(bat.STOPPED);
+        }
+        if(RectF.intersects(bat.getRect(),fire3.getRect())){
+            bat.setMovementState(bat.STOPPED);
+        }
+        if(RectF.intersects(bat.getRect(),fire4.getRect())){
+            bat.setMovementState(bat.STOPPED);
         }
 
         //Colision con la plataforma
@@ -228,14 +282,22 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             ball.clearObstacleY(bat.getRect().top -2);
             soundPool.play(beep1ID,1,1,0,0,1);
         }
+        if(fire.getRect().bottom > screenY){
+            randomFire();
+        }
+        if(fire2.getRect().bottom > screenY){
+            randomFire2();
+        }
+        if(fire3.getRect().bottom > screenY){
+            randomFire3();
+        }
 
         if(ball.getRect().bottom > screenY){
-            ball.reverseYVelocity();
-            ball.clearObstacleY(screenY - 2);
-
 
             ball.reset(screenX, screenY);
             bat.reset(screenX);
+            ball.reverseYVelocity();
+            ball.clearObstacleY(screenY - 150);
 
             // Pierde una vida
             lives --;
@@ -263,6 +325,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             soundPool.play(explodeID, 1, 1, 0, 0, 1);
         }
 
+        if (bat.getRect().left <= 0){
+            bat.setMovementState(bat.STOPPED);
+        }
+
+        if (bat.getRect().right > screenX - 10){
+            bat.setMovementState(bat.STOPPED);
+        }
+
         // rebota al chocar en la pared der
         if(ball.getRect().right > screenX - 10){
             ball.reverseXVelocity();
@@ -271,7 +341,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         }
 
         // Pausa el juego si se limpian todos los ladrillos
-        if(score == numBricks * 10){
+        if(cantBricks == numBricks * 10){
 
             paused = true;
             enviarAPuntaje();
@@ -324,9 +394,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
             if (segundo == true){
 
-
                 paint.setColor(Color.argb(255, 231, 75, 40));
                 canvas.drawRect(fire.getRect(), paint);
+                canvas.drawRect(fire2.getRect(), paint);
+                canvas.drawRect(fire3.getRect(), paint);
+                canvas.drawRect(fire4.getRect(), paint);
 
             }
 
@@ -395,19 +467,18 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         getContext().startActivity(i);
     }
     private void enviarAPuntaje(){
-        scoreF = score;
-        String s ="";
-        s = (int)scoreF+"";
+
+        int score1 = score;
         int vidas = lives;
 
         Bundle bundle;
         bundle = new Bundle();
-        bundle.putString("puntaje", s);
+        bundle.putInt("puntaje", score1);
         bundle.putInt("vidas", vidas);
 
 
-        Intent i = new Intent(getContext(), PuntajeBreakout.class);
-        i.putExtra("puntaje", s);
+        Intent i = new Intent(getContext(), Breakout2Activity.class);
+        i.putExtra("puntaje", score1);
         i.putExtra("vidas", vidas);
         getContext().startActivity(i);
     }

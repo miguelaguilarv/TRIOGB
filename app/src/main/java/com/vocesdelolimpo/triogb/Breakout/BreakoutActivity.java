@@ -28,7 +28,7 @@ public class  BreakoutActivity extends AppCompatActivity {
         //Inicializa gameView y se establece como vista
 
         breakoutEngine = new BreakoutEngine(this, size.x, size.y);
-        breakoutEngine.setSegundo(true);
+
         setContentView(breakoutEngine);
 
     }

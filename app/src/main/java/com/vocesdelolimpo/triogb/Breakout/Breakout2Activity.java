@@ -10,6 +10,7 @@ import android.view.Display;
 import com.vocesdelolimpo.triogb.R;
 
 public class Breakout2Activity extends AppCompatActivity {
+
     BreakoutEngine breakoutEngine;
 
     @Override
@@ -24,14 +25,18 @@ public class Breakout2Activity extends AppCompatActivity {
         Point size = new Point();
         display.getSize(size);
 
+        Bundle recibido = this.getIntent().getExtras();
+        final int puntaje = recibido.getInt("puntaje");
+        final int vidasJ = recibido.getInt("vidas");
+
         //Inicializa gameView y se establece como vista
-
-        breakoutEngine.setSegundo(true);
         breakoutEngine = new BreakoutEngine(this, size.x, size.y);
+        breakoutEngine.setSegundo(true);
+        breakoutEngine.setLives(vidasJ);
+        breakoutEngine.setScore(puntaje);
+        breakoutEngine.setCantBricks(0);
         setContentView(breakoutEngine);
-
     }
-
 
     //Este metodo se ejecuta cuando el jugador inicia el juego
     protected void onResume(){

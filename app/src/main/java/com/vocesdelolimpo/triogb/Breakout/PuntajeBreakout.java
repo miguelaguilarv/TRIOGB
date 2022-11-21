@@ -39,9 +39,7 @@ public class PuntajeBreakout extends AppCompatActivity {
 
         Bundle recibido = this.getIntent().getExtras();
         final String puntaje = recibido.getString("puntaje");
-
-        Bundle vidasJugador = this.getIntent().getExtras();
-        final int vidasJ = getIntent().getExtras().getInt("vidas");
+        final int vidasJ = recibido.getInt("vidas");
 
 //        try {
 //            Bundle recibido = this.getIntent().getExtras();
