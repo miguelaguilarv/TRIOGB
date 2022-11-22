@@ -65,6 +65,18 @@
             android:textColor="#00FB79"
             android:textSize="30dp"
             android:visibility="visible" />
+        <TextView
+            android:id="@+id/valorPuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:fontFamily="@font/triogb"
+            android:text="PUNTAJE"
+            android:layout_centerInParent="true"
+            android:textColor="#00FB79"
+            android:textSize="30dp"
+            android:visibility="visible" />
 
 
 </FrameLayout>

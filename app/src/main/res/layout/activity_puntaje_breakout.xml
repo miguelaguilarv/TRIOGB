@@ -52,6 +52,19 @@
                 android:text="Puntaje"
                 android:textSize="30dp"/>
 
+            <TextView
+                android:id="@+id/textViewRecord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/triogb"
+                android:textColor="#F44E4E"
+                android:visibility="invisible"
+                android:layout_marginTop="40dp"
+                android:text="¡¡¡NUEVO RECORD!!!"
+                android:textSize="30dp"/>
+
 
 
 

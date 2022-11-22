@@ -10,9 +10,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -72,6 +75,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     //Plataforma del jugador
     Bat bat;
 
+    Rect rect;
     //Una esfera... cuadrada
     Ball ball;
 
@@ -116,6 +120,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
         //Crea la pelota
         ball = new Ball(screenX, screenY);
+
+        rect = new Rect(screenX,screenY);
 
         randomFire();
         randomFire2();
@@ -368,14 +374,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         //Pone la pelota de vuelta al inicio
         ball.reset(screenX, screenY);
         bat.reset(screenX);
-
+        rect.reset(screenX);
         int brickWidth = screenX / 8;
         int brickHeight = screenY / 10;
 
         numBricks = 0;
 
         for (int column = 0; column < 8; column++){
-            for (int row = 0; row < 3; row++){
+            for (int row = 0; row < 4; row++){
                 bricks.add(numBricks,new Brick(row, column, brickWidth, brickHeight));
                 numBricks++;
             }
@@ -445,8 +451,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
                 }
             }
 
+            //paint.setColor(Color.argb(255, 0, 0, 50));
+            Paint paint2 = new Paint();
+            paint2.setShader(new LinearGradient(0,0,screenX / 2 - 350, getHeight(),Color.argb(150, 0, 0, 50), Color.TRANSPARENT, Shader.TileMode.CLAMP));
+            canvas.drawRect(rect.getRect(), paint2);
+
             paint.setColor(Color.argb(255,255,255,255));
 
+            paint.setTypeface(Typeface.create("Calibri",Typeface.BOLD));
             paint.setTextSize(50);
             canvas.drawText("Puntaje: " +score+ "       Vidas: "+lives, 10, 80, paint);
 
@@ -528,10 +540,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             i.putExtra("vidas", vidas);
             getContext().startActivity(i);
 
+
         }
 
 
     }
 
-
 }
+

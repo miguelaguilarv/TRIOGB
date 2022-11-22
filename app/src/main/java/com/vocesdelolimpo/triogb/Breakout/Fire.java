@@ -10,8 +10,8 @@ public class Fire {
 
     private RectF rect;
     private float yVelocity;
-    private float fireWidth = 30;
-    private float fireHeight = 30;
+    private float fireWidth = 40;
+    private float fireHeight = 60;
 
 
     public Fire( int screenX, int screenY) {

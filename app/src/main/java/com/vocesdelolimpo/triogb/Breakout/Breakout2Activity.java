@@ -51,7 +51,7 @@ public class Breakout2Activity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
+        breakoutEngine.setSegundo(false);
         breakoutEngine.pause();
     }
 }

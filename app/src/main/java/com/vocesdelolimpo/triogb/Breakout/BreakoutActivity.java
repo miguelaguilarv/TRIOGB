@@ -29,6 +29,7 @@ public class  BreakoutActivity extends AppCompatActivity {
 
         breakoutEngine = new BreakoutEngine(this, size.x, size.y);
 
+
         setContentView(breakoutEngine);
 
     }
@@ -46,7 +47,6 @@ public class  BreakoutActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-
         breakoutEngine.pause();
     }
 }

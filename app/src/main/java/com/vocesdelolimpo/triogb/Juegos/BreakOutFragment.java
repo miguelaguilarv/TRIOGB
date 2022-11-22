@@ -18,9 +18,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.vocesdelolimpo.triogb.Breakout.Breakout2Activity;
 import com.vocesdelolimpo.triogb.Breakout.BreakoutActivity;
 import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class BreakOutFragment extends Fragment {
@@ -29,6 +33,7 @@ public class BreakOutFragment extends Fragment {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private TextView textPuntaje;
+    private TextView textPuntajeBO;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,8 +43,9 @@ public class BreakOutFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         textPuntaje = v.findViewById(R.id.nombrePuntaje);
+        textPuntajeBO = v.findViewById(R.id.valorPuntaje);
 
-        getUserInfo();
+        getTopScore();
 
         Button btnJugar = (Button) v.findViewById(R.id.btnJugar);
         btnJugar.setOnClickListener(new View.OnClickListener() {
@@ -53,16 +59,17 @@ public class BreakOutFragment extends Fragment {
 
         return v;
     }
-    private void getUserInfo(){
-        String id = mAuth.getCurrentUser().getUid();
-        mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+    private void getTopScore(){
+
+        mDatabase.child("Scores").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    String name = snapshot.child("name").getValue().toString();
+                    String name = snapshot.child("breakname").getValue().toString();
+                    String puntos = snapshot.child("breakscore").getValue().toString();
 
                     textPuntaje.setText(name);
-
+                    textPuntajeBO.setText(puntos+ " Puntos");
 
                 }
             }
