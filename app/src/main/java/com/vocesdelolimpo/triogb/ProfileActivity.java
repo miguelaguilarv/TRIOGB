@@ -26,7 +26,6 @@ public class ProfileActivity extends AppCompatActivity {
     private Button mButtonSignout;
     private Button mButtonBack;
     private FirebaseAuth mAuth;
-
     private DatabaseReference mDatabase;
 
 

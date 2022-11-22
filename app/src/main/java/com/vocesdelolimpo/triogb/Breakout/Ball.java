@@ -6,20 +6,21 @@ import java.util.Random;
 
 public class Ball {
 
+
     private RectF rect;
     private float xVelocity;
     private float yVelocity;
-    private float ballWidth = 10;
-    private float ballHeight = 10;
+    private float ballWidth = 15;
+    private float ballHeight = 15;
 
     Ball(int screenX, int screenY){
 
         float x = screenX / 2 - 150;
         float y = screenY - 150;
 
-
         xVelocity = 200;
         yVelocity = -400;
+
         rect = new RectF(x, y , x + ballWidth, y + ballHeight);
 
     }
@@ -27,6 +28,7 @@ public class Ball {
     RectF getRect(){
         return rect;
     }
+
 
     void update(long fps){
         rect.left = rect.left + (xVelocity / fps);
@@ -70,7 +72,7 @@ public class Ball {
     }
 
     void reset (int x, int y){
-        rect.left = x / 2 + 80;
+        rect.left = x / 2 + 55;
         rect.top = y - 150;
         rect.right = x / 2 + ballWidth + 60;
         rect.bottom = y - 150 - ballHeight;

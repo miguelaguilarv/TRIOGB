@@ -5,27 +5,38 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
 import com.vocesdelolimpo.triogb.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class BreakoutEngine extends SurfaceView implements Runnable{
 
     private Thread gameThread = null;
-
     private SurfaceHolder ourHolder;
+    private boolean segundo = false;
+
 
     //Un boolean que se va a establece o quitar cuando el juego este corriendo o no.
     private volatile boolean playing;
@@ -34,27 +45,44 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     private boolean paused = true;
 
     //Objetos Paint y Canvas
+    Resources res = getResources();
+    private Bitmap bitmapFire = BitmapFactory.decodeResource(res, R.drawable.fire);
+    private Bitmap bitmapFire2 = BitmapFactory.decodeResource(res, R.drawable.fire2);
+    private Bitmap bitmapFire3 = BitmapFactory.decodeResource(res, R.drawable.fire3);
+
+    private Bitmap bitmapBall = BitmapFactory.decodeResource(res, R.drawable.dragonball);
+    private Bitmap bitmapBat = BitmapFactory.decodeResource(res, R.drawable.bat);
     private Canvas canvas;
     private Paint paint;
+
+    private Paint fire1;
 
     //Que tal ancha y alta es la pantalla
     private int screenX;
     private int screenY;
 
+
+    private int screenZ;
+    private Random random;
+
     //Variable para rastrear el frame rate del juego
-    private long fps;
+    private long fps, fps2;
     //Ayuda a calcular los fps
     private long timeThisFrame;
+
+    Fire fire, fire2, fire3, fire4;
 
     //Plataforma del jugador
     Bat bat;
 
+    Rect rect;
     //Una esfera... cuadrada
     Ball ball;
 
     //Lista de Ladrillos
 
     ArrayList<Brick> bricks = new ArrayList<>();
+
 
     int numBricks = 0;
 
@@ -69,9 +97,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     //Puntaje
     public int score = 0;
+    public int cantBricks = 0;
 
     public int scoreF = 0;
     //Vidas
+
     int lives = 3;
 
 
@@ -85,12 +115,19 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         //Inicializa screenX y screenY porque x e y son locales
         screenX = x;
         screenY = y;
-
         //Inicializa la plataforma del jugadro.
         bat = new Bat(screenX, screenY);
 
         //Crea la pelota
         ball = new Ball(screenX, screenY);
+
+        rect = new Rect(screenX,screenY);
+
+        randomFire();
+        randomFire2();
+        randomFire3();
+        randomFire4();
+
 
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,0);
 
@@ -123,6 +160,45 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     }
 
+    private void randomFire(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(1000);
+
+        fire = new Fire(screenZ, screenY);
+    }
+    private void randomFire2(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(800);
+        fire2 = new Fire(screenZ, screenY/3);
+    }
+    private void randomFire3(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(800);
+        fire3 = new Fire(screenZ/3, screenY + 150);
+    }
+    private void randomFire4(){
+        random = new Random();
+        screenZ = screenX - random.nextInt(1000);
+        fire4 = new Fire(screenZ/2 - 500, screenY - 300);
+    }
+
+    public void setLives(int lives){
+        this.lives = lives;
+    }
+
+    public void setScore(int score){
+        this.score = score;
+    }
+
+
+    public void setSegundo(boolean segundo) {
+        this.segundo = segundo;
+    }
+
+    public void setCantBricks(int cantBricks){
+        this.cantBricks = cantBricks;
+    }
+
     //Corre cuando el SO llama a onPause en el metodo BreaoutActivity
     public void pause(){
         playing = false;
@@ -145,6 +221,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     }
 
+
     @Override
     public void run() {
         while (playing){
@@ -160,12 +237,13 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             //Dibuja el frame (cuadro)
             draw();
 
+
             //Al calcular los fps de este cuadro, se puede usar el resultado para animaciones de tiempo y mas.
             timeThisFrame = System.currentTimeMillis() - startFrameTime;
             if(timeThisFrame >= 1 ){
 
                 fps = 1000 / timeThisFrame;
-
+                fps2 = 600 / timeThisFrame;
             }
         }
     }
@@ -175,7 +253,15 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         bat.update(fps);
 
         //Actualiza la pelota
-        ball.update(fps);
+        if (segundo == false){
+            ball.update(fps);
+        }else{
+            ball.update(fps2);
+            fire.update(fps);
+            fire2.update(fps);
+            fire3.update(fps);
+            fire4.update(fps);
+        }
 
 
         //Colision con el ladrillo
@@ -187,9 +273,23 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
                     bricks.get(i).setInvisible();
                     ball.reverseYVelocity();
                     score = score + 10;
+                    cantBricks = cantBricks + 10;
                     soundPool.play(loselifeID, 1, 1, 0, 0, 1);
                 }
             }
+        }
+
+        if(RectF.intersects(bat.getRect(),fire.getRect())){
+            bat.setMovementState(bat.STOPPED);
+        }
+        if(RectF.intersects(bat.getRect(),fire2.getRect())){
+            bat.setMovementState(bat.STOPPED);
+        }
+        if(RectF.intersects(bat.getRect(),fire3.getRect())){
+            bat.setMovementState(bat.STOPPED);
+        }
+        if(RectF.intersects(bat.getRect(),fire4.getRect())){
+            bat.setMovementState(bat.STOPPED);
         }
 
         //Colision con la plataforma
@@ -203,14 +303,22 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             ball.clearObstacleY(bat.getRect().top -2);
             soundPool.play(beep1ID,1,1,0,0,1);
         }
+        if(fire.getRect().bottom > screenY){
+            randomFire();
+        }
+        if(fire2.getRect().bottom > screenY){
+            randomFire2();
+        }
+        if(fire3.getRect().bottom > screenY){
+            randomFire3();
+        }
 
         if(ball.getRect().bottom > screenY){
-            ball.reverseYVelocity();
-            ball.clearObstacleY(screenY - 2);
-
 
             ball.reset(screenX, screenY);
             bat.reset(screenX);
+            ball.reverseYVelocity();
+            ball.clearObstacleY(screenY - 150);
 
             // Pierde una vida
             lives --;
@@ -218,7 +326,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
             if(lives == 0){
                 paused = true;
-                enviarAPuntaje();
+                enviarAPuntajePierde();
                 restart();
             }
 
@@ -238,6 +346,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             soundPool.play(explodeID, 1, 1, 0, 0, 1);
         }
 
+        if (bat.getRect().left <= 0){
+            bat.setMovementState(bat.STOPPED);
+        }
+
+        if (bat.getRect().right > screenX - 10){
+            bat.setMovementState(bat.STOPPED);
+        }
+
         // rebota al chocar en la pared der
         if(ball.getRect().right > screenX - 10){
             ball.reverseXVelocity();
@@ -246,7 +362,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         }
 
         // Pausa el juego si se limpian todos los ladrillos
-        if(score == numBricks * 10){
+        if(cantBricks == numBricks * 10){
 
             paused = true;
             enviarAPuntaje();
@@ -258,22 +374,24 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         //Pone la pelota de vuelta al inicio
         ball.reset(screenX, screenY);
         bat.reset(screenX);
-
+        rect.reset(screenX);
         int brickWidth = screenX / 8;
         int brickHeight = screenY / 10;
 
         numBricks = 0;
 
         for (int column = 0; column < 8; column++){
-            for (int row = 0; row < 3; row++){
+            for (int row = 0; row < 4; row++){
                 bricks.add(numBricks,new Brick(row, column, brickWidth, brickHeight));
                 numBricks++;
             }
         }
+
         score = 0;
         lives = 3;
 
     }
+
 
     private void draw(){
 
@@ -282,17 +400,46 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             canvas = ourHolder.lockCanvas();
 
             //Se pinta el color de fondo
-            canvas.drawColor(Color.argb(255, 0, 0, 50));
+            canvas.drawColor(Color.argb(200, 0, 0, 50));
+
+            //Bitmap resize3 = Bitmap.createScaledBitmap(bitmap,screenX ,screenY,true);
+            //canvas.drawBitmap(resize3, 0,0, paint);
 
             //Dibuja toodo en la pantalla
             //Dibuja la plataforma
-            paint.setColor(Color.argb(255, 255, 255, 255));
+            //paint.setColor(Color.argb(255, 0, 0, 50));
+            paint.setColor(Color.TRANSPARENT);
+            Bitmap resize = Bitmap.createScaledBitmap(bitmapBat, (int)bat.getRect().width(), (int)bat.getRect().height(), true);
             canvas.drawRect(bat.getRect(), paint);
+            canvas.drawBitmap(resize,bat.getRect().left,bat.getRect().top,null);
 
             //Se elige el color para dibujar
-            paint.setColor(Color.argb(255, 175, 238, 77));
+            paint.setColor(Color.argb(255, 0, 0, 50));
             //Dibuja la pelota
+            Bitmap resize2 = Bitmap.createScaledBitmap(bitmapBall, (int)ball.getRect().width(), (int)ball.getRect().height(), true);
             canvas.drawRect(ball.getRect(), paint);
+            canvas.drawBitmap(resize2,ball.getRect().left, ball.getRect().bottom, null);
+
+            if (segundo == true){
+
+                paint.setColor(Color.TRANSPARENT);
+                Bitmap resize5 = Bitmap.createScaledBitmap(bitmapFire, (int)fire.getRect().width(), (int)fire.getRect().height(), true);
+                Bitmap resize6 = Bitmap.createScaledBitmap(bitmapFire2, (int)fire2.getRect().width(), (int)fire2.getRect().height(), true);
+                Bitmap resize7 = Bitmap.createScaledBitmap(bitmapFire3, (int)fire3.getRect().width(), (int)fire3.getRect().height(), true);
+
+                canvas.drawRect(fire.getRect(), paint);
+                canvas.drawBitmap(resize5,fire.getRect().left, fire.getRect().top, null);
+                canvas.drawRect(fire2.getRect(), paint);
+                canvas.drawBitmap(resize5,fire.getRect().left, fire.getRect().top, null);
+
+                canvas.drawRect(fire3.getRect(), paint);
+                canvas.drawBitmap(resize6,fire2.getRect().left, fire2.getRect().top, null);
+
+                canvas.drawRect(fire4.getRect(), paint);
+                canvas.drawBitmap(resize7,fire3.getRect().left, fire3.getRect().top, null);
+
+
+            }
 
             //Cambia el color del pincel para pintar los ladrillos
             paint.setColor(Color.argb(255, 238, 234, 77));
@@ -304,8 +451,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
                 }
             }
 
+            //paint.setColor(Color.argb(255, 0, 0, 50));
+            Paint paint2 = new Paint();
+            paint2.setShader(new LinearGradient(0,0,screenX / 2 - 350, getHeight(),Color.argb(150, 0, 0, 50), Color.TRANSPARENT, Shader.TileMode.CLAMP));
+            canvas.drawRect(rect.getRect(), paint2);
+
             paint.setColor(Color.argb(255,255,255,255));
 
+            paint.setTypeface(Typeface.create("Calibri",Typeface.BOLD));
             paint.setTextSize(50);
             canvas.drawText("Puntaje: " +score+ "       Vidas: "+lives, 10, 80, paint);
 
@@ -341,23 +494,57 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         }
         return true;
     }
-    private void enviarAPuntaje(){
-        scoreF = score;
-        String s ="";
-        s = (int)scoreF+"";
+    private void enviarAPuntajePierde(){
+
+        int scoreP = score;
         int vidas = lives;
 
         Bundle bundle;
         bundle = new Bundle();
-        bundle.putString("puntaje", s);
+        bundle.putInt("puntaje", scoreP);
         bundle.putInt("vidas", vidas);
 
 
         Intent i = new Intent(getContext(), PuntajeBreakout.class);
-        i.putExtra("puntaje", s);
+        i.putExtra("puntaje", scoreP);
         i.putExtra("vidas", vidas);
         getContext().startActivity(i);
     }
+    private void enviarAPuntaje(){
 
+        int score1 = score;
+        int vidas = lives;
+
+        Bundle bundle;
+        bundle = new Bundle();
+        bundle.putInt("puntaje", score1);
+        bundle.putInt("vidas", vidas);
+
+        if(segundo == false){
+
+
+            Intent i = new Intent(getContext(), Breakout2Activity.class);
+            i.putExtra("puntaje", score1);
+            i.putExtra("vidas", vidas);
+            getContext().startActivity(i);
+
+        }else{
+            if (vidas == 3){
+                score1 = score + 30;
+
+            }else{
+                score1 = score;
+            }
+            Intent i = new Intent(getContext(), PuntajeBreakout.class);
+            i.putExtra("puntaje", score1);
+            i.putExtra("vidas", vidas);
+            getContext().startActivity(i);
+
+
+        }
+
+
+    }
 
 }
+

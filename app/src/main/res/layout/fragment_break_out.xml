@@ -7,56 +7,76 @@
     android:background="#CD6E6E"
     tools:context=".Juegos.BreakOutFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:fontFamily="@font/triogb"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:text="BREAKOUT"
             android:textColor="#FFFFFF"
             android:textSize="40dp"
             android:visibility="visible" />
 
-
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
         <Button
             android:id="@+id/btnJugar"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginTop="200dp"
             android:backgroundTint="#EDAA62"
-            android:layout_gravity="center"
+            android:layout_marginTop="300dp"
+            android:layout_gravity="center_horizontal"
             android:text="J U G A R"
             android:textSize="30dp"
             android:fontFamily="@font/triogb"
             android:textStyle="bold"
             android:textColor="#2664CF" />
 
+
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="110dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="400dp"
             android:src="@drawable/bo" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/triogb"
+            android:text="MEJOR PUNTAJE:"
+            android:layout_centerInParent="true"
+            android:textColor="#FBC828"
+            android:textSize="30dp"
+            android:visibility="visible" />
+        <TextView
+            android:id="@+id/nombrePuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/triogb"
+            android:text="NOMBRE"
+            android:layout_centerInParent="true"
+            android:textColor="#00FB79"
+            android:textSize="30dp"
+            android:visibility="visible" />
+        <TextView
+            android:id="@+id/valorPuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:fontFamily="@font/triogb"
+            android:text="PUNTAJE"
+            android:layout_centerInParent="true"
+            android:textColor="#00FB79"
+            android:textSize="30dp"
+            android:visibility="visible" />
 
-    </LinearLayout>
 
 </FrameLayout>
