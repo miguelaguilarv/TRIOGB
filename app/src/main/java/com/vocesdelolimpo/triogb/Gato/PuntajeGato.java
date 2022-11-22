@@ -47,20 +47,31 @@ public class PuntajeGato extends AppCompatActivity {
         final int ganador = getIntent().getExtras().getInt("mensaje");
         if (ganador == 1) {
             getUserInfo();
+            musica();
         } else if (ganador == 2) {
             TextViewGanador.setText("GANO EL INVITADO");
+            musica();
         } else {
             TextViewGanador.setText("EMPATE");
             primerLugar.setVisibility(View.INVISIBLE);
             empate2.setVisibility(View.VISIBLE);
+            musica();
         }
     }
 
-    public void rein(View v) {
+    public void rein(View v) { //________________________________________tiene fallas
         MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
         mp.start();
-        Intent rei = new Intent(this, GatoActivity.class);
+        Intent rei = new Intent(this, GatoActivity2.class);
         startActivity(rei);
+        mp.release();
+    }
+    public void puntajes(View v) { //___________________________________ tiene fallas
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+        mp.start();
+        Intent pun = new Intent(this, TablaPuntajes.class);
+        startActivity(pun);
+        mp.release();
     }
 
     public void salir_home(View v) {
@@ -71,7 +82,7 @@ public class PuntajeGato extends AppCompatActivity {
         player.release();
     }
 
-    public void musica(View view) {
+    public void musica() {
         if (player == null) {
             player = MediaPlayer.create(this, R.raw.happy);
         }
@@ -91,7 +102,6 @@ public class PuntajeGato extends AppCompatActivity {
                         TextViewGanador.setText("GANÓ " + alias);
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                 }

@@ -3,9 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C8FA82"
+    android:background="#FF9800"
     tools:context=".Juegos.GatoFragment">
 
+    <TextView
+        android:id="@+id/nombrePuntaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/triogb"
+        android:text="NOMBRE"
+        android:textColor="#00FB79"
+        android:textSize="30dp"
+        android:visibility="visible" />
+    <TextView
+        android:id="@+id/valorPuntaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/triogb"
+        android:text="PUNTAJE"
+        android:layout_centerInParent="true"
+        android:textColor="#00FB79"
+        android:textSize="30dp"
+        android:visibility="visible" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +51,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="200dp"
-            android:backgroundTint="#FFEB3B"
+            android:backgroundTint="#FF5722"
             android:fontFamily="@font/triogb"
             android:text="J U G A R"
             android:textColor="#2664CF"

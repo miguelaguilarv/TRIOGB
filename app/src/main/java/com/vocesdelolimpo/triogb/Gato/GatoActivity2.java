@@ -1,7 +1,5 @@
 package com.vocesdelolimpo.triogb.Gato;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -9,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.vocesdelolimpo.triogb.R;
 
-public class GatoActivity extends AppCompatActivity {
+public class GatoActivity2 extends AppCompatActivity {
     Button arreglo [][];
     public int mensaje;
     int turno=1;
@@ -21,7 +21,7 @@ public class GatoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gato);
+        setContentView(R.layout.activity_gato2);
         sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 1);
         sonido_de_Repoduccion= sp.load (this ,R.raw.cat,1);
 

@@ -16,49 +16,11 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="203dp"
-        android:layout_height="119dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63">
-
-        <Button
-            android:id="@+id/reiniciar"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:backgroundTint="#A3ED62"
-            android:fontFamily="@font/triogb"
-            android:onClick="rein"
-            android:text="REINICIAR"
-            android:textColor="#2664CF"
-
-            android:textSize="20dp" />
-
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="164dp"
-            android:backgroundTint="#ED626E"
-            android:fontFamily="@font/triogb"
-            android:onClick="salir_home"
-            android:text="SALIR"
-            android:textColor="#2664CF"
-            android:textSize="20dp" />
-    </LinearLayout>
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="412dp"
         android:layout_height="378dp"
         android:src="@drawable/med"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +32,6 @@
         android:layout_height="378dp"
         android:src="@drawable/empate2"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,6 +49,75 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/linearLayout6"
         app:layout_constraintTop_toTopOf="@+id/linearLayout6" />
+
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="350dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/inf_ganador"
+        tools:ignore="MissingConstraints">
+
+        <TableLayout
+            android:layout_width="198dp"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="49dp">
+
+                <Button
+                    android:id="@+id/reiniciar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="164dp"
+                    android:backgroundTint="#A3ED62"
+                    android:fontFamily="@font/triogb"
+                    android:onClick="rein"
+                    android:text="REINICIAR"
+                    android:textColor="#2664CF"
+                    android:textSize="20dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button_salir"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="164dp"
+                    android:backgroundTint="#DF62ED"
+                    android:fontFamily="@font/triogb"
+                    android:onClick="puntajes"
+                    android:text="PUNTAJES"
+                    android:textColor="#2664CF"
+                    android:textSize="20dp" />
+                />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="164dp"
+                    android:backgroundTint="#ED626E"
+                    android:fontFamily="@font/triogb"
+                    android:onClick="salir_home"
+                    android:text="SALIR"
+                    android:textColor="#2664CF"
+                    android:textSize="20dp" />
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
