@@ -5,17 +5,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.RectF;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.vocesdelolimpo.triogb.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,6 +34,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     private SurfaceHolder ourHolder;
     private boolean segundo = false;
 
+
     //Un boolean que se va a establece o quitar cuando el juego este corriendo o no.
     private volatile boolean playing;
 
@@ -34,6 +42,13 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     private boolean paused = true;
 
     //Objetos Paint y Canvas
+    Resources res = getResources();
+    private Bitmap bitmapFire = BitmapFactory.decodeResource(res, R.drawable.fire);
+    private Bitmap bitmapFire2 = BitmapFactory.decodeResource(res, R.drawable.fire2);
+    private Bitmap bitmapFire3 = BitmapFactory.decodeResource(res, R.drawable.fire3);
+
+    private Bitmap bitmapBall = BitmapFactory.decodeResource(res, R.drawable.dragonball);
+    private Bitmap bitmapBat = BitmapFactory.decodeResource(res, R.drawable.bat);
     private Canvas canvas;
     private Paint paint;
 
@@ -222,7 +237,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             if(timeThisFrame >= 1 ){
 
                 fps = 1000 / timeThisFrame;
-                fps2 = 550 / timeThisFrame;
+                fps2 = 600 / timeThisFrame;
             }
         }
     }
@@ -379,26 +394,44 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             canvas = ourHolder.lockCanvas();
 
             //Se pinta el color de fondo
-            canvas.drawColor(Color.argb(255, 0, 0, 50));
+            canvas.drawColor(Color.argb(200, 0, 0, 50));
+
+            //Bitmap resize3 = Bitmap.createScaledBitmap(bitmap,screenX ,screenY,true);
+            //canvas.drawBitmap(resize3, 0,0, paint);
 
             //Dibuja toodo en la pantalla
             //Dibuja la plataforma
-            paint.setColor(Color.argb(255, 255, 255, 255));
+            //paint.setColor(Color.argb(255, 0, 0, 50));
+            paint.setColor(Color.TRANSPARENT);
+            Bitmap resize = Bitmap.createScaledBitmap(bitmapBat, (int)bat.getRect().width(), (int)bat.getRect().height(), true);
             canvas.drawRect(bat.getRect(), paint);
+            canvas.drawBitmap(resize,bat.getRect().left,bat.getRect().top,null);
 
             //Se elige el color para dibujar
-            paint.setColor(Color.argb(255, 175, 238, 77));
+            paint.setColor(Color.argb(255, 0, 0, 50));
             //Dibuja la pelota
-
+            Bitmap resize2 = Bitmap.createScaledBitmap(bitmapBall, (int)ball.getRect().width(), (int)ball.getRect().height(), true);
             canvas.drawRect(ball.getRect(), paint);
+            canvas.drawBitmap(resize2,ball.getRect().left, ball.getRect().bottom, null);
 
             if (segundo == true){
 
-                paint.setColor(Color.argb(255, 231, 75, 40));
+                paint.setColor(Color.TRANSPARENT);
+                Bitmap resize5 = Bitmap.createScaledBitmap(bitmapFire, (int)fire.getRect().width(), (int)fire.getRect().height(), true);
+                Bitmap resize6 = Bitmap.createScaledBitmap(bitmapFire2, (int)fire2.getRect().width(), (int)fire2.getRect().height(), true);
+                Bitmap resize7 = Bitmap.createScaledBitmap(bitmapFire3, (int)fire3.getRect().width(), (int)fire3.getRect().height(), true);
+
                 canvas.drawRect(fire.getRect(), paint);
+                canvas.drawBitmap(resize5,fire.getRect().left, fire.getRect().top, null);
                 canvas.drawRect(fire2.getRect(), paint);
+                canvas.drawBitmap(resize5,fire.getRect().left, fire.getRect().top, null);
+
                 canvas.drawRect(fire3.getRect(), paint);
+                canvas.drawBitmap(resize6,fire2.getRect().left, fire2.getRect().top, null);
+
                 canvas.drawRect(fire4.getRect(), paint);
+                canvas.drawBitmap(resize7,fire3.getRect().left, fire3.getRect().top, null);
+
 
             }
 
@@ -450,19 +483,18 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         return true;
     }
     private void enviarAPuntajePierde(){
-        scoreF = score;
-        String s ="";
-        s = (int)scoreF+"";
+
+        int scoreP = score;
         int vidas = lives;
 
         Bundle bundle;
         bundle = new Bundle();
-        bundle.putString("puntaje", s);
+        bundle.putInt("puntaje", scoreP);
         bundle.putInt("vidas", vidas);
 
 
         Intent i = new Intent(getContext(), PuntajeBreakout.class);
-        i.putExtra("puntaje", s);
+        i.putExtra("puntaje", scoreP);
         i.putExtra("vidas", vidas);
         getContext().startActivity(i);
     }
@@ -476,11 +508,29 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         bundle.putInt("puntaje", score1);
         bundle.putInt("vidas", vidas);
 
+        if(segundo == false){
 
-        Intent i = new Intent(getContext(), Breakout2Activity.class);
-        i.putExtra("puntaje", score1);
-        i.putExtra("vidas", vidas);
-        getContext().startActivity(i);
+
+            Intent i = new Intent(getContext(), Breakout2Activity.class);
+            i.putExtra("puntaje", score1);
+            i.putExtra("vidas", vidas);
+            getContext().startActivity(i);
+
+        }else{
+            if (vidas == 3){
+                score1 = score + 30;
+
+            }else{
+                score1 = score;
+            }
+            Intent i = new Intent(getContext(), PuntajeBreakout.class);
+            i.putExtra("puntaje", score1);
+            i.putExtra("vidas", vidas);
+            getContext().startActivity(i);
+
+        }
+
+
     }
 
 

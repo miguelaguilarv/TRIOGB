@@ -38,7 +38,7 @@ public class PuntajeBreakout extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         Bundle recibido = this.getIntent().getExtras();
-        final String puntaje = recibido.getString("puntaje");
+        final int puntaje = recibido.getInt("puntaje");
         final int vidasJ = recibido.getInt("vidas");
 
 //        try {
