@@ -71,7 +71,7 @@ public class Ordenamiento4Activity extends AppCompatActivity {
     }
 
     public void validarContenido4(TextView texto, ArrayList numeros){
-        Collections.sort(numeros);
+        Collections.sort(numeros,Collections.reverseOrder());
         String cadena="";
         for (Object num: numeros){
             cadena+=(int)num+"";

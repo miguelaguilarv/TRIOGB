@@ -35,7 +35,7 @@ public class Ordenamiento3Activity extends AppCompatActivity {
         listado.add((Button) findViewById(R.id.bt11));
         listado.add((Button) findViewById(R.id.bt12));
 
-        final TextView texto = (TextView)findViewById(R.id.texto);
+        final TextView texto = (TextView)findViewById(R.id.texto3);
 
         final ArrayList numeros = new ArrayList();
 
@@ -59,13 +59,16 @@ public class Ordenamiento3Activity extends AppCompatActivity {
     }
 
     public void validarContenido3(TextView texto, ArrayList numeros){
-        Collections.reverse(numeros);
+        Collections.sort(numeros,Collections.reverseOrder());
         String cadena="";
         for (Object num: numeros){
             cadena+=(int)num+"";
+
         }
+
         String cadena2 = texto.getText().toString().replaceAll(" ","");
         String mensaje;
+
 
         if(cadena.equals(cadena2)){
             mensaje= "Ok";
@@ -74,12 +77,13 @@ public class Ordenamiento3Activity extends AppCompatActivity {
             b.putString("mensaje",mensaje);
             in.putExtras(b);
             startActivity(in);
-        } else {
 
+        } else {
             mensaje = "fail";
 
             finish();
             startActivity(getIntent());
+
         }
     }
 }
