@@ -3,6 +3,7 @@ package com.vocesdelolimpo.triogb.Ordenamiento;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class OrdenamientoActivity extends AppCompatActivity {
-
+    int i = 0;
+    MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,28 +37,51 @@ public class OrdenamientoActivity extends AppCompatActivity {
         listado.add((Button) findViewById(R.id.bt11));
         listado.add((Button) findViewById(R.id.bt12));
 
-        final TextView texto = (TextView)findViewById(R.id.texto);
+        final TextView texto = (TextView) findViewById(R.id.texto);
 
         final ArrayList numeros = new ArrayList();
 
-        for (final Button bt:listado) {
+        for (final Button bt : listado) {
             int num = (int) (Math.random() * 12) + 1;
             numeros.add(num);
             bt.setText(num + "");
-            bt.setOnClickListener(new View.OnClickListener(){
+            bt.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
+                    musica();
                     texto.setText(texto.getText() + " " + bt.getText());
                     bt.setVisibility(View.INVISIBLE);
                 }
             });
         }
-        Button validar =(Button)findViewById(R.id.btValidar);
+        Button validar = (Button) findViewById(R.id.btValidar);
+        Button completar = (Button) findViewById(R.id.btCompletar);
+
 
         validar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                validarContenido(texto, numeros);}
+                validarContenido(texto, numeros);
+            }
         });
+
+        completar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+            }
+        });
+
+
     }
+
+    public void completarContenido(TextView texto, ArrayList numeros){
+        int n2 =0;
+        Collections.sort(numeros);
+        for(int i=0 ;i < 12; i++){
+
+
+
+        }
+
+        }
+
 
     public void validarContenido(TextView texto, ArrayList numeros){
         Collections.sort(numeros);
@@ -81,5 +106,12 @@ public class OrdenamientoActivity extends AppCompatActivity {
             finish();
             startActivity(getIntent());
         }
+    }
+
+    public void musica() {
+        if (player == null) {
+            player = MediaPlayer.create(this, R.raw.buton23);
+        }
+        player.start();
     }
 }
