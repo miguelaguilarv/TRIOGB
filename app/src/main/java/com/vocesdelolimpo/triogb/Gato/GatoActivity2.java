@@ -1,18 +1,31 @@
 package com.vocesdelolimpo.triogb.Gato;
 
+import static android.graphics.Color.RED;
+import static android.graphics.Color.WHITE;
+import java.text.DecimalFormat;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
+import java.text.NumberFormat;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.ColorUtils;
 
 import com.vocesdelolimpo.triogb.R;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class GatoActivity2 extends AppCompatActivity {
     Button arreglo [][];
+    MediaPlayer reloj;
     public int mensaje;
     int turno=1;
     int contador=0;
@@ -22,6 +35,25 @@ public class GatoActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gato2);
+        TextView textView_cronometro;
+        textView_cronometro = findViewById(R.id.cronomerto);
+        new CountDownTimer(30000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                NumberFormat f = new DecimalFormat("00");
+                long sec = (+(millisUntilFinished / 1000) % 60);
+                textView_cronometro.setText(f.format(sec)+" SEGUNDOS");
+                if (((int) millisUntilFinished / 1000) == 10) {
+                    reloj_tiempo();
+                    textView_cronometro.setTextColor(RED);
+                }else if (((int) millisUntilFinished / 1000) == 0) {
+                   // finish();                                                     //agregar termino de cronometro
+                }
+            }
+            public void onFinish() {
+                mensaje=3;
+                ganador();
+            }
+        }.start();
         sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 1);
         sonido_de_Repoduccion= sp.load (this ,R.raw.cat,1);
 
@@ -37,11 +69,11 @@ public class GatoActivity2 extends AppCompatActivity {
         arreglo[2][2]=this.findViewById(R.id.button22);
 
     }
-
     public void darvalor(int fila, int columna) {
 
         if (arreglo[fila][columna].getText().equals("")) { //revisa si el boton esta vacio
             if (turno == 1) {
+
                 sp.play(sonido_de_Repoduccion, 1, 1, 1, 0, 1);
                 arreglo[fila][columna].setText("X");
                 turno = 2;
@@ -128,6 +160,8 @@ public class GatoActivity2 extends AppCompatActivity {
         }
 
     }
+
+
     protected void ganador(){
         Intent in = new Intent(this, PuntajeGato.class);
         Bundle b = new Bundle();
@@ -162,6 +196,13 @@ public class GatoActivity2 extends AppCompatActivity {
         darvalor(2 ,1);
     }
     public void boton22(View view){
-        darvalor(2 ,2);
+        darvalor(2 ,2);}
+
+
+    public void reloj_tiempo() {
+        if (reloj == null) {
+            reloj = MediaPlayer.create(this, R.raw.tictoc);
+        }
+        reloj.start();
     }
 }

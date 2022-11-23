@@ -59,10 +59,8 @@ public class GatoFragment extends Fragment {
                 if(snapshot.exists()){
                     String name = snapshot.child("gatoname").getValue().toString();
                     String puntos = snapshot.child("gatoscore").getValue().toString();
-
                     textPuntaje.setText(name);
                     textPuntajeBO.setText(puntos+ " Puntos");
-
                 }
             }
 

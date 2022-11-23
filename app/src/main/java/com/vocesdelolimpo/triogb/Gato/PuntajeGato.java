@@ -55,18 +55,18 @@ public class PuntajeGato extends AppCompatActivity {
             TextViewGanador.setText("EMPATE");
             primerLugar.setVisibility(View.INVISIBLE);
             empate2.setVisibility(View.VISIBLE);
-            musica();
+            musica_empate();
         }
     }
 
-    public void rein(View v) { //________________________________________tiene fallas
+    public void rein(View v) {
         MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
         mp.start();
         Intent rei = new Intent(this, GatoActivity2.class);
         startActivity(rei);
-        mp.release();
+
     }
-    public void puntajes(View v) { //___________________________________ tiene fallas
+    public void puntajes(View v) {
         MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
         mp.start();
         Intent pun = new Intent(this, TablaPuntajes.class);
@@ -81,7 +81,12 @@ public class PuntajeGato extends AppCompatActivity {
         startActivity(sal);
         player.release();
     }
-
+    public void musica_empate() {
+        if (player == null) {
+            player = MediaPlayer.create(this, R.raw.aw);
+        }
+        player.start();
+    }
     public void musica() {
         if (player == null) {
             player = MediaPlayer.create(this, R.raw.happy);
@@ -107,5 +112,6 @@ public class PuntajeGato extends AppCompatActivity {
                 }
             });
         }
+
     }
 

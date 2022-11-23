@@ -58,7 +58,7 @@
         tools:ignore="MissingConstraints">
 
         <TableLayout
-            android:layout_width="198dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
 
             android:layout_gravity="center">
