@@ -52,11 +52,28 @@ public class Ordenamiento3Activity extends AppCompatActivity {
                 }
             });
         }
-        Button validar3 =(Button)findViewById(R.id.btnValidar3);
+        Button validar3 =(Button)findViewById(R.id.btValidar3);
+        Button completar = (Button) findViewById(R.id.btCompletar3);
 
         validar3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 validarContenido3(texto, numeros);}
+        });
+
+
+        completar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.sort(numeros,Collections.reverseOrder());
+                for (Object num: numeros){
+                    texto.setText(texto.getText().toString()+(int)num+"");
+                    completar.setVisibility(View.INVISIBLE);
+
+
+
+                }
+
+            }
         });
     }
 

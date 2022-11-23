@@ -72,10 +72,26 @@ public class Ordenamiento2Activity extends AppCompatActivity {
             });
         }
         Button validar2 =(Button)findViewById(R.id.btValidar2);
+        Button completar = (Button) findViewById(R.id.btCompletar2);
 
         validar2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 validarContenido2(texto, numeros);}
+        });
+
+
+        completar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.sort(numeros);
+                for (Object num: numeros){
+                    texto.setText(texto.getText().toString()+(int)num+"");
+                    completar.setVisibility(View.INVISIBLE);
+
+
+                }
+
+            }
         });
 
     }

@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.vocesdelolimpo.triogb.R;
@@ -57,30 +59,31 @@ public class OrdenamientoActivity extends AppCompatActivity {
         Button completar = (Button) findViewById(R.id.btCompletar);
 
 
+
         validar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 validarContenido(texto, numeros);
             }
         });
 
+
         completar.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
+                Collections.sort(numeros);
+                for (Object num: numeros){
+                    texto.setText(texto.getText().toString()+(int)num+"");
+                    completar.setVisibility(View.INVISIBLE);
+
+
+
+                }
+
             }
         });
 
-
     }
 
-    public void completarContenido(TextView texto, ArrayList numeros){
-        int n2 =0;
-        Collections.sort(numeros);
-        for(int i=0 ;i < 12; i++){
-
-
-
-        }
-
-        }
 
 
     public void validarContenido(TextView texto, ArrayList numeros){

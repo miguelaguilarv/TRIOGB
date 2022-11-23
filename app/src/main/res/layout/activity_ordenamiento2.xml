@@ -9,11 +9,12 @@
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="410dp"
-        android:layout_height="540dp"
+        android:layout_width="387dp"
+        android:layout_height="533dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
         <TableRow
             android:layout_width="match_parent"
@@ -289,20 +290,30 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="123dp"
+        android:layout_width="408dp"
+        android:layout_height="80dp"
 
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1dp">
+        tools:layout_editor_absoluteX="3dp">
 
         <Button
             android:id="@+id/btValidar2"
-            android:layout_width="match_parent"
+            android:layout_width="205dp"
             android:layout_height="match_parent"
-            android:backgroundTint="#FFABAB"
-
+            android:backgroundTint="#ED6262"
+            android:fontFamily="@font/triogb"
             android:text="Validar"
+            android:textColor="#000000"
+            android:textSize="34sp" />
+
+        <Button
+            android:id="@+id/btCompletar2"
+            android:layout_width="205dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#ED6262"
+            android:fontFamily="@font/triogb"
+            android:text="COMPLETAR"
             android:textColor="#000000"
             android:textSize="34sp" />
     </LinearLayout>
@@ -312,11 +323,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:fontFamily="@font/triogb"
         android:textColor="#000000"
-        android:textSize="30dp"
+        android:textSize="35dp"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
