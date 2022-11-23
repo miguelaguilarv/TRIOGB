@@ -7,8 +7,6 @@
     android:background="#CD6E6E"
     tools:context=".Juegos.BreakOutFragment">
 
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

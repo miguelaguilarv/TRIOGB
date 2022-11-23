@@ -17,8 +17,10 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -36,7 +38,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     private Thread gameThread = null;
     private SurfaceHolder ourHolder;
     private boolean segundo = false;
-
+    private MediaPlayer musica = MediaPlayer.create(getContext(),R.raw.mop);
+    //private MediaPlayer musica2 = MediaPlayer.create(getContext(),R.raw.wttj);
 
     //Un boolean que se va a establece o quitar cuando el juego este corriendo o no.
     private volatile boolean playing;
@@ -51,7 +54,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     private Bitmap bitmapFire3 = BitmapFactory.decodeResource(res, R.drawable.fire3);
 
     private Bitmap bitmapBall = BitmapFactory.decodeResource(res, R.drawable.dragonball);
-    private Bitmap bitmapBat = BitmapFactory.decodeResource(res, R.drawable.bat);
+    private Bitmap bitmapBat = BitmapFactory.decodeResource(res, R.drawable.lespaul);
     private Canvas canvas;
     private Paint paint;
 
@@ -111,6 +114,10 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         //Se inicializan los objetos ourHolder y paint
         ourHolder = getHolder();
         paint = new Paint();
+
+        musica.start();
+        musica.setVolume(0.5f,0.5f);
+
 
         //Inicializa screenX y screenY porque x e y son locales
         screenX = x;
@@ -202,6 +209,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
     //Corre cuando el SO llama a onPause en el metodo BreaoutActivity
     public void pause(){
         playing = false;
+        musica.stop();
         try {
             gameThread.join();
         }catch (InterruptedException e){
@@ -209,7 +217,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             Log.e("Error: ", "joining thread");
 
         }
-
 
     }
     //Corre cuando el SO llama a onResume en el metodo BreaoutActivity
@@ -372,11 +379,13 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     void restart(){
         //Pone la pelota de vuelta al inicio
+
         ball.reset(screenX, screenY);
         bat.reset(screenX);
         rect.reset(screenX);
         int brickWidth = screenX / 8;
         int brickHeight = screenY / 10;
+
 
         numBricks = 0;
 
@@ -400,7 +409,12 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             canvas = ourHolder.lockCanvas();
 
             //Se pinta el color de fondo
-            canvas.drawColor(Color.argb(200, 0, 0, 50));
+
+            if (segundo == false){
+                canvas.drawColor(Color.argb(200, 0, 0, 50));
+            }else{
+                canvas.drawColor(Color.argb(200, 20, 0, 0));
+            }
 
             //Bitmap resize3 = Bitmap.createScaledBitmap(bitmap,screenX ,screenY,true);
             //canvas.drawBitmap(resize3, 0,0, paint);
@@ -442,12 +456,21 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             }
 
             //Cambia el color del pincel para pintar los ladrillos
-            paint.setColor(Color.argb(255, 238, 234, 77));
+            Paint paint3 = new Paint();
+            if (segundo == false){
+                paint3.setShader(new LinearGradient(0,0,0, getHeight(),Color.argb(255, 20, 190, 250), Color.TRANSPARENT, Shader.TileMode.CLAMP));
+
+            }else{
+                paint3.setShader(new LinearGradient(0,0,0, getHeight(),Color.argb(255, 130, 26, 9), Color.TRANSPARENT, Shader.TileMode.CLAMP));
+
+
+            }
+
 
             //Dibuja los ladrillos si son visibles
             for (int i = 0; i < numBricks; i++){
                 if (bricks.get(i).getVisibility()){
-                    canvas.drawRect(bricks.get(i).getRect(), paint);
+                    canvas.drawRect(bricks.get(i).getRect(), paint3);
                 }
             }
 
@@ -546,5 +569,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
     }
 
-}
+ }
+
 
