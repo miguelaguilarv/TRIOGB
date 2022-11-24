@@ -75,7 +75,7 @@
                     android:backgroundTint="#A3ED62"
                     android:fontFamily="@font/triogb"
                     android:onClick="rein"
-                    android:text="REINICIAR"
+                    android:text="NIVEL 2"
                     android:textColor="#2664CF"
                     android:textSize="20dp" />
 

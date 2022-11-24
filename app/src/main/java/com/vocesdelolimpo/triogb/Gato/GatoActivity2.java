@@ -27,6 +27,7 @@ public class GatoActivity2 extends AppCompatActivity {
     Button arreglo [][];
     MediaPlayer reloj;
     public int mensaje;
+    CountDownTimer timer= null;
     int turno=1;
     int contador=0;
     SoundPool sp;
@@ -35,25 +36,8 @@ public class GatoActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gato2);
-        TextView textView_cronometro;
-        textView_cronometro = findViewById(R.id.cronomerto);
-        new CountDownTimer(30000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                NumberFormat f = new DecimalFormat("00");
-                long sec = (+(millisUntilFinished / 1000) % 60);
-                textView_cronometro.setText(f.format(sec)+" SEGUNDOS");
-                if (((int) millisUntilFinished / 1000) == 10) {
-                    reloj_tiempo();
-                    textView_cronometro.setTextColor(RED);
-                }else if (((int) millisUntilFinished / 1000) == 0) {
-                   // finish();                                                     //agregar termino de cronometro
-                }
-            }
-            public void onFinish() {
-                mensaje=3;
-                ganador();
-            }
-        }.start();
+
+        crono();
         sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 1);
         sonido_de_Repoduccion= sp.load (this ,R.raw.cat,1);
 
@@ -154,6 +138,7 @@ public class GatoActivity2 extends AppCompatActivity {
             mensaje=2;
             ganador();
         }if(contador==9){
+
             mensaje=3;
             ganador();
 
@@ -168,7 +153,10 @@ public class GatoActivity2 extends AppCompatActivity {
         b.putInt("mensaje",mensaje);
         in.putExtras(b);
         startActivity(in);
+        timer.cancel();
+        reloj.release();
         finish();
+
     }
     //METODO que enlaza con el boton
     public void boton00(View view){
@@ -204,5 +192,31 @@ public class GatoActivity2 extends AppCompatActivity {
             reloj = MediaPlayer.create(this, R.raw.tictoc);
         }
         reloj.start();
+    }
+    public void crono(){
+        TextView textView_cronometro;
+        textView_cronometro = findViewById(R.id.cronomerto);
+        timer = new CountDownTimer(15000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                NumberFormat f = new DecimalFormat("00");
+                long sec = (+(millisUntilFinished / 1000) % 60);
+                textView_cronometro.setText(f.format(sec)+" SEGUNDOS");
+                if (((int) millisUntilFinished / 1000) == 10) {
+                    reloj_tiempo();
+                    textView_cronometro.setTextColor(RED);
+                }
+            }
+            public void onFinish() {
+                mensaje=3;
+                ganador();
+                reloj.release();
+            }
+        }.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        reloj.release();
     }
 }
