@@ -79,7 +79,9 @@ public class Ordenamiento4Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Collections.sort(numeros,Collections.reverseOrder());
                 for (Object num: numeros){
+
                     texto.setText(texto.getText().toString()+(int)num+"");
+                    texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
 
 

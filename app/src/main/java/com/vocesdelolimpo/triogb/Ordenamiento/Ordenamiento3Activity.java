@@ -67,6 +67,7 @@ public class Ordenamiento3Activity extends AppCompatActivity {
                 Collections.sort(numeros,Collections.reverseOrder());
                 for (Object num: numeros){
                     texto.setText(texto.getText().toString()+(int)num+"");
+                    texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
 
 
