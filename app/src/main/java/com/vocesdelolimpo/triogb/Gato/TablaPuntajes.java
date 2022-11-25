@@ -23,6 +23,7 @@ import com.vocesdelolimpo.triogb.R;
 public class TablaPuntajes extends AppCompatActivity {
     MediaPlayer player;
     int sr;
+    private TextView empatetext;
     private ImageView primerLugar;
     private ImageView empate2;
     private TextView TextViewGanador2;
@@ -35,7 +36,8 @@ public class TablaPuntajes extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         TextViewGanador2 = (TextView) findViewById(R.id.inf_1);
-        Bundle b = this.getIntent().getExtras();
+        empatetext=(TextView)findViewById(R.id.inf_2);
+        Bundle c = this.getIntent().getExtras();
         final int ganador = getIntent().getExtras().getInt("mensaje");
         if (ganador == 1) {
             getUserInfo();
@@ -45,8 +47,7 @@ public class TablaPuntajes extends AppCompatActivity {
             musica();
         } else {
             TextViewGanador2.setText("EMPATE");
-            primerLugar.setVisibility(View.INVISIBLE);
-            empate2.setVisibility(View.VISIBLE);
+            empatetext.setText("¡¡¡GAME OVER!!!");
             musica_empate();
         }
     }

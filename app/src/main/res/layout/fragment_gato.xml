@@ -30,6 +30,7 @@
         android:textColor="#00FB79"
         android:textSize="30dp"
         android:visibility="visible" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
