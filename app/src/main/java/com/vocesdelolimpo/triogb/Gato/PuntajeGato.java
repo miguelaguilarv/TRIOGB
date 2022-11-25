@@ -4,13 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.AudioManager;
-import android.media.Image;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +16,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.vocesdelolimpo.triogb.Gato.GatoActivity;
 import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
 
@@ -39,7 +34,7 @@ public class PuntajeGato extends AppCompatActivity {
         setContentView(R.layout.activity_puntaje_gato);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        TextViewGanador = (TextView) findViewById(R.id.inf_ganador);
+        TextViewGanador = (TextView) findViewById(R.id.inf_1);
         primerLugar = (ImageView) findViewById(R.id.imageView3);
         empate2=(ImageView) findViewById(R.id.empate);
 
@@ -112,6 +107,5 @@ public class PuntajeGato extends AppCompatActivity {
                 }
             });
         }
-
     }
 

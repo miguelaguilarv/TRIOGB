@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/inf_ganador"
+        android:id="@+id/inf_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -54,7 +54,7 @@
         android:layout_width="411dp"
         android:layout_height="350dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/inf_ganador"
+        app:layout_constraintTop_toBottomOf="@+id/inf_1"
         tools:ignore="MissingConstraints">
 
         <TableLayout

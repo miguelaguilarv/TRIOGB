@@ -1,6 +1,8 @@
 package com.vocesdelolimpo.triogb.Gato;
 
+import static android.graphics.Color.BLUE;
 import static android.graphics.Color.RED;
+import static android.graphics.Color.GREEN;
 import static android.graphics.Color.WHITE;
 import java.text.DecimalFormat;
 import android.content.Intent;
@@ -57,13 +59,14 @@ public class GatoActivity2 extends AppCompatActivity {
 
         if (arreglo[fila][columna].getText().equals("")) { //revisa si el boton esta vacio
             if (turno == 1) {
-
+                arreglo[fila][columna].setTextColor(GREEN);
                 sp.play(sonido_de_Repoduccion, 1, 1, 1, 0, 1);
                 arreglo[fila][columna].setText("X");
                 turno = 2;
                 contador++;
                 comprobar();
             } else {
+                arreglo[fila][columna].setTextColor(BLUE);
                 arreglo[fila][columna].setText("O");
                 sp.play(sonido_de_Repoduccion, 1, 1, 1, 0, 1);
                 turno = 1;
@@ -75,83 +78,127 @@ public class GatoActivity2 extends AppCompatActivity {
     public void comprobar() {
 
         //horizontal X________________________________________________________________
-             if (arreglo[0][0].getText().equals("X") && arreglo[0][1].getText().equals("X") && arreglo[0][2].getText().equals("X")) {
-            mensaje=1;
-            ganador();
+        if (arreglo[0][0].getText().equals("X") && arreglo[0][1].getText().equals("X") && arreglo[0][2].getText().equals("X")) {
+                 arreglo[0][0].setBackgroundColor(RED) ;
+                 arreglo[0][1].setBackgroundColor(RED) ;
+                 arreglo[0][2].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
         } else if (arreglo[1][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[1][2].getText().equals("X")) {
-            mensaje=1;
-            ganador();
+                 arreglo[1][0].setBackgroundColor(RED) ;
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[1][2].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
         } else if (arreglo[2][0].getText().equals("X") && arreglo[2][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
-            mensaje=1;
-            ganador();
+                 arreglo[2][0].setBackgroundColor(RED) ;
+                 arreglo[2][1].setBackgroundColor(RED) ;
+                 arreglo[2][2].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
 
             //horizontal O________________________________________________________________
         } else if (arreglo[0][0].getText().equals("O") && arreglo[0][1].getText().equals("O") && arreglo[0][2].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[0][0].setBackgroundColor(RED) ;
+                 arreglo[0][1].setBackgroundColor(RED) ;
+                 arreglo[0][2].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
         } else if (arreglo[1][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[1][2].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[1][0].setBackgroundColor(RED) ;
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[1][2].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
         } else if (arreglo[2][0].getText().equals("O") && arreglo[2][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[2][0].setBackgroundColor(RED) ;
+                 arreglo[2][1].setBackgroundColor(RED) ;
+                 arreglo[2][2].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
 
             //Diagonal X________________________________________________________________
         } else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
-            mensaje=1;
-            ganador();
+                 arreglo[0][0].setBackgroundColor(RED) ;
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[2][2].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
 
         } else if (arreglo[0][2].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
-            mensaje=1;
-            ganador();
-
+                 arreglo[0][2].setBackgroundColor(RED);
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[2][0].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
 
             //Diagonal O________________________________________________________________
         } else if (arreglo[0][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[0][0].setBackgroundColor(RED) ;
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[2][2].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
         } else if (arreglo[0][2].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[0][2].setBackgroundColor(RED) ;
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[2][0].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
 
             //Vertical x________________________________________________________________
         } else if (arreglo[0][0].getText().equals("X") && arreglo[1][0].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
-            mensaje=1;
-            ganador();
+                 arreglo[0][0].setBackgroundColor(RED) ;
+                 arreglo[1][0].setBackgroundColor(RED) ;
+                 arreglo[2][0].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
         } else if (arreglo[0][1].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][1].getText().equals("X")) {
-            mensaje=1;
-            ganador();
+                 arreglo[0][1].setBackgroundColor(RED) ;
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[2][1].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
         } else if (arreglo[0][2].getText().equals("X") && arreglo[1][2].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
-            mensaje=1;
-            ganador();
+                 arreglo[0][2].setBackgroundColor(RED) ;
+                 arreglo[1][2].setBackgroundColor(RED) ;
+                 arreglo[2][2].setBackgroundColor(RED) ;
+                 mensaje=1;
+                 ganador_final();
 
         }
 
         //Vertical O________________________________________________________________
         else if (arreglo[0][0].getText().equals("O") && arreglo[1][0].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[0][0].setBackgroundColor(RED) ;
+                 arreglo[1][0].setBackgroundColor(RED) ;
+                 arreglo[2][0].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
         } else if (arreglo[0][1].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][1].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[0][1].setBackgroundColor(RED) ;
+                 arreglo[1][1].setBackgroundColor(RED) ;
+                 arreglo[2][1].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
         } else if (arreglo[0][2].getText().equals("O") && arreglo[1][2].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
-            mensaje=2;
-            ganador();
+                 arreglo[0][2].setBackgroundColor(RED) ;
+                 arreglo[1][2].setBackgroundColor(RED) ;
+                 arreglo[2][2].setBackgroundColor(RED) ;
+                 mensaje=2;
+                 ganador_final();
         }if(contador==9){
-
             mensaje=3;
-            ganador();
+                 ganador_final();
 
         }
 
     }
-
-
-    protected void ganador(){
-        Intent in = new Intent(this, PuntajeGato.class);
-        Bundle b = new Bundle();
-        b.putInt("mensaje",mensaje);
-        in.putExtras(b);
+    protected void ganador_final(){
+        Intent in = new Intent(this, TablaPuntajes.class);
+        Bundle c = new Bundle();
+        c.putInt("mensaje",mensaje);
+        in.putExtras(c);
         startActivity(in);
         timer.cancel();
         reloj.release();
@@ -183,8 +230,7 @@ public class GatoActivity2 extends AppCompatActivity {
     public void boton21(View view){
         darvalor(2 ,1);
     }
-    public void boton22(View view){
-        darvalor(2 ,2);}
+    public void boton22(View view) { darvalor(2 ,2); }
 
 
     public void reloj_tiempo() {
@@ -208,7 +254,7 @@ public class GatoActivity2 extends AppCompatActivity {
             }
             public void onFinish() {
                 mensaje=3;
-                ganador();
+                ganador_final();
                 reloj.release();
             }
         }.start();
