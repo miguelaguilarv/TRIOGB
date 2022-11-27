@@ -1,50 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDCD6E"
-    tools:context=".Juegos.OrdenFragment">
+    android:background="#F6DB7A"
+    tools:context=".Juegos.BreakOutFragment">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/triogb"
+            android:layout_marginTop="100dp"
+            android:text="ORDENAMIENTO"
+            android:textColor="#FFFFFF"
+            android:textSize="40dp"
+            android:visibility="visible" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/triogb"
-                    android:gravity="center"
-                    android:text="Ordenamiento"
-                    android:textColor="#C12020"
-                    android:textSize="24dp"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/btnJugar"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="200dp"
-                    android:backgroundTint="#ED6282"
-                    android:layout_gravity="center"
-                    android:text="J U G A R"
-                    android:textSize="30dp"
-                    android:fontFamily="@font/triogb"
-                    android:textStyle="bold"
-                    android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/btnJugar"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:backgroundTint="#62C1ED"
+            android:layout_marginTop="300dp"
+            android:layout_gravity="center_horizontal"
+            android:text="J U G A R"
+            android:textSize="30dp"
+            android:fontFamily="@font/triogb"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
 
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="400dp"
+            android:src="@drawable/ordenar2" />
 
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/triogb"
+            android:text="MEJOR PUNTAJE:"
+            android:layout_centerInParent="true"
+            android:textColor="#9C44FF"
+            android:textSize="30dp"
+            android:visibility="visible" />
+        <TextView
+            android:id="@+id/nombrePuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/triogb"
+            android:text="CARGANDO..."
+            android:layout_centerInParent="true"
+            android:textColor="#167343"
+            android:textSize="30dp"
+            android:visibility="visible" />
+        <TextView
+            android:id="@+id/valorPuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:fontFamily="@font/triogb"
+            android:text=""
+            android:layout_centerInParent="true"
+            android:textColor="#00FB79"
+            android:textSize="30dp"
+            android:visibility="visible" />
 
 
-</RelativeLayout>
+</FrameLayout>

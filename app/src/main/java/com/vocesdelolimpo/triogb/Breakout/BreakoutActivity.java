@@ -29,7 +29,6 @@ public class  BreakoutActivity extends AppCompatActivity {
 
         breakoutEngine = new BreakoutEngine(this, size.x, size.y);
 
-
         setContentView(breakoutEngine);
 
     }

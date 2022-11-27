@@ -11,7 +11,7 @@
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp"
-        android:background="#25A385"
+        android:background="#479F83"
         tools:ignore="MissingConstraints" >
 
 
@@ -19,7 +19,34 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center">
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/triogb"
+                android:layout_marginTop="30dp"
+                android:text="PERFIL DE USUARIO"
+                android:textSize="25dp"/>
+
+           <androidx.appcompat.widget.AppCompatImageView
+               android:id="@+id/imagenProfile"
+               android:src="@drawable/userdef"
+               android:layout_width="150dp"
+               android:layout_height="150dp"
+               android:layout_gravity="center"
+               android:layout_marginTop="30dp"
+               />
+
+            <ImageButton
+                android:id="@+id/btnImg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="#479F83"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/change1"/>
 
 
             <TextView
@@ -28,50 +55,67 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/triogb"
-                android:text="Nombre de usuario"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:text="Cargando..."
                 android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/textViewAlias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/triogb"
-                android:text="Alias de usuario"
+                android:text=""
                 android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/textViewEdad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/triogb"
-                android:text="Edad de usuario"
+                android:text=""
                 android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/textViewPais"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/triogb"
-                android:text="Pais de usuario"
+                android:text=""
                 android:textSize="18dp"/>
 
             <TextView
                 android:id="@+id/textViewEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_marginHorizontal="10dp"
                 android:fontFamily="@font/triogb"
-                android:text="Email"
+                android:text=""
                 android:textSize="18dp"/>
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="200dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#EFBD7F"
+                android:text="Editar Datos"
+                android:fontFamily="@font/triogb"
+                android:textStyle="bold"
+                android:textColor="#2664CF" />
 
             <Button
                 android:id="@+id/btnSignout"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="40dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:layout_gravity="center"
                 android:backgroundTint="#EF7FA7"
                 android:text="Cerrar Sesión"
@@ -80,9 +124,9 @@
                 android:textColor="#2664CF" />
             <Button
                 android:id="@+id/btnBack"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:layout_gravity="center"
                 android:backgroundTint="#8BC34A"
                 android:text="Volver"
@@ -90,9 +134,7 @@
                 android:textStyle="bold"
                 android:textColor="#2664CF" />
 
-
             />
-
 
 
         </LinearLayout>

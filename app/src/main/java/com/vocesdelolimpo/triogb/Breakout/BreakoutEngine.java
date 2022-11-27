@@ -287,15 +287,19 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         }
 
         if(RectF.intersects(bat.getRect(),fire.getRect())){
+            score = score - 1;
             bat.setMovementState(bat.STOPPED);
         }
         if(RectF.intersects(bat.getRect(),fire2.getRect())){
+
             bat.setMovementState(bat.STOPPED);
         }
         if(RectF.intersects(bat.getRect(),fire3.getRect())){
+
             bat.setMovementState(bat.STOPPED);
         }
         if(RectF.intersects(bat.getRect(),fire4.getRect())){
+
             bat.setMovementState(bat.STOPPED);
         }
 
@@ -413,7 +417,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             if (segundo == false){
                 canvas.drawColor(Color.argb(200, 0, 0, 50));
             }else{
-                canvas.drawColor(Color.argb(200, 20, 0, 0));
+                canvas.drawColor(Color.argb(255, 0, 0, 0));
             }
 
             //Bitmap resize3 = Bitmap.createScaledBitmap(bitmap,screenX ,screenY,true);
@@ -430,9 +434,21 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             //Se elige el color para dibujar
             paint.setColor(Color.argb(255, 0, 0, 50));
             //Dibuja la pelota
-            Bitmap resize2 = Bitmap.createScaledBitmap(bitmapBall, (int)ball.getRect().width(), (int)ball.getRect().height(), true);
-            canvas.drawRect(ball.getRect(), paint);
-            canvas.drawBitmap(resize2,ball.getRect().left, ball.getRect().bottom, null);
+            if(segundo == false){
+
+                Bitmap resize2 = Bitmap.createScaledBitmap(bitmapBall, (int)ball.getRect().width()+10, (int)ball.getRect().height()+30, true);
+                canvas.drawRect(ball.getRect(), paint);
+                canvas.drawBitmap(resize2,ball.getRect().left, ball.getRect().bottom, null);
+
+            }else{
+
+                Bitmap resize2 = Bitmap.createScaledBitmap(bitmapBall, (int)ball.getRect().width(), (int)ball.getRect().height(), true);
+                canvas.drawRect(ball.getRect(), paint);
+                canvas.drawBitmap(resize2,ball.getRect().left, ball.getRect().bottom, null);
+
+            }
+
+
 
             if (segundo == true){
 

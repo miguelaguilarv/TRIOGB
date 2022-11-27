@@ -45,8 +45,8 @@ public class TablaPuntajes extends AppCompatActivity {
             musica();
         } else {
             TextViewGanador2.setText("EMPATE");
-            primerLugar.setVisibility(View.INVISIBLE);
-            empate2.setVisibility(View.VISIBLE);
+//            primerLugar.setVisibility(View.INVISIBLE);
+//            empate2.setVisibility(View.VISIBLE);
             musica_empate();
         }
     }

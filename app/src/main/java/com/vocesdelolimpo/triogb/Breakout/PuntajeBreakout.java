@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,8 @@ public class PuntajeBreakout extends AppCompatActivity {
     private TextView mTextViewRes;
     private TextView mTextViewName;
     private Button mButtonBackBO;
+
+
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private int puntos;
@@ -118,6 +121,8 @@ public class PuntajeBreakout extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     private void getUserName(){

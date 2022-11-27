@@ -104,6 +104,7 @@ public class RegistroActivity extends AppCompatActivity {
                     map.put("pais",pais);
                     map.put("email",email);
                     map.put("password",password);
+                    map.put("imagen","");
 
 
 
