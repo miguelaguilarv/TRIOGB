@@ -17,6 +17,8 @@ import com.vocesdelolimpo.triogb.R;
 public class GatoActivity extends AppCompatActivity {
     Button arreglo [][];
     public int mensaje;
+    public int puntuacion_jugador_1=0;
+    public int puntuacion_jugador_2=0;
     int turno=1;
     int contador=0;
     SoundPool sp;
@@ -45,6 +47,7 @@ public class GatoActivity extends AppCompatActivity {
         if (arreglo[fila][columna].getText().equals("")) { //revisa si el boton esta vacio
             if (turno == 1) {
                 arreglo[fila][columna].setTextColor(GREEN);
+                puntuacion_jugador_1=puntuacion_jugador_1+10;
                 sp.play(sonido_de_Repoduccion, 1, 1, 1, 0, 1);
                 arreglo[fila][columna].setText("X");
                 turno = 2;
@@ -52,6 +55,7 @@ public class GatoActivity extends AppCompatActivity {
                 comprobar();
             } else {
                 arreglo[fila][columna].setTextColor(BLUE);
+                puntuacion_jugador_2=puntuacion_jugador_2+10;
                 arreglo[fila][columna].setText("O");
                 sp.play(sonido_de_Repoduccion, 1, 1, 1, 0, 1);
                 turno = 1;
@@ -64,18 +68,22 @@ public class GatoActivity extends AppCompatActivity {
 
         //horizontal X________________________________________________________________
         if (arreglo[0][0].getText().equals("X") && arreglo[0][1].getText().equals("X") && arreglo[0][2].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[0][0].setBackgroundColor(RED) ;
             arreglo[0][1].setBackgroundColor(RED) ;
             arreglo[0][2].setBackgroundColor(RED) ;
+
             mensaje=1;
             ganador();
         } else if (arreglo[1][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[1][2].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[1][0].setBackgroundColor(RED) ;
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[1][2].setBackgroundColor(RED) ;
             mensaje=1;
             ganador();
         } else if (arreglo[2][0].getText().equals("X") && arreglo[2][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[2][0].setBackgroundColor(RED) ;
             arreglo[2][1].setBackgroundColor(RED) ;
             arreglo[2][2].setBackgroundColor(RED) ;
@@ -84,18 +92,21 @@ public class GatoActivity extends AppCompatActivity {
 
             //horizontal O________________________________________________________________
         } else if (arreglo[0][0].getText().equals("O") && arreglo[0][1].getText().equals("O") && arreglo[0][2].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[0][0].setBackgroundColor(RED) ;
             arreglo[0][1].setBackgroundColor(RED) ;
             arreglo[0][2].setBackgroundColor(RED) ;
             mensaje=2;
             ganador();
         } else if (arreglo[1][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[1][2].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[1][0].setBackgroundColor(RED) ;
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[1][2].setBackgroundColor(RED) ;
             mensaje=2;
             ganador();
         } else if (arreglo[2][0].getText().equals("O") && arreglo[2][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[2][0].setBackgroundColor(RED) ;
             arreglo[2][1].setBackgroundColor(RED) ;
             arreglo[2][2].setBackgroundColor(RED) ;
@@ -104,6 +115,7 @@ public class GatoActivity extends AppCompatActivity {
 
             //Diagonal X________________________________________________________________
         } else if (arreglo[0][0].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[0][0].setBackgroundColor(RED) ;
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[2][2].setBackgroundColor(RED) ;
@@ -111,6 +123,7 @@ public class GatoActivity extends AppCompatActivity {
             ganador();
 
         } else if (arreglo[0][2].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[0][2].setBackgroundColor(RED);
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[2][0].setBackgroundColor(RED) ;
@@ -119,12 +132,14 @@ public class GatoActivity extends AppCompatActivity {
 
             //Diagonal O________________________________________________________________
         } else if (arreglo[0][0].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[0][0].setBackgroundColor(RED) ;
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[2][2].setBackgroundColor(RED) ;
             mensaje=2;
             ganador();
         } else if (arreglo[0][2].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[0][2].setBackgroundColor(RED) ;
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[2][0].setBackgroundColor(RED) ;
@@ -133,18 +148,21 @@ public class GatoActivity extends AppCompatActivity {
 
             //Vertical x________________________________________________________________
         } else if (arreglo[0][0].getText().equals("X") && arreglo[1][0].getText().equals("X") && arreglo[2][0].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[0][0].setBackgroundColor(RED) ;
             arreglo[1][0].setBackgroundColor(RED) ;
             arreglo[2][0].setBackgroundColor(RED) ;
             mensaje=1;
             ganador();
         } else if (arreglo[0][1].getText().equals("X") && arreglo[1][1].getText().equals("X") && arreglo[2][1].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[0][1].setBackgroundColor(RED) ;
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[2][1].setBackgroundColor(RED) ;
             mensaje=1;
             ganador();
         } else if (arreglo[0][2].getText().equals("X") && arreglo[1][2].getText().equals("X") && arreglo[2][2].getText().equals("X")) {
+            puntuacion_jugador_1=puntuacion_jugador_1+10;
             arreglo[0][2].setBackgroundColor(RED) ;
             arreglo[1][2].setBackgroundColor(RED) ;
             arreglo[2][2].setBackgroundColor(RED) ;
@@ -152,21 +170,23 @@ public class GatoActivity extends AppCompatActivity {
             ganador();
 
         }
-
         //Vertical O________________________________________________________________
         else if (arreglo[0][0].getText().equals("O") && arreglo[1][0].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[0][0].setBackgroundColor(RED) ;
             arreglo[1][0].setBackgroundColor(RED) ;
             arreglo[2][0].setBackgroundColor(RED) ;
             mensaje=2;
             ganador();
         } else if (arreglo[0][1].getText().equals("O") && arreglo[1][1].getText().equals("O") && arreglo[2][1].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[0][1].setBackgroundColor(RED) ;
             arreglo[1][1].setBackgroundColor(RED) ;
             arreglo[2][1].setBackgroundColor(RED) ;
             mensaje=2;
             ganador();
         } else if (arreglo[0][2].getText().equals("O") && arreglo[1][2].getText().equals("O") && arreglo[2][2].getText().equals("O")) {
+            puntuacion_jugador_2=puntuacion_jugador_2+10;
             arreglo[0][2].setBackgroundColor(RED) ;
             arreglo[1][2].setBackgroundColor(RED) ;
             arreglo[2][2].setBackgroundColor(RED) ;

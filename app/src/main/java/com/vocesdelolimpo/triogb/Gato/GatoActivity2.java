@@ -167,7 +167,6 @@ public class GatoActivity2 extends AppCompatActivity {
                  ganador_final();
 
         }
-
         //Vertical O________________________________________________________________
         else if (arreglo[0][0].getText().equals("O") && arreglo[1][0].getText().equals("O") && arreglo[2][0].getText().equals("O")) {
                  arreglo[0][0].setBackgroundColor(RED) ;
@@ -189,7 +188,7 @@ public class GatoActivity2 extends AppCompatActivity {
                  ganador_final();
         }if(contador==9){
             mensaje=3;
-                 ganador_final();
+            ganador_final();
 
         }
 

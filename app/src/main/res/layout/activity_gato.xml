@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Gato.GatoActivity">
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -179,7 +180,7 @@
         app:layout_constraintStart_toEndOf="@+id/button11" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/trazo3"
         android:layout_width="243dp"
         android:layout_height="197dp"
         android:layout_marginTop="16dp"
@@ -187,6 +188,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
