@@ -84,11 +84,12 @@ public class Ordenamiento2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Collections.sort(numeros);
-                for (Object num: numeros){
-                    texto.setText(texto.getText().toString()+(int)num+"");
+                for (Object numeros: numeros){
+                    texto.setText(texto.getText().toString()+(int)numeros+" ");
 
-                    texto.setVisibility(View.INVISIBLE);
+ //                   texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
+                    botonesinvisibles();
 
 
                 }
@@ -97,7 +98,62 @@ public class Ordenamiento2Activity extends AppCompatActivity {
         });
 
     }
-    //=======Prueba=====//
+
+    public void botonesinvisibles(){
+
+        View boton1 = findViewById(R.id.but1);
+        View boton2 = findViewById(R.id.but2);
+        View boton3 = findViewById(R.id.but3);
+        View boton4 = findViewById(R.id.but4);
+        View boton5 = findViewById(R.id.but5);
+        View boton6 = findViewById(R.id.but6);
+        View boton7 = findViewById(R.id.but7);
+        View boton8 = findViewById(R.id.but8);
+        View boton9 = findViewById(R.id.but9);
+        View boton10 = findViewById(R.id.but10);
+        View boton11 = findViewById(R.id.but11);
+        View boton12 = findViewById(R.id.but12);
+        View boton13 = findViewById(R.id.but13);
+        View boton14 = findViewById(R.id.but14);
+        View boton15 = findViewById(R.id.but15);
+        View boton16 = findViewById(R.id.but16);
+        View boton17 = findViewById(R.id.but17);
+        View boton18 = findViewById(R.id.but18);
+        View boton19 = findViewById(R.id.but19);
+        View boton20 = findViewById(R.id.but20);
+        View boton21 = findViewById(R.id.but21);
+        View boton22 = findViewById(R.id.but22);
+        View boton23 = findViewById(R.id.but23);
+        View boton24 = findViewById(R.id.but24);
+        boton1.setVisibility(View.INVISIBLE);
+        boton2.setVisibility(View.INVISIBLE);
+        boton3.setVisibility(View.INVISIBLE);
+        boton4.setVisibility(View.INVISIBLE);
+        boton5.setVisibility(View.INVISIBLE);
+        boton6.setVisibility(View.INVISIBLE);
+        boton7.setVisibility(View.INVISIBLE);
+        boton8.setVisibility(View.INVISIBLE);
+        boton9.setVisibility(View.INVISIBLE);
+        boton10.setVisibility(View.INVISIBLE);
+        boton11.setVisibility(View.INVISIBLE);
+        boton12.setVisibility(View.INVISIBLE);
+        boton13.setVisibility(View.INVISIBLE);
+        boton14.setVisibility(View.INVISIBLE);
+        boton15.setVisibility(View.INVISIBLE);
+        boton16.setVisibility(View.INVISIBLE);
+        boton17.setVisibility(View.INVISIBLE);
+        boton18.setVisibility(View.INVISIBLE);
+        boton19.setVisibility(View.INVISIBLE);
+        boton20.setVisibility(View.INVISIBLE);
+        boton21.setVisibility(View.INVISIBLE);
+        boton22.setVisibility(View.INVISIBLE);
+        boton23.setVisibility(View.INVISIBLE);
+        boton24.setVisibility(View.INVISIBLE);
+
+
+
+
+    }
 
 
     public void validarContenido2(TextView texto, ArrayList numeros){

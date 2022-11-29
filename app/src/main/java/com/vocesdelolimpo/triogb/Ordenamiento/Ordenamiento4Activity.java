@@ -78,17 +78,73 @@ public class Ordenamiento4Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Collections.sort(numeros,Collections.reverseOrder());
-                for (Object num: numeros){
+                for (Object numeros: numeros){
 
-                    texto.setText(texto.getText().toString()+(int)num+"");
-                    texto.setVisibility(View.INVISIBLE);
+                    texto.setText(texto.getText().toString()+(int)numeros+" ");
+//                    texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
+                    botonesinvisibles();
 
 
                 }
 
             }
         });
+    }
+
+
+    public void botonesinvisibles(){
+        View boton1 = findViewById(R.id.but1);
+        boton1.setVisibility(View.INVISIBLE);
+        View boton2 = findViewById(R.id.but2);
+        boton2.setVisibility(View.INVISIBLE);
+        View boton3 = findViewById(R.id.but3);
+        boton3.setVisibility(View.INVISIBLE);
+        View boton4 = findViewById(R.id.but4);
+        boton4.setVisibility(View.INVISIBLE);
+        View boton5 = findViewById(R.id.but5);
+        boton5.setVisibility(View.INVISIBLE);
+        View boton6 = findViewById(R.id.but6);
+        boton6.setVisibility(View.INVISIBLE);
+        View boton7 = findViewById(R.id.but7);
+        boton7.setVisibility(View.INVISIBLE);
+        View boton8 = findViewById(R.id.but8);
+        boton8.setVisibility(View.INVISIBLE);
+        View boton9 = findViewById(R.id.but9);
+        boton9.setVisibility(View.INVISIBLE);
+        View boton10 = findViewById(R.id.but10);
+        boton10.setVisibility(View.INVISIBLE);
+        View boton11 = findViewById(R.id.but11);
+        boton11.setVisibility(View.INVISIBLE);
+        View boton12 = findViewById(R.id.but12);
+        boton12.setVisibility(View.INVISIBLE);
+        View boton13 = findViewById(R.id.but13);
+        boton13.setVisibility(View.INVISIBLE);
+        View boton14 = findViewById(R.id.but14);
+        boton14.setVisibility(View.INVISIBLE);
+        View boton15 = findViewById(R.id.but15);
+        boton15.setVisibility(View.INVISIBLE);
+        View boton16 = findViewById(R.id.but16);
+        boton16.setVisibility(View.INVISIBLE);
+        View boton17 = findViewById(R.id.but17);
+        boton17.setVisibility(View.INVISIBLE);
+        View boton18 = findViewById(R.id.but18);
+        boton18.setVisibility(View.INVISIBLE);
+        View boton19 = findViewById(R.id.but19);
+        boton19.setVisibility(View.INVISIBLE);
+        View boton20 = findViewById(R.id.but20);
+        boton20.setVisibility(View.INVISIBLE);
+        View boton21 = findViewById(R.id.but21);
+        boton21.setVisibility(View.INVISIBLE);
+        View boton22 = findViewById(R.id.but22);
+        boton22.setVisibility(View.INVISIBLE);
+        View boton23 = findViewById(R.id.but23);
+        boton23.setVisibility(View.INVISIBLE);
+        View boton24 = findViewById(R.id.but24);
+        boton24.setVisibility(View.INVISIBLE);
+
+
+
     }
 
     public void validarContenido4(TextView texto, ArrayList numeros){
@@ -102,11 +158,11 @@ public class Ordenamiento4Activity extends AppCompatActivity {
 
         if(cadena.equals(cadena2)){
             mensaje= "Ok";
-//            Intent in = new Intent(this,CuartoNivel.class);
-//            Bundle b = new Bundle();
-//            b.putString("mensaje",mensaje);
-//            in.putExtras(b);
-//            startActivity(in);
+            Intent in = new Intent(this,Decision.class);
+            Bundle b = new Bundle();
+           b.putString("mensaje",mensaje);
+           in.putExtras(b);
+            startActivity(in);
         } else {
 
             mensaje = "fail";

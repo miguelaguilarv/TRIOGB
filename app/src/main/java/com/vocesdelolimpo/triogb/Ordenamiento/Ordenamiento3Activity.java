@@ -65,11 +65,11 @@ public class Ordenamiento3Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Collections.sort(numeros,Collections.reverseOrder());
-                for (Object num: numeros){
-                    texto.setText(texto.getText().toString()+(int)num+"");
-                    texto.setVisibility(View.INVISIBLE);
+                for (Object numeros: numeros){
+                    texto.setText(texto.getText().toString()+(int)numeros+" ");
+ //                   texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
-
+                    botonesinvisibles();
 
 
                 }
@@ -77,6 +77,38 @@ public class Ordenamiento3Activity extends AppCompatActivity {
             }
         });
     }
+
+    public void botonesinvisibles(){
+        View boton1 = findViewById(R.id.bt1);
+        boton1.setVisibility(View.INVISIBLE);
+        View boton2 = findViewById(R.id.bt2);
+        boton2.setVisibility(View.INVISIBLE);
+        View boton3 = findViewById(R.id.bt3);
+        boton3.setVisibility(View.INVISIBLE);
+        View boton4 = findViewById(R.id.bt4);
+        boton4.setVisibility(View.INVISIBLE);
+        View boton5 = findViewById(R.id.bt5);
+        boton5.setVisibility(View.INVISIBLE);
+        View boton6 = findViewById(R.id.bt6);
+        boton6.setVisibility(View.INVISIBLE);
+        View boton7 = findViewById(R.id.bt7);
+        boton7.setVisibility(View.INVISIBLE);
+        View boton8 = findViewById(R.id.bt8);
+        boton8.setVisibility(View.INVISIBLE);
+        View boton9 = findViewById(R.id.bt9);
+        boton9.setVisibility(View.INVISIBLE);
+        View boton10 = findViewById(R.id.bt10);
+        boton10.setVisibility(View.INVISIBLE);
+        View boton11 = findViewById(R.id.bt11);
+        boton11.setVisibility(View.INVISIBLE);
+        View boton12 = findViewById(R.id.bt12);
+        boton12.setVisibility(View.INVISIBLE);
+
+
+
+    }
+
+
 
     public void validarContenido3(TextView texto, ArrayList numeros){
         Collections.sort(numeros,Collections.reverseOrder());
