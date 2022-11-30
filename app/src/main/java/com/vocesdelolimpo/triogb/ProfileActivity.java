@@ -38,17 +38,22 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
     private TextView mTextViewName;
     private TextView mTextViewEmail;
     private TextView mTextViewAlias;
+    private TextView mTextViewBreak;
+    private TextView mTextViewGato;
+    private TextView mTextViewOrden;
     private TextView mTextViewEdad;
     private TextView mTextViewPais;
     private Button mButtonSignout;
     private ImageButton mButtonImage;
     private Button mButtonBack;
     private Button mEdit;
-    AppCompatImageView imagenPerfil;
+    CircleImageView imagenPerfil;
 
     private FirebaseAuth mAuth;
     FirebaseUser user;
@@ -81,6 +86,9 @@ public class ProfileActivity extends AppCompatActivity {
         mTextViewEdad = (TextView) findViewById(R.id.textViewEdad);
         mTextViewPais = (TextView) findViewById(R.id.textViewPais);
         mTextViewEmail = (TextView) findViewById(R.id.textViewEmail);
+        mTextViewBreak = (TextView) findViewById(R.id.breakScore);
+        mTextViewGato = (TextView) findViewById(R.id.gatoScore);
+        mTextViewOrden = (TextView) findViewById(R.id.ordenScore);
         imagenPerfil = findViewById(R.id.imagenProfile);
 
 
@@ -96,6 +104,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileActivity.this, MainActivity.class));
+                finish();
             }
         });
 
@@ -142,6 +151,9 @@ public class ProfileActivity extends AppCompatActivity {
                     String edad = snapshot.child("edad").getValue().toString();
                     String pais = snapshot.child("pais").getValue().toString();
                     String email = snapshot.child("email").getValue().toString();
+                    String breakScore = snapshot.child("breakscore").getValue().toString();
+                    String gatoSore = snapshot.child("gatoscore").getValue().toString();
+                    String ordenScore = snapshot.child("ordenscore").getValue().toString();
                     String imagen = snapshot.child("imagen").getValue().toString();
 
                     mTextViewName.setText("Nombre: "+name);
@@ -149,6 +161,9 @@ public class ProfileActivity extends AppCompatActivity {
                     mTextViewEdad.setText("Edad: "+edad +" años");
                     mTextViewPais.setText("Pais: "+pais);
                     mTextViewEmail.setText("Correo: "+email);
+                    mTextViewBreak.setText("Breakout: "+breakScore);
+                    mTextViewGato.setText("Gato: "+gatoSore);
+                    mTextViewOrden.setText("Orden: "+ordenScore);
 
                     try {
                         Picasso.get().load(imagen).into(imagenPerfil);
@@ -168,7 +183,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
     private void EditarProfile(){
-        String[] Opciones = {"Nombre","Alias","Edad","Pais","Clave"};
+        String[] Opciones = {"Nombre","Alias","Edad","Pais"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setItems(Opciones, new DialogInterface.OnClickListener() {
@@ -185,9 +200,6 @@ public class ProfileActivity extends AppCompatActivity {
                 }
                 if(i == 3){
                     ActualizarPais();
-                }
-                if(i == 4){
-                    ActualizarClave();
                 }
             }
         });

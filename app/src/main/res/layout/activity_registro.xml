@@ -53,15 +53,15 @@
             android:backgroundTint="#653B9F"
             android:hint="Edad" />
 
-        <EditText
-            android:id="@+id/editTextPais"
-            android:textColorHint="#838383"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/triogb"
-            android:textColor="@color/white"
-            android:backgroundTint="#4058D5"
-            android:hint="Pais" />
+        <Spinner
+        android:id="@+id/paises"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
         <EditText
             android:id="@+id/editTextEmail"

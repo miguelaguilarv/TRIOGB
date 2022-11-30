@@ -31,7 +31,7 @@
                 android:text="PERFIL DE USUARIO"
                 android:textSize="25dp"/>
 
-           <androidx.appcompat.widget.AppCompatImageView
+           <de.hdodenhof.circleimageview.CircleImageView
                android:id="@+id/imagenProfile"
                android:src="@drawable/userdef"
                android:layout_width="150dp"
@@ -99,6 +99,44 @@
                 android:fontFamily="@font/triogb"
                 android:text=""
                 android:textSize="18dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/triogb"
+                android:text="MEJORES PUNTAJES"
+                android:textSize="22dp"/>
+            <TextView
+                android:id="@+id/breakScore"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
+                android:text="Cargando..."
+                android:textSize="18dp"/>
+            <TextView
+                android:id="@+id/gatoScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
+                android:text=""
+                android:textSize="18dp"/>
+            <TextView
+                android:id="@+id/ordenScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/triogb"
+                android:text=""
+                android:textSize="18dp"/>
+
             <Button
                 android:id="@+id/btnEdit"
                 android:layout_width="150dp"
