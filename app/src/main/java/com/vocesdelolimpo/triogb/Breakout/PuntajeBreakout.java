@@ -88,14 +88,19 @@ public class PuntajeBreakout extends AppCompatActivity {
 
         }
 
-        mDatabase.child("Scores").addValueEventListener(new ValueEventListener() {
+        //Aqui se realiza una consulta a la BD del puntaje guardado en el perfil del usuario---------------
+
+        String id = mAuth.getCurrentUser().getUid();
+        mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
 
+                    //Se guarda el puntaje que esta en la BD en una variable "puntos", previamente declarada como int.
                     puntos = Integer.parseInt(snapshot.child("breakscore").getValue().toString());
-
+                    //Se pregunta si el puntaje obtenido en el juego es mayor al de la BD.
                     if (puntaje > puntos){
+                        //Si se cumple se llama al metodo que sube el nuevo puntaje.
                         subirNuevoScore();
                     }
 
@@ -107,6 +112,9 @@ public class PuntajeBreakout extends AppCompatActivity {
 
             }
         });
+
+        //---------------------------------------------------------------------------------------------------------
+
 
         mButtonBackBO = (Button) findViewById(R.id.btnBackBO);
 
@@ -144,6 +152,8 @@ public class PuntajeBreakout extends AppCompatActivity {
         });
     }
 
+
+
     private void subirNuevoScore(){
 
         String id = mAuth.getCurrentUser().getUid();
@@ -151,13 +161,12 @@ public class PuntajeBreakout extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()) {
-                    String name = snapshot.child("name").getValue().toString();
-                    mTextViewRecord.setVisibility(View.VISIBLE);
-                    Map<String, Object> scoreMap = new HashMap<>();
-                    scoreMap.put("breakname", name);
-                    scoreMap.put("breakscore", puntaje);
 
-                    mDatabase.child("Scores").updateChildren(scoreMap);
+                    mTextViewRecord.setVisibility(View.VISIBLE);//HAce visible un textview que dice "NUEVO RECORD PERSONAL"
+                    Map<String, Object> scoreMap = new HashMap<>();
+                    scoreMap.put("breakscore", puntaje);//Se crear un Map y se le agrega el nuevo puntaje.
+
+                    mDatabase.child("Users").child(id).updateChildren(scoreMap);//En esta linea se actualiza la info en la BD
 
                 }
             }

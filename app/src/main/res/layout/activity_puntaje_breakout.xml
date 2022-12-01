@@ -59,10 +59,10 @@
                 android:layout_marginHorizontal="10dp"
                 android:gravity="center_horizontal"
                 android:fontFamily="@font/triogb"
-                android:textColor="#F44E4E"
+                android:textColor="#FFC107"
                 android:visibility="invisible"
                 android:layout_marginTop="40dp"
-                android:text="¡¡¡NUEVO RECORD!!!"
+                android:text="¡¡¡NUEVO RECORD PERSONAL!!!"
                 android:textSize="30dp"/>
 
 

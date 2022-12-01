@@ -46,7 +46,7 @@ public class BreakOutFragment extends Fragment {
         textPuntaje = v.findViewById(R.id.nombrePuntaje);
         textPuntajeBO = v.findViewById(R.id.valorPuntaje);
 
-        getTopScore();
+        //getTopScore();
 
         Button btnJugar = (Button) v.findViewById(R.id.btnJugar);
         btnJugar.setOnClickListener(new View.OnClickListener() {
