@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.vocesdelolimpo.triogb.Breakout.Breakout2Activity;
 import com.vocesdelolimpo.triogb.Breakout.BreakoutActivity;
+import com.vocesdelolimpo.triogb.Breakout.RankingBreak;
 import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
 
@@ -53,7 +54,16 @@ public class BreakOutFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getActivity(), BreakoutActivity.class);
-                //in.putExtra("algo", "Cosas");
+                startActivity(in);
+            }
+        });
+
+        Button btnPuntajes = (Button) v.findViewById(R.id.btnPuntajes);
+        btnPuntajes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), RankingBreak.class);
+
                 startActivity(in);
             }
         });
