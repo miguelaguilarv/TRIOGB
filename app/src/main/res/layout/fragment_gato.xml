@@ -1,78 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9800"
-    tools:context=".Juegos.GatoFragment">
+    android:background="#6983D3"
+    tools:context=".Juegos.BreakOutFragment">
 
     <TextView
-        android:id="@+id/nombrePuntaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/triogb"
+        android:layout_marginTop="100dp"
+        android:text="GATO"
+        android:textColor="#FFFFFF"
+        android:textSize="40dp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/btnJugar"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#EDBA62"
+        android:layout_marginTop="300dp"
+        android:layout_gravity="center_horizontal"
+        android:text="J U G A R"
+        android:textSize="30dp"
+        android:fontFamily="@font/triogb"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="400dp"
+        android:src="@drawable/gato2" />
+
+    <Button
+        android:id="@+id/btnPuntajes"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#65F13F"
+        android:layout_gravity="center_horizontal"
+        android:text="puntajes"
+        android:layout_marginTop="400dp"
+        android:textSize="20dp"
         android:fontFamily="@font/triogb"
-        android:text="NOMBRE"
-        android:textColor="#00FB79"
-        android:textSize="30dp"
-        android:visibility="visible" />
-    <TextView
-        android:id="@+id/valorPuntaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:fontFamily="@font/triogb"
-        android:text="PUNTAJE"
-        android:layout_centerInParent="true"
-        android:textColor="#00FB79"
-        android:textSize="30dp"
-        android:visibility="visible" />
+        android:textStyle="bold"
+        android:textColor="#2664CF" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:fontFamily="@font/triogb"
-            android:text="EL GATO"
-            android:textColor="#9E1919"
-            android:textSize="40dp"
-            android:visibility="visible" />
-
-        <Button
-            android:id="@+id/btnJugar"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="200dp"
-            android:backgroundTint="#FF5722"
-            android:fontFamily="@font/triogb"
-            android:text="J U G A R"
-            android:textColor="#2664CF"
-            android:textSize="30dp"
-            android:textStyle="bold" />
-
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="110dp"
-            android:src="@drawable/gato" />
-
-
-
-
-    </LinearLayout>
 
 </FrameLayout>

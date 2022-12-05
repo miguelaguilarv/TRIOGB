@@ -1,4 +1,4 @@
-package com.vocesdelolimpo.triogb.Breakout;
+package com.vocesdelolimpo.triogb.Ranking;
 
 public class Usuario {
 
