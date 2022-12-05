@@ -36,6 +36,7 @@ public class RankingBreak extends AppCompatActivity {
         setContentView(R.layout.activity_ranking_break);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
         mLayaoutManager = new LinearLayoutManager(this);
         firebaseAuth = FirebaseAuth.getInstance();
         recyclerViewUsuarios = findViewById(R.id.recyclerViewUsuarios);

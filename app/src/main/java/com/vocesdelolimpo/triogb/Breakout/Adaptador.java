@@ -51,11 +51,11 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
         holder.breakPuntaje.setText(bscore);
 
         try {
-            Picasso.get().load(imagen).into(holder.imagenJugador);
+//            Picasso.get().load(imagen).into(holder.imagenJugador);
 
 
         }catch (Exception e){
-
+            Picasso.get().load(R.drawable.userdef).into(holder.imagenJugador);
         }
 
 
@@ -77,7 +77,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
         public MyHolder(@NonNull View itemView){
             super(itemView);
 
-            imagenJugador = itemView.findViewById(R.id.imagenJugador);
+//           imagenJugador = itemView.findViewById(R.id.imagenJugador);
             nombreJugador = itemView.findViewById(R.id.nombreJugador);
             aliasJugador = itemView.findViewById(R.id.aliasJugador);
             breakPuntaje = itemView.findViewById(R.id.breakPuntaje);

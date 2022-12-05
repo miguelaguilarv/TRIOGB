@@ -2,25 +2,25 @@ package com.vocesdelolimpo.triogb.Breakout;
 
 public class Usuario {
 
-    String name, alias, edad, email, imagen, pais;
-    int breakscore;
+    String alias, edad, email, imagen, name, pais, password;
+    int breakscore, gatoscore, ordenscore;
 
     public Usuario(){
 
     }
 
-    public Usuario(String name, String alias, String edad, String email, String imagen, String pais, int breakscore) {
-        this.name = name;
+    public Usuario(String alias, String edad, String email, String imagen, String name, String pais, String password, int breakscore, int gatoscore, int ordenscore) {
+
         this.alias = alias;
         this.edad = edad;
         this.email = email;
         this.imagen = imagen;
+        this.name = name;
         this.pais = pais;
+        this.password = password;
         this.breakscore = breakscore;
-    }
-
-    public String getName() {
-        return name;
+        this.gatoscore = gatoscore;
+        this.ordenscore = ordenscore;
     }
 
     public String getAlias() {
@@ -39,14 +39,27 @@ public class Usuario {
         return imagen;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getPais() {
         return pais;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public int getBreakscore() {
         return breakscore;
     }
 
+    public int getGatoscore() {
+        return gatoscore;
+    }
 
-
+    public int getOrdenscore() {
+        return ordenscore;
+    }
 }
