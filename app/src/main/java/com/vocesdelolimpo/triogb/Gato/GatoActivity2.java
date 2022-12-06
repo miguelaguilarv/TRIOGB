@@ -46,6 +46,7 @@ public class GatoActivity2 extends AppCompatActivity {
     private int puntaje2;
     private int puntajeF;
     MediaPlayer player;
+    MediaPlayer player23;
     int turno=1;
     int contador=0;
     SoundPool sp;
@@ -74,7 +75,7 @@ public class GatoActivity2 extends AppCompatActivity {
         getUserInfo();
         crono();
         sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 1);
-        sonido_de_Repoduccion= sp.load (this ,R.raw.cat,1);
+        sonido_de_Repoduccion= sp.load (this ,R.raw.n2,1);
         arreglo = new Button[3][3];
         arreglo[0][0]=this.findViewById(R.id.button00);
         arreglo[0][1]=this.findViewById(R.id.button01);
@@ -273,27 +274,50 @@ public class GatoActivity2 extends AppCompatActivity {
                 textView_cronometro.setText(f.format(sec)+" SEGUNDOS");
 
                 if (((int) millisUntilFinished / 1000) == 50) {
-                    player1.setText("SCORE:" +(puntuacion_jugador_1-10));
-                    player2.setText("SCORE:" +(puntuacion_jugador_2-10));
+                    puntuacion_jugador_1 -=5;
+                    puntuacion_jugador_2 -=5;
+                    player1.setText("SCORE:" +(puntuacion_jugador_1));
+                    player2.setText("SCORE:" +(puntuacion_jugador_2));
+                    musica_empate();
 
                 }if(((int) millisUntilFinished / 1000) == 40) {
-                    player1.setText("SCORE:" +(puntuacion_jugador_1-10));
-                    player2.setText("SCORE:" +(puntuacion_jugador_2-10));
-                    reloj_tiempo();
+                    puntuacion_jugador_1 -=5;
+                    puntuacion_jugador_2 -=5;
+                    player1.setText("SCORE:" +(puntuacion_jugador_1));
+                    player2.setText("SCORE:" +(puntuacion_jugador_2));
+                    musica_empate();
 
                 } if(((int) millisUntilFinished / 1000) == 30) {
-                    player1.setText("SCORE:" +(puntuacion_jugador_1-10));
-                    player2.setText("SCORE:" +(puntuacion_jugador_2-10));
-                    reloj_tiempo();
-                    textView_cronometro.setTextColor(RED);
+                    puntuacion_jugador_1 -=5;
+                    puntuacion_jugador_2 -=5;
+                    player1.setText("SCORE:" +(puntuacion_jugador_1));
+                    player2.setText("SCORE:" +(puntuacion_jugador_2));
+                    musica_empate();
                 } if(((int) millisUntilFinished / 1000) == 20) {
-                    player1.setText("SCORE:" +(puntuacion_jugador_1-10));
-                    player2.setText("SCORE:" +(puntuacion_jugador_2-10));
-                    reloj_tiempo();
-                    textView_cronometro.setTextColor(RED);
+                    puntuacion_jugador_1 -=5;
+                    puntuacion_jugador_2 -=5;
+                    if (puntuacion_jugador_1 < 0 ){
+                        puntuacion_jugador_1 = 0;
+                    }
+                    if (puntuacion_jugador_2 < 0 ){
+                        puntuacion_jugador_2 = 0;
+                    }
+
+                    player1.setText("SCORE:" +(puntuacion_jugador_1));
+                    player2.setText("SCORE:" +(puntuacion_jugador_2));
+                    musica_empate();
+
                 } if(((int) millisUntilFinished / 1000) == 10) {
-                    player1.setText("SCORE:" +(puntuacion_jugador_1-10));
-                    player2.setText("SCORE:" +(puntuacion_jugador_2-10));
+                    puntuacion_jugador_1 -=5;
+                    puntuacion_jugador_2 -=5;
+                    if (puntuacion_jugador_1 < 0 ){
+                        puntuacion_jugador_1 = 0;
+                    }
+                    if (puntuacion_jugador_2 < 0 ){
+                        puntuacion_jugador_2 = 0;
+                    }
+                    player1.setText("SCORE:" +(puntuacion_jugador_1));
+                    player2.setText("SCORE:" +(puntuacion_jugador_2));
                     reloj_tiempo();
                     textView_cronometro.setTextColor(RED);
                 }
@@ -362,5 +386,11 @@ public class GatoActivity2 extends AppCompatActivity {
         reloj.release();
         finish();
 
+    }
+    public void musica_empate() {
+        if (player23 == null) {
+            player23 = MediaPlayer.create(this, R.raw.aw);
+        }
+        player23.start();
     }
 }
