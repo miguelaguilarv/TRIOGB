@@ -16,6 +16,7 @@ import android.widget.Button;
 
 import com.vocesdelolimpo.triogb.Ordenamiento.OrdenamientoActivity;
 import com.vocesdelolimpo.triogb.R;
+import com.vocesdelolimpo.triogb.Ranking.Ranking;
 
 public class OrdenFragment extends Fragment {
 
@@ -29,7 +30,20 @@ public class OrdenFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getActivity(), OrdenamientoActivity.class);
-                //in.putExtra("algo", "Cosas");
+                startActivity(in);
+            }
+        });
+
+        Button btnPuntajes = (Button) v.findViewById(R.id.btnPuntajes);
+        btnPuntajes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle;
+                int juego = 1;
+                bundle = new Bundle();
+                bundle.putInt("juego", juego);
+                Intent in = new Intent(getActivity(), Ranking.class);
+                in.putExtra("juego", juego);
                 startActivity(in);
             }
         });
