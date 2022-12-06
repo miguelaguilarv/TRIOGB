@@ -1,6 +1,7 @@
 package com.vocesdelolimpo.triogb.Ordenamiento;
 
-import androidx.appcompat.app.AppCompatActivity;
+import
+        androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
