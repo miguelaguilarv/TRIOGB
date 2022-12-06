@@ -23,9 +23,7 @@ public class Ranking extends AppCompatActivity {
 
     LinearLayoutManager mLayaoutManager;
     RecyclerView recyclerViewUsuarios;
-    Breakout breakout;
-    Gato gato;
-    Orden orden;
+    Adaptador adaptador;
     List<Usuario> usuarioList;
     FirebaseAuth firebaseAuth;
     private DatabaseReference mDatabase;
@@ -84,8 +82,10 @@ public class Ranking extends AppCompatActivity {
 
                     usuarioList.add(usuario);
 
-                    breakout = new Breakout(Ranking.this, usuarioList);
-                    recyclerViewUsuarios.setAdapter(breakout);
+                    adaptador = new Adaptador(Ranking.this, usuarioList, 3);
+
+
+                    recyclerViewUsuarios.setAdapter(adaptador);
 
                 }
 
@@ -115,8 +115,8 @@ public class Ranking extends AppCompatActivity {
 
                     usuarioList.add(usuario);
 
-                    gato = new Gato(Ranking.this, usuarioList);
-                    recyclerViewUsuarios.setAdapter(gato);
+                    adaptador = new Adaptador(Ranking.this, usuarioList, 2);
+                    recyclerViewUsuarios.setAdapter(adaptador);
 
                 }
 
@@ -147,8 +147,8 @@ public class Ranking extends AppCompatActivity {
 
                     usuarioList.add(usuario);
 
-                    orden = new Orden(Ranking.this, usuarioList);
-                    recyclerViewUsuarios.setAdapter(orden);
+                    adaptador = new Adaptador(Ranking.this, usuarioList,1);
+                    recyclerViewUsuarios.setAdapter(adaptador);
 
                 }
 

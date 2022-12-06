@@ -1,19 +1,16 @@
-package com.vocesdelolimpo.triogb.Breakout;
+package com.vocesdelolimpo.triogb.Ranking;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
 import com.vocesdelolimpo.triogb.R;
-import com.vocesdelolimpo.triogb.RegistroActivity;
 
 import java.util.List;
 
@@ -23,10 +20,13 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
 
     private Context context;
     private List<Usuario> usuarioList;
+    private int juego;
+    private int puntaje;
 
-    public Adaptador(Context context, List<Usuario> usuarioList) {
+    public Adaptador(Context context, List<Usuario> usuarioList, int juego) {
         this.context = context;
         this.usuarioList = usuarioList;
+        this.juego = juego;
     }
 
     @NonNull
@@ -42,16 +42,30 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
         String imagen = usuarioList.get(position).getImagen();
         String name = usuarioList.get(position).getName();
         String alias = usuarioList.get(position).getAlias();
-        int breakscore = usuarioList.get(position).getBreakscore();
 
-        String bscore = String.valueOf(breakscore);
+        switch (juego){
+            case 1:
+                puntaje = usuarioList.get(position).getOrdenscore();
+                break;
+            case 2:
+                puntaje = usuarioList.get(position).getGatoscore();
+                break;
 
+            case 3:
+                puntaje = usuarioList.get(position).getBreakscore();
+                break;
+        }
+
+
+
+        String puntajeS = String.valueOf(puntaje);
         holder.nombreJugador.setText(name);
         holder.aliasJugador.setText(alias);
-        holder.breakPuntaje.setText(bscore);
+        holder.puntajeText.setText(puntajeS);
+
 
         try {
-//            Picasso.get().load(imagen).into(holder.imagenJugador);
+           Picasso.get().load(imagen).into(holder.imagenJugador);
 
 
         }catch (Exception e){
@@ -71,16 +85,17 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
         CircleImageView imagenJugador;
         TextView nombreJugador;
         TextView aliasJugador;
-        TextView breakPuntaje;
+        TextView puntajeText;
+
 
 
         public MyHolder(@NonNull View itemView){
             super(itemView);
 
-//           imagenJugador = itemView.findViewById(R.id.imagenJugador);
+           imagenJugador = itemView.findViewById(R.id.imagenJugador);
             nombreJugador = itemView.findViewById(R.id.nombreJugador);
             aliasJugador = itemView.findViewById(R.id.aliasJugador);
-            breakPuntaje = itemView.findViewById(R.id.breakPuntaje);
+            puntajeText = itemView.findViewById(R.id.Puntaje);
         }
 
     }
