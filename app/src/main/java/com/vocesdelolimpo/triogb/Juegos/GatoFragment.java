@@ -21,54 +21,45 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.vocesdelolimpo.triogb.Gato.GatoActivity;
 import com.vocesdelolimpo.triogb.R;
+import com.vocesdelolimpo.triogb.Ranking.Ranking;
 
 public class GatoFragment extends Fragment {
-    MediaPlayer mPlayer;
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-    private TextView textPuntaje;
-    private TextView textPuntajeBO;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_gato, container, false);
-        mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        textPuntaje = v.findViewById(R.id.nombrePuntaje);
-        textPuntajeBO = v.findViewById(R.id.valorPuntaje);
 
-        getTopScore();
+
+        //getTopScore();
         Button btnJugar = (Button) v.findViewById(R.id.btnJugar);
         btnJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent in = new Intent(getActivity(), GatoActivity.class);
-                //in.putExtra("algo", "Cosas");
                 startActivity(in);
             }
         });
-        return v;
-    }
-    private void getTopScore(){
 
-        mDatabase.child("Scores").addValueEventListener(new ValueEventListener() {
+        Button btnPuntajes = (Button) v.findViewById(R.id.btnPuntajes);
+        btnPuntajes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    String name = snapshot.child("gatoname").getValue().toString();
-                    String puntos = snapshot.child("gatoscore").getValue().toString();
-                    textPuntaje.setText(name);
-                    textPuntajeBO.setText(puntos+ " Puntos");
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onClick(View view) {
+                Bundle bundle;
+                int juego = 2;
+                bundle = new Bundle();
+                bundle.putInt("juego", juego);
+                Intent in = new Intent(getActivity(), Ranking.class);
+                in.putExtra("juego", juego);
+                startActivity(in);
             }
         });
 
+
+        return v;
     }
+
 }
