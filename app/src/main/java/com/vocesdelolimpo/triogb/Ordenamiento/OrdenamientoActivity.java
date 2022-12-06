@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
+import android.os.Handler;
 import com.vocesdelolimpo.triogb.R;
 
 import java.util.ArrayList;
@@ -161,5 +161,4 @@ public class OrdenamientoActivity extends AppCompatActivity {
         }
         player.start();
     }
-
 }

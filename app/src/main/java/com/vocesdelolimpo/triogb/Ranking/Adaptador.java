@@ -97,7 +97,6 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.MyHolder> {
             aliasJugador = itemView.findViewById(R.id.aliasJugador);
             puntajeText = itemView.findViewById(R.id.Puntaje);
         }
-
     }
 
 }

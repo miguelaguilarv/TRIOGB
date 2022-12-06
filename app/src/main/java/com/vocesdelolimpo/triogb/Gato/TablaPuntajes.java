@@ -57,7 +57,7 @@ public class TablaPuntajes extends AppCompatActivity {
 
         if (ganador == 1) {
             getUserInfo();
-            TextViewPuntajeF.setText("Puntaje Final: "+puntajeF);
+            TextViewPuntajeF.setText("Puntaje Final:"+puntajeF);
             musica();
 
         } else if (ganador == 2) {
@@ -123,7 +123,7 @@ public class TablaPuntajes extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String alias = snapshot.child("alias").getValue().toString();
-                    TextViewGanador2.setText(alias+":");
+                    TextViewGanador2.setText(alias);
                 }
             }
             @Override
