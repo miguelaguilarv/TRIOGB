@@ -1,7 +1,13 @@
 package com.vocesdelolimpo.triogb.Ordenamiento;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static android.graphics.Color.RED;
 
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -50,6 +56,7 @@ public class OrdenamientoActivity extends AppCompatActivity {
             bt.setText(num + "");
             bt.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
+
                     musica();
                     texto.setText(texto.getText() + " " + bt.getText());
                     bt.setVisibility(View.INVISIBLE);
@@ -154,4 +161,5 @@ public class OrdenamientoActivity extends AppCompatActivity {
         }
         player.start();
     }
+
 }

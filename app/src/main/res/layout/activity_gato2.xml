@@ -9,7 +9,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#8BC34A"
+        android:background="#000000"
         android:orientation="horizontal">
 
     </LinearLayout>
@@ -24,7 +24,8 @@
         android:textColor="#D2000000"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:textSize="60sp"
+        android:fontFamily="@font/ari"
+        android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/button21"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/button12"
@@ -40,8 +41,9 @@
         android:onClick="boton00"
         android:textColor="#000000"
         android:layout_marginLeft="5dp"
+        android:fontFamily="@font/ari"
         android:layout_marginRight="5dp"
-        android:textSize="60sp"
+        android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/button10"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/button01"
@@ -56,9 +58,10 @@
         android:background="#5575EA"
         android:onClick="boton10"
         android:layout_marginLeft="5dp"
+        android:fontFamily="@font/ari"
         android:layout_marginRight="5dp"
         android:textColor="#D2000000"
-        android:textSize="60sp"
+        android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/button20"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/button11"
@@ -73,9 +76,10 @@
         android:background="#5575EA"
         android:onClick="boton01"
         android:layout_marginLeft="5dp"
+        android:fontFamily="@font/ari"
         android:layout_marginRight="5dp"
         android:textColor="#D2000000"
-        android:textSize="60sp"
+        android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/button11"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/button02"
@@ -90,9 +94,10 @@
         android:background="#5575EA"
         android:onClick="boton02"
         android:layout_marginLeft="5dp"
+        android:fontFamily="@font/ari"
         android:layout_marginRight="5dp"
         android:textColor="#D2000000"
-        android:textSize="60sp"
+        android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/button12"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,9 +112,10 @@
         android:background="#5575EA"
         android:onClick="boton22"
         android:layout_marginLeft="5dp"
+        android:fontFamily="@font/ari"
         android:layout_marginRight="5dp"
         android:textColor="#D2000000"
-        android:textSize="60sp"
+        android:textSize="80sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,10 +129,11 @@
         android:layout_marginBottom="136dp"
         android:background="#5575EA"
         android:onClick="boton21"
+        android:fontFamily="@font/ari"
         android:textColor="#D2000000"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:textSize="60sp"
+        android:textSize="80sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toStartOf="@+id/button22"
@@ -141,7 +148,8 @@
         android:background="#5575EA"
         android:onClick="boton20"
         android:textColor="#D2000000"
-        android:textSize="60sp"
+        android:textSize="80sp"
+        android:fontFamily="@font/ari"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -160,7 +168,8 @@
         android:textColor="#D2000000"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:textSize="60sp"
+        android:fontFamily="@font/ari"
+        android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/button22"
         app:layout_constraintDimensionRatio="w,1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +185,76 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="408dp"
+        android:layout_height="35dp"
 
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout8"
+        tools:layout_editor_absoluteX="4dp"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/user1"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/triogb"
+            android:text="PLAYER 1:"
+            android:textColor="#26FF00"
+            android:textSize="34sp"></TextView>
+
+        <TextView
+            android:id="@+id/player1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/triogb"
+            android:text=""
+            android:textColor="#1BFF00"
+            android:textSize="34sp">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout8"
+        android:layout_width="416dp"
+        android:layout_height="33dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button01"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/invitado"
+            android:layout_width="98dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/triogb"
+            android:text="INVITADO:"
+            android:textColor="#002AFF"
+            android:textSize="34sp">
+        </TextView>
+        <TextView
+            android:id="@+id/player2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/triogb"
+            android:text=""
+            android:textColor="#002AFF"
+            android:textSize="34sp">
+        </TextView>
+
+    </LinearLayout>
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

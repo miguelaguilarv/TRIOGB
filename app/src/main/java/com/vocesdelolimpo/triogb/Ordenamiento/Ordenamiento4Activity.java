@@ -156,14 +156,14 @@ public class Ordenamiento4Activity extends AppCompatActivity {
         String cadena2 = texto.getText().toString().replaceAll(" ","");
         String mensaje;
 
-        if(cadena.equals(cadena2)){
-            mensaje= "Ok";
-            Intent in = new Intent(this,Decision.class);
-            Bundle b = new Bundle();
-           b.putString("mensaje",mensaje);
-           in.putExtras(b);
-            startActivity(in);
-        } else {
+      //  if(cadena.equals(cadena2)){
+      //      mensaje= "Ok";
+      //     // Intent in = new Intent(this,Decision.class);
+      //      Bundle b = new Bundle();
+      //     b.putString("mensaje",mensaje);
+      //     in.putExtras(b);
+      //      startActivity(in);
+      //  } else {
 
             mensaje = "fail";
 
@@ -171,7 +171,7 @@ public class Ordenamiento4Activity extends AppCompatActivity {
             startActivity(getIntent());
         }
 
-    }
+
     public void musica() {
         if (player == null) {
             player = MediaPlayer.create(this, R.raw.buton23);

@@ -53,11 +53,11 @@ public class GatoFragment extends Fragment {
     }
     private void getTopScore(){
 
-        mDatabase.child("Scores").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("gatoscore").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    String name = snapshot.child("gatoname").getValue().toString();
+                    String name = snapshot.child("name").getValue().toString();
                     String puntos = snapshot.child("gatoscore").getValue().toString();
                     textPuntaje.setText(name);
                     textPuntajeBO.setText(puntos+ " Puntos");
