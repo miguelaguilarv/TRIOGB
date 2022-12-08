@@ -19,6 +19,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +32,8 @@ public class Decision extends AppCompatActivity {
     private TextView TextViewGanador2;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    TextView record;
+    private String ordenScore;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +41,18 @@ public class Decision extends AppCompatActivity {
         setContentView(R.layout.activity_decision);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        TextViewGanador2 = (TextView) findViewById(R.id.inf_1);
         ptos = (TextView) findViewById(R.id.ptos);
         Bundle b = this.getIntent().getExtras();
         minutes = b.getInt("creonometro_minuto");
         seconds = b.getInt("creonometro_segundo");
         ptos.setText(minutes+ ":" +seconds);
+        record = (TextView) findViewById(R.id.record);
+        ordenScore = String.format("%d:%d", minutes, seconds);
+
+        record.setText(ordenScore);
+
+        getUserInfo();
 
     }
 
@@ -60,10 +71,35 @@ public class Decision extends AppCompatActivity {
                 if (snapshot.exists()) {
                     String alias = snapshot.child("alias").getValue().toString();
                     TextViewGanador2.setText(alias);
+                    subirNuevoScore();
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    private void subirNuevoScore() {
+
+        String id = mAuth.getCurrentUser().getUid();
+        mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+
+                    //mTextViewRecord.setVisibility(View.VISIBLE);//HAce visible un textview que dice "NUEVO RECORD PERSONAL"
+                    Map<String, Object> scoreMap = new HashMap<>();
+                    scoreMap.put("ordenscore", ordenScore);//Se crear un Map y se le agrega el nuevo puntaje.
+
+                    mDatabase.child("Users").child(id).updateChildren(scoreMap);//En esta linea se actualiza la info en la BD
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
