@@ -13,14 +13,30 @@ import com.vocesdelolimpo.triogb.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Ordenamiento3Activity extends AppCompatActivity {
     MediaPlayer player;
+    int minutes;
+    int seconds;
+    TextView timerTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordenamiento3);
+        Bundle b = this.getIntent().getExtras();
+        minutes = b.getInt("creonometro_minuto");
+        seconds = b.getInt("creonometro_segundo");
+        Timer myTimer= new Timer();
+        myTimer.schedule(new TimerTask(){
+            @Override
+            public void run(){
+                TimerMethod();
+            }
 
+        }, 0,1000);
+        timerTextView=(TextView) findViewById(R.id.crono);
         ArrayList<Button> listado = new ArrayList<Button>();
 
         listado.add((Button) findViewById(R.id.bt1));
@@ -127,6 +143,8 @@ public class Ordenamiento3Activity extends AppCompatActivity {
             Intent in = new Intent(this,Ordenamiento4Activity.class);
             Bundle b = new Bundle();
             b.putString("mensaje",mensaje);
+            b.putInt("creonometro_minuto",minutes);
+            b.putInt("creonometro_segundo",seconds);
             in.putExtras(b);
             startActivity(in);
 
@@ -144,4 +162,30 @@ public class Ordenamiento3Activity extends AppCompatActivity {
         }
         player.start();
     }
+    private void TimerMethod() { this.runOnUiThread(Timer_Tick);}
+    private Runnable Timer_Tick = new Runnable(){
+
+
+        public void run() {
+            seconds++;
+
+            if(seconds==0)
+                timerTextView.setVisibility(View.VISIBLE);
+
+            if (seconds == 60) {
+
+                minutes++;
+                seconds=0;
+            }
+            timerTextView.setText(String.format("%d:%d", minutes, seconds));
+        }
+
+
+
+
+
+
+    };
+
+
 }

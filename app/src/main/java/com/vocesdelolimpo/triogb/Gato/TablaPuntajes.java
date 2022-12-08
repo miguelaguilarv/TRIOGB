@@ -117,7 +117,6 @@ public class TablaPuntajes extends AppCompatActivity {
     }
     private void getUserInfo () {
         String id = mAuth.getCurrentUser().getUid();
-        user1 = (TextView) findViewById(R.id.user1);
         mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

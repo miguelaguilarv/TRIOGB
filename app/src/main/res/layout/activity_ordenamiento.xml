@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#B082FA"
     android:layout_height="match_parent"
+    android:background="#BC92FA"
     tools:context=".Ordenamiento.OrdenamientoActivity">
 
     <TableLayout
@@ -108,6 +108,7 @@
                 android:textColor="#000000"
                 android:fontFamily="@font/triogb"
                 android:textSize="34sp"
+                android:visibility="visible"
                 android:layout_weight="1"
                 android:backgroundTint="#EDCF62" />
 
@@ -167,7 +168,8 @@
         android:visibility="visible"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="1dp">
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/btValidar"
@@ -218,7 +220,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="65dp">
+        tools:layout_editor_absoluteY="65dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/texto"

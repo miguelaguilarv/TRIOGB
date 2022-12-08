@@ -13,20 +13,39 @@ import com.vocesdelolimpo.triogb.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Ordenamiento2Activity extends AppCompatActivity {
     MediaPlayer player;
+
+    TextView timerTextView;
+    int minutes;
+    int seconds;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordenamiento2);
 
+        timerTextView=(TextView) findViewById(R.id.crono);
+
         try{
             Bundle recibido = this.getIntent().getExtras();
+            Bundle b = this.getIntent().getExtras();
             final String mensaje = recibido.getString("mensaje");
+            minutes = b.getInt("creonometro_minuto");
+            seconds = b.getInt("creonometro_segundo");
         }
         catch (Exception e)
         {}
+        Timer myTimer= new Timer();
+        myTimer.schedule(new TimerTask(){
+            @Override
+            public void run(){
+                TimerMethod();
+            }
+
+        }, 0,1000);
 
         ArrayList<Button> listado = new ArrayList<Button>();
 
@@ -169,6 +188,8 @@ public class Ordenamiento2Activity extends AppCompatActivity {
             mensaje= "Ok";
             Intent in = new Intent(this,Ordenamiento3Activity.class);
             Bundle b = new Bundle();
+            b.putInt("creonometro_minuto",minutes);
+            b.putInt("creonometro_segundo",seconds);
             b.putString("mensaje",mensaje);
             in.putExtras(b);
             startActivity(in);
@@ -187,4 +208,29 @@ public class Ordenamiento2Activity extends AppCompatActivity {
         }
         player.start();
     }
+
+    private void TimerMethod() { this.runOnUiThread(Timer_Tick);}
+    private Runnable Timer_Tick = new Runnable(){
+
+
+        public void run() {
+            seconds++;
+
+            if(seconds==0)
+                timerTextView.setVisibility(View.VISIBLE);
+
+            if (seconds == 60) {
+
+                minutes++;
+                seconds=0;
+            }
+            timerTextView.setText(String.format("%d:%d", minutes, seconds));
+        }
+
+
+
+
+
+
+    };
 }

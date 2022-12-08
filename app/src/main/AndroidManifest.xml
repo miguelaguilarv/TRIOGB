@@ -79,6 +79,13 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".Ordenamiento.Decision"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Breakout.BreakoutActivity"
             android:exported="false"
             android:screenOrientation="landscape">
@@ -148,6 +155,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
