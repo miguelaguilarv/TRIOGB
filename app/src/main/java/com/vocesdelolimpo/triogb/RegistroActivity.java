@@ -31,6 +31,7 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText mEditTextPais;
     private EditText mEditTextPassword;
     private Button mButtonRegister;
+    private Spinner paisesSpinner;
 
     private String name = "";
     private String email = "";
@@ -55,6 +56,13 @@ public class RegistroActivity extends AppCompatActivity {
         mEditTextEdad = (EditText) findViewById(R.id.editTextEdad);
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        paisesSpinner = (Spinner) findViewById(R.id.paises);
+
+        ArrayAdapter<String> miAdaptador = new ArrayAdapter<String>(RegistroActivity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.paisesString));
+
+        miAdaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        paisesSpinner.setAdapter(miAdaptador);
 
         mButtonRegister = (Button) findViewById(R.id.btnRegister);
 
