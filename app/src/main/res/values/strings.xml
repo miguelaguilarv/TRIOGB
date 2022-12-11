@@ -21,4 +21,13 @@
     <string name="user_login_successful">Successful Sign In</string>
     <string name="ok">Ok</string>
     <string name="action_logout">Log out</string>
+    
+    
+    <string-array name="paisesString">
+        <item>Chile</item>
+        <item>Argentina</item>
+        <item>Inglaterra</item>
+        <item>España</item>
+        <item>Senegal</item>
+    </string-array>
 </resources>

@@ -19,10 +19,24 @@
         tools:layout_editor_absoluteY="1dp"
         tools:ignore="MissingConstraints" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TRIOGB"
+            android:fontFamily="@font/triogb"
+            android:textSize="80sp"
+            android:gravity="center"
+            android:textColor="#8E8989"
+            android:layout_marginBottom="100dp">
+
+        </TextView>
 
         <EditText
             android:id="@+id/editTextEmail"

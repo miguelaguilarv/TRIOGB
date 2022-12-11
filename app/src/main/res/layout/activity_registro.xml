@@ -23,6 +23,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TRIOGB"
+            android:fontFamily="@font/triogb"
+            android:textSize="80sp"
+            android:gravity="center"
+            android:textColor="#8E8989"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp">
+
+        </TextView>
+
         <EditText
             android:id="@+id/editTextName"
             android:textColorHint="#838383"
@@ -53,11 +66,17 @@
             android:backgroundTint="#653B9F"
             android:hint="Edad" />
 
+
         <Spinner
         android:id="@+id/paises"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:spinnerMode="dropdown"
+
+
+            android:layout_gravity="center"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
