@@ -21,6 +21,8 @@ public class Ordenamiento4Activity extends AppCompatActivity {
     int minutes;
     int seconds;
     TextView timerTextView;
+    TextView mostrarptj;
+    int puntaje;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,7 @@ public class Ordenamiento4Activity extends AppCompatActivity {
         Bundle b = this.getIntent().getExtras();
         minutes = b.getInt("creonometro_minuto");
         seconds = b.getInt("creonometro_segundo");
+        puntaje = b.getInt("puntaje_3");
         Timer myTimer= new Timer();
         myTimer.schedule(new TimerTask(){
             @Override
@@ -179,6 +182,7 @@ public class Ordenamiento4Activity extends AppCompatActivity {
             b.putString("mensaje",mensaje);
             b.putInt("creonometro_minuto",minutes);
             b.putInt("creonometro_segundo",seconds);
+            b.putInt("puntaje_4",puntaje);
             in.putExtras(b);
             startActivity(in);
 
@@ -204,10 +208,36 @@ public class Ordenamiento4Activity extends AppCompatActivity {
 
         public void run() {
             seconds++;
-
+            mostrarptj = (TextView)findViewById(R.id.textopuntaje);
+            mostrarptj.setText(Integer.toString(puntaje));
             if(seconds==0)
                 timerTextView.setVisibility(View.VISIBLE);
 
+
+            //==========================================================================================
+            if(seconds==0)
+                timerTextView.setVisibility(View.VISIBLE);
+
+
+            if(seconds==9 && minutes==0){
+                puntaje -= 25;
+            }if(seconds==19 && minutes==0){
+                puntaje -=25;
+
+
+            }if(seconds==29 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==39 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==49 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==59 && minutes==0){
+                puntaje -=25;
+            }
+//==========================================================================================
             if (seconds == 60) {
 
                 minutes++;

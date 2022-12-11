@@ -43,12 +43,21 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ptos"
+                    android:id="@+id/puntaje"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="#FFC107"
                     android:text="tu puntaje"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:id="@+id/tiempo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#FFC107"
+                    android:text="tu tiempo fue"
                     android:textSize="30dp" />
             </LinearLayout>
 
@@ -62,8 +71,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:textColor="#FFC107"
+                    android:textColor="#51FF07"
                     android:textSize="40dp"
+                    android:visibility="invisible"
                     android:text="¡¡¡NUEVO RECORD!!!" />
             </LinearLayout>
 
@@ -97,7 +107,7 @@
                     android:layout_gravity="center"
                     android:textColor="#51FF07"
                     android:textSize="100dp"
-                    android:text="00:00" />
+                    android:text="00" />
             </LinearLayout>
 
         </LinearLayout>
@@ -115,7 +125,6 @@
                 android:layout_weight="1"
                 android:backgroundTint="#FF0000"
                 android:fontFamily="@font/triogb"
-                android:onClick="Volver_Atras"
                 android:text="SALIR"
                 android:textColor="#000000"
                 android:textSize="20dp"

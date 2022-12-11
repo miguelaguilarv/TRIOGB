@@ -14,6 +14,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.os.Handler;
 import com.vocesdelolimpo.triogb.R;
+
+import org.w3c.dom.Text;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,6 +29,8 @@ public class OrdenamientoActivity extends AppCompatActivity {
     TextView timerTextView;
     int minutes=0;
     int seconds=0;
+    TextView mostrarptj;
+    int puntaje = 500;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,6 +161,7 @@ public class OrdenamientoActivity extends AppCompatActivity {
             b.putString("mensaje",mensaje);
             b.putInt("creonometro_minuto",minutes);
             b.putInt("creonometro_segundo",seconds);
+            b.putInt("puntaje_1",puntaje);
             in.putExtras(b);
             startActivity(in);
         } else {
@@ -175,16 +181,40 @@ public class OrdenamientoActivity extends AppCompatActivity {
     }
 
     private void TimerMethod() { this.runOnUiThread(Timer_Tick);}
-        private Runnable Timer_Tick = new Runnable(){
+    private Runnable Timer_Tick = new Runnable(){
 
+        public void run() {
 
-            public void run() {
             seconds++;
 
+            mostrarptj = (TextView)findViewById(R.id.textopuntaje);
+            mostrarptj.setText(Integer.toString(puntaje));
+//==========================================================================================
             if(seconds==0)
                 timerTextView.setVisibility(View.VISIBLE);
 
-                if (seconds == 60) {
+
+            if(seconds==9 && minutes==0){
+                puntaje -= 25;
+            }if(seconds==19 && minutes==0){
+                puntaje -=25;
+
+
+            }if(seconds==29 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==39 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==49 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==59 && minutes==0){
+                puntaje -=25;
+            }
+//==========================================================================================
+
+            if (seconds == 60) {
 
                     minutes++;
                     seconds=0;
@@ -192,15 +222,7 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
                 }
                 timerTextView.setText(String.format("%d:%d", minutes, seconds));
-                }
+        }
 
-
-
-
-
-
-        };
-
-
-
+    };
 }
