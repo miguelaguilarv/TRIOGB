@@ -200,7 +200,6 @@ public class Ordenamiento2Activity extends AppCompatActivity {
         } else {
 
             mensaje = "fail";
-
             finish();
             startActivity(getIntent());
         }

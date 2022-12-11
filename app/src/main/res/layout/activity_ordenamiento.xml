@@ -7,20 +7,60 @@
     android:background="#BC92FA"
     tools:context=".Ordenamiento.OrdenamientoActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/textopuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="40dp"
+            android:fontFamily="@font/triogb"/>
+
+        <TextView
+            android:id="@+id/crono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/triogb"
+            android:textColor="@color/black"
+            android:textSize="30dp"/>
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/triogb"
+            android:textColor="@color/black"
+            android:textSize="35dp" />
+
+    </LinearLayout>
+
+
+
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="413dp"
-        android:layout_height="302dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:visibility="visible"
-
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        tools:layout_editor_absoluteX="-2dp"
         tools:ignore="MissingConstraints">
+
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp">
+
 
             <Button
                 android:id="@+id/bt1"
@@ -165,8 +205,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="410dp"
-        android:layout_height="77dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:visibility="visible"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -194,52 +234,7 @@
             android:textSize="34sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textopuntaje"
-        android:layout_width="78dp"
-        android:layout_height="67dp"
-        android:text=""
-        tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        android:layout_width="406dp"
-        android:layout_height="68dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:id="@+id/crono"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="00:00:000"
-            android:textSize="45dp"
-            android:textColor="@color/black" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="414dp"
-        android:layout_height="64dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="65dp"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/texto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/triogb"
-            android:textColor="#000000"
-            android:textSize="35dp" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

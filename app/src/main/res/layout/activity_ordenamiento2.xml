@@ -4,47 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7FFAC"
-
+    android:background="#DBF3A0"
     tools:context=".Ordenamiento.Ordenamiento2Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textopuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="40dp"
+            android:textColor="#7E8C56"
+            android:fontFamily="@font/triogb" />
+        <TextView
+            android:id="@+id/crono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="20dp"
+            android:text="00:00"
+            android:fontFamily="@font/triogb"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/triogb"
+            android:textColor="@color/black"
+            android:textSize="35dp"/>
+
+    </LinearLayout>
+
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="364dp"
-        android:layout_height="468dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
 
-        <LinearLayout
-            android:layout_width="406dp"
-            android:layout_height="68dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <TextView
-                android:id="@+id/textopuntaje"
-                android:layout_width="78dp"
-                android:layout_height="67dp"
-                android:text=""
-                tools:ignore="MissingConstraints" />
-            <TextView
-                android:id="@+id/crono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-        </LinearLayout>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp">
 
 
             <Button
@@ -316,9 +328,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="408dp"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
-
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="3dp"
@@ -345,18 +356,6 @@
             android:textSize="34sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/texto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/triogb"
-        android:textColor="#000000"
-        android:textSize="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 

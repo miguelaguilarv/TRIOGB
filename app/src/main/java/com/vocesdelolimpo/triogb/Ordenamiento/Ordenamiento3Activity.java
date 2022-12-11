@@ -55,7 +55,7 @@ public class Ordenamiento3Activity extends AppCompatActivity {
         listado.add((Button) findViewById(R.id.bt11));
         listado.add((Button) findViewById(R.id.bt12));
 
-        final TextView texto = (TextView)findViewById(R.id.texto3);
+        final TextView texto = (TextView)findViewById(R.id.texto);
 
         final ArrayList numeros = new ArrayList();
 

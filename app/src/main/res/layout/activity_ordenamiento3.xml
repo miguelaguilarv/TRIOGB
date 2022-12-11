@@ -7,42 +7,54 @@
     android:background="#fdcae1"
     tools:context=".Ordenamiento.Ordenamiento3Activity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints" >
+        <TextView
+            android:id="@+id/textopuntaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="40dp"
+            android:textColor="#563093"
+            android:fontFamily="@font/triogb" />
+        <TextView
+            android:id="@+id/crono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="20dp"
+            android:text="00:00"
+            android:fontFamily="@font/triogb"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/triogb"
+            android:textColor="@color/black"
+            android:textSize="35dp"/>
+    </LinearLayout>
+
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="406dp"
-        android:layout_height="440dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
 
-        <LinearLayout
-            android:layout_width="406dp"
-            android:layout_height="68dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-            <TextView
-                android:id="@+id/textopuntaje"
-                android:layout_width="78dp"
-                android:layout_height="67dp"
-                android:text=""
-                tools:ignore="MissingConstraints" />
-            <TextView
-                android:id="@+id/crono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="30dp" />
-        </LinearLayout>
+
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="200dp">
 
             <Button
                 android:id="@+id/bt1"
@@ -187,8 +199,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="123dp"
-
+        android:layout_height="80dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="1dp">
@@ -214,18 +225,6 @@
             android:textSize="34sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/texto3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="35dp"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/triogb"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
