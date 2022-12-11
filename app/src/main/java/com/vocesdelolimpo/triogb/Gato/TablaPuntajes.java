@@ -94,8 +94,9 @@ public class TablaPuntajes extends AppCompatActivity {
 
                     if (puntajeF > puntos){
                         //Si se cumple se llama al metodo que sube el nuevo puntaje.
-                        notificacion();
+
                         mTextViewRecord.setVisibility(View.VISIBLE);
+                        notificacion();
                         createNotificacionChannel();
                         subirNuevoScore();
 

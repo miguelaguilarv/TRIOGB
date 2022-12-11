@@ -6,12 +6,14 @@ import static android.graphics.Color.GREEN;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import static android.graphics.Color.RED;
+
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ import com.vocesdelolimpo.triogb.R;
 public class GatoActivity extends AppCompatActivity {
     Button arreglo [][];
     public int mensaje;
+    public Button Vibrar;
     public int puntuacion_jugador_1=0;
     public int puntuacion_jugador_2=0;
     private TextView user1;
@@ -43,6 +46,7 @@ public class GatoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gato);
+
         fondo();
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -243,6 +247,7 @@ public class GatoActivity extends AppCompatActivity {
         startActivity(in);
         finish();
     }
+
     //METODO que enlaza con el boton
     public void boton00(View view){
         darvalor(0 ,0);
@@ -288,5 +293,4 @@ public class GatoActivity extends AppCompatActivity {
             }
         });
     }
-
 }

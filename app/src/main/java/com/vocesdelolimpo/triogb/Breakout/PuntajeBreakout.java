@@ -2,9 +2,15 @@ package com.vocesdelolimpo.triogb.Breakout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -37,7 +43,8 @@ public class PuntajeBreakout extends AppCompatActivity {
     private TextView mTextViewRes;
     private TextView mTextViewName;
     private Button mButtonBackBO;
-
+    private final static String CHANNEL_ID ="NOTIFICACION";
+    private final static int NOTIFICATION_ID= 0;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -101,6 +108,8 @@ public class PuntajeBreakout extends AppCompatActivity {
                     //Se pregunta si el puntaje obtenido en el juego es mayor al de la BD.
                     if (puntaje > puntos){
                         //Si se cumple se llama al metodo que sube el nuevo puntaje.
+                        notificacion();
+                        createNotificacionChannel();
                         subirNuevoScore();
                     }
 
@@ -183,5 +192,24 @@ public class PuntajeBreakout extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         player.release();
+    }
+    public void notificacion(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
+        builder.setSmallIcon(R.drawable.first);
+        builder.setContentText("SUPERASTE TU PUNTAJE EN: BREAKOUT ");
+        builder.setColor(Color.BLUE);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setLights(Color.MAGENTA,1000,1000);
+        builder.setVibrate(new long[]{1000,1000,1000,1000});
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+        notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+    }
+    private void createNotificacionChannel(){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            CharSequence name="Notificacion";
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 }
