@@ -37,6 +37,9 @@ public class Decision extends AppCompatActivity {
     private Button salir;
     TextView record;
     private String ordenScore;
+    TextView timerTextView;
+    TextView mostrarptj;
+    int puntaje;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class Decision extends AppCompatActivity {
         record = (TextView) findViewById(R.id.record);
         ordenScore = String.format("%d:%d", minutes, seconds);
         MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+        puntaje = b.getInt("puntaje_3");
         record.setText(ordenScore);
 
         getUserInfo();
