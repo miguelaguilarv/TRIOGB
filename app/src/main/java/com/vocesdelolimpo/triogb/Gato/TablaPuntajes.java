@@ -2,10 +2,18 @@ package com.vocesdelolimpo.triogb.Gato;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
+import androidx.core.app.NotificationManagerCompat;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -40,6 +48,8 @@ public class TablaPuntajes extends AppCompatActivity {
     private TextView TextViewPuntajeF;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private final static String CHANNEL_ID ="NOTIFICACION";
+    private final static int NOTIFICATION_ID= 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +68,7 @@ public class TablaPuntajes extends AppCompatActivity {
         if (ganador == 1) {
             getUserInfo();
             TextViewPuntajeF.setText("Puntaje Final:"+puntajeF);
+            notificacion();
             musica();
 
         } else if (ganador == 2) {
@@ -83,8 +94,13 @@ public class TablaPuntajes extends AppCompatActivity {
 
                     if (puntajeF > puntos){
                         //Si se cumple se llama al metodo que sube el nuevo puntaje.
+                        notificacion();
+                        mTextViewRecord.setVisibility(View.VISIBLE);
+                        createNotificacionChannel();
                         subirNuevoScore();
+
                         ptos.setText(puntos+"");
+
                     }
                     ptos.setText(puntos+"");
                 }
@@ -153,6 +169,25 @@ public class TablaPuntajes extends AppCompatActivity {
             }
         });
 
+    }
+    public void notificacion(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
+       builder.setSmallIcon(R.drawable.first);
+        builder.setContentText("SUPERASTE TU PUNTAJE");
+        builder.setColor(Color.BLUE);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setLights(Color.MAGENTA,1000,1000);
+        builder.setVibrate(new long[]{1000,1000,1000,1000});
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+        notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
+    }
+    private void createNotificacionChannel(){
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            CharSequence name="Notificacion";
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 }
 

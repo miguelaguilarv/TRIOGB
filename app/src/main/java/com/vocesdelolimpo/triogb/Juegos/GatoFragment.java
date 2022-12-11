@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.vocesdelolimpo.triogb.Gato.GatoActivity;
+import com.vocesdelolimpo.triogb.Gato.GatoCpu;
+
 import com.vocesdelolimpo.triogb.R;
 import com.vocesdelolimpo.triogb.Ranking.Ranking;
 

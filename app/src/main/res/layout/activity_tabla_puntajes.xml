@@ -95,10 +95,10 @@
                 android:layout_height="59dp"
                 android:fontFamily="@font/triogb"
                 android:gravity="center"
-                android:text="NUEVO"
+                android:text="¡¡NUEVO RECORD!!"
                 android:textColor="#51FF07"
                 android:textSize="40dp"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/textView3"
