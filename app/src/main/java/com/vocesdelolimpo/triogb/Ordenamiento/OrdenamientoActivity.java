@@ -188,7 +188,7 @@ public class OrdenamientoActivity extends AppCompatActivity {
             seconds++;
 
             mostrarptj = (TextView)findViewById(R.id.textopuntaje);
-            mostrarptj.setText(Integer.toString(puntaje));
+            mostrarptj.setText("Puntaje: "+puntaje);
 //==========================================================================================
             if(seconds==0)
                 timerTextView.setVisibility(View.VISIBLE);
@@ -221,7 +221,7 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
 
                 }
-                timerTextView.setText(String.format("%d:%d", minutes, seconds));
+                timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
         }
 
     };
