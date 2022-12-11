@@ -164,7 +164,7 @@ public class Decision extends AppCompatActivity {
     public void notificacion(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(),CHANNEL_ID);
         builder.setSmallIcon(R.drawable.first);
-        builder.setContentText("SUPERASTE TU PUNTAJE");
+        builder.setContentText("SUPERASTE TU PUNTAJE EN: ORDENAMIENTO ");
         builder.setColor(Color.BLUE);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setLights(Color.MAGENTA,1000,1000);
