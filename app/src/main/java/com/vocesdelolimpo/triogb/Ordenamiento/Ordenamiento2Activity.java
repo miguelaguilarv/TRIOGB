@@ -22,6 +22,8 @@ public class Ordenamiento2Activity extends AppCompatActivity {
     TextView timerTextView;
     int minutes;
     int seconds;
+    TextView mostrarptj;
+    int puntaje;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class Ordenamiento2Activity extends AppCompatActivity {
             final String mensaje = recibido.getString("mensaje");
             minutes = b.getInt("creonometro_minuto");
             seconds = b.getInt("creonometro_segundo");
+            puntaje = b.getInt("puntaje_1");
         }
         catch (Exception e)
         {}
@@ -191,6 +194,7 @@ public class Ordenamiento2Activity extends AppCompatActivity {
             b.putInt("creonometro_minuto",minutes);
             b.putInt("creonometro_segundo",seconds);
             b.putString("mensaje",mensaje);
+            b.putInt("puntaje_2",puntaje);
             in.putExtras(b);
             startActivity(in);
         } else {
@@ -215,6 +219,34 @@ public class Ordenamiento2Activity extends AppCompatActivity {
 
         public void run() {
             seconds++;
+            mostrarptj = (TextView)findViewById(R.id.textopuntaje);
+            mostrarptj.setText(Integer.toString(puntaje));
+            //==========================================================================================
+            if(seconds==0)
+                timerTextView.setVisibility(View.VISIBLE);
+
+
+            if(seconds==9 && minutes==0){
+                puntaje -= 25;
+            }if(seconds==19 && minutes==0){
+                puntaje -=25;
+
+
+            }if(seconds==29 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==39 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==49 && minutes==0){
+                puntaje -=25;
+
+            }if(seconds==59 && minutes==0){
+                puntaje -=25;
+            }
+//==========================================================================================
+
+
 
             if(seconds==0)
                 timerTextView.setVisibility(View.VISIBLE);

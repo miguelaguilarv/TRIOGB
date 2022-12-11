@@ -5,34 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E7FFAC"
+
     tools:context=".Ordenamiento.Ordenamiento2Activity">
 
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="387dp"
-        android:layout_height="533dp"
+        android:layout_width="364dp"
+        android:layout_height="468dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
+
         <LinearLayout
             android:layout_width="406dp"
             android:layout_height="68dp"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:id="@+id/crono"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text=""
-            android:textSize="45dp"
-            android:textColor="@color/black" />
+            <TextView
+                android:id="@+id/textopuntaje"
+                android:layout_width="78dp"
+                android:layout_height="67dp"
+                android:text=""
+                tools:ignore="MissingConstraints" />
+            <TextView
+                android:id="@+id/crono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="30dp" />
         </LinearLayout>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -40,8 +49,8 @@
 
             <Button
                 android:id="@+id/but1"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -50,8 +59,8 @@
 
             <Button
                 android:id="@+id/but2"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -60,8 +69,8 @@
 
             <Button
                 android:id="@+id/but3"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
                 android:textColor="#000000"
@@ -69,8 +78,8 @@
 
             <Button
                 android:id="@+id/but4"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
                 android:textColor="#000000"
@@ -84,8 +93,8 @@
 
             <Button
                 android:id="@+id/but5"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -94,8 +103,8 @@
 
             <Button
                 android:id="@+id/but6"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -104,8 +113,8 @@
 
             <Button
                 android:id="@+id/but7"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -114,8 +123,8 @@
 
             <Button
                 android:id="@+id/but8"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -129,8 +138,8 @@
 
             <Button
                 android:id="@+id/but9"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -139,8 +148,8 @@
 
             <Button
                 android:id="@+id/but10"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -149,8 +158,8 @@
 
             <Button
                 android:id="@+id/but11"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -159,8 +168,8 @@
 
             <Button
                 android:id="@+id/but12"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -174,8 +183,8 @@
 
             <Button
                 android:id="@+id/but13"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -184,8 +193,8 @@
 
             <Button
                 android:id="@+id/but14"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -194,8 +203,8 @@
 
             <Button
                 android:id="@+id/but15"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -204,8 +213,8 @@
 
             <Button
                 android:id="@+id/but16"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -219,8 +228,8 @@
 
             <Button
                 android:id="@+id/but17"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -229,8 +238,8 @@
 
             <Button
                 android:id="@+id/but18"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -239,8 +248,8 @@
 
             <Button
                 android:id="@+id/but19"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -249,8 +258,8 @@
 
             <Button
                 android:id="@+id/but20"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -264,8 +273,8 @@
 
             <Button
                 android:id="@+id/but21"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -274,8 +283,8 @@
 
             <Button
                 android:id="@+id/but22"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
                 android:layout_weight="1"
                 android:backgroundTint="#6EB5FF"
@@ -284,8 +293,8 @@
 
             <Button
                 android:id="@+id/but23"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -294,8 +303,8 @@
 
             <Button
                 android:id="@+id/but24"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
 
                 android:backgroundTint="#6EB5FF"
@@ -312,7 +321,8 @@
 
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="3dp">
+        tools:layout_editor_absoluteX="3dp"
+        tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/btValidar2"
