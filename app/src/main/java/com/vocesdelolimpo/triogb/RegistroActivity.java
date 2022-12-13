@@ -54,6 +54,7 @@ public class RegistroActivity extends AppCompatActivity {
         mEditTextName = (EditText) findViewById(R.id.editTextName);
         mEditTextAlias = (EditText) findViewById(R.id.editTextAlias);
         mEditTextEdad = (EditText) findViewById(R.id.editTextEdad);
+        //mEditTextPais = (EditText) findViewById(R.id.editTextPais);
         mEditTextEmail = (EditText) findViewById(R.id.editTextEmail);
         mEditTextPassword = (EditText) findViewById(R.id.editTextPassword);
         paisesSpinner = (Spinner) findViewById(R.id.paises);
@@ -64,6 +65,18 @@ public class RegistroActivity extends AppCompatActivity {
         miAdaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         paisesSpinner.setAdapter(miAdaptador);
 
+        paisesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                pais = paisesSpinner.getSelectedItem().toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         mButtonRegister = (Button) findViewById(R.id.btnRegister);
 
         mButtonRegister.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +86,6 @@ public class RegistroActivity extends AppCompatActivity {
                 name = mEditTextName.getText().toString();
                 alias = mEditTextAlias.getText().toString();
                 edad = mEditTextEdad.getText().toString();
-                pais = mEditTextPais.getText().toString();
                 email = mEditTextEmail.getText().toString();
                 password = mEditTextPassword.getText().toString();
 
@@ -114,6 +126,9 @@ public class RegistroActivity extends AppCompatActivity {
                     map.put("email",email);
                     map.put("password",password);
                     map.put("imagen","");
+                    map.put("ordenscore",0);
+                    map.put("gatoscore",0);
+                    map.put("breakscore",0);
 
 
 
