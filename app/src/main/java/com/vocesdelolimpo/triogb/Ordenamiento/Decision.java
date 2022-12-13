@@ -67,13 +67,12 @@ public class Decision extends AppCompatActivity {
         minutes = b.getInt("creonometro_minuto");
         seconds = b.getInt("creonometro_segundo");
         puntaje = b.getInt("puntaje_4");
-        tiempo.setText("tiempo:"+minutes+ ":" +seconds);
-        puntajeTV.setText("puntaje:"+puntaje);
         record = (TextView) findViewById(R.id.record);
-        ordenScore = String.format("%d:%d", minutes, seconds);
+        ordenScore = String.format("%02d:%02d", minutes, seconds);
+        tiempo.setText("Tu tiempo fue: "+ordenScore);
         MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
 
-        record.setText(ordenScore);
+        //record.setText(ordenScore);
 
         getUserInfo();
 
@@ -84,7 +83,7 @@ public class Decision extends AppCompatActivity {
                 mp.start();
                 startActivity(new Intent(Decision.this, MainActivity.class));
                 finish();
-                player.release();
+                mp.release();
             }
         });
 
@@ -103,12 +102,12 @@ public class Decision extends AppCompatActivity {
                         nuevo_Record.setVisibility(View.VISIBLE);
                         createNotificacionChannel();
                         subirNuevoScore();
-
-
-                        record.setText(puntosBD+"");
+                        record.setText(""+puntaje);
+                        puntajeTV.setVisibility(View.INVISIBLE);
 
                     }
-                    record.setText(puntosBD+"");
+                    puntajeTV.setText("Tu puntaje fue: "+puntaje);
+                    //record.setText(puntosBD+"");
                 }
             }
 
@@ -129,7 +128,7 @@ public class Decision extends AppCompatActivity {
                 if (snapshot.exists()) {
                     String alias = snapshot.child("alias").getValue().toString();
                     TextViewGanador2.setText(alias);
-                    subirNuevoScore();
+                    //subirNuevoScore();
                 }
             }
             @Override

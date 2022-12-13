@@ -18,6 +18,27 @@
             android:textSize="40dp"
             android:visibility="visible" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/triogb"
+            android:layout_marginTop="150dp"
+            android:text="¿Cómo se juega?"
+            android:textColor="#614129"
+            android:textSize="24dp"
+            android:visibility="visible" />
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/triogb"
+            android:layout_marginTop="175dp"
+            android:text="Rompe los bloques con la bola, el segundo nivel está entretenido, solo esquiva las bolas de fuego..."
+            android:textColor="#E4AB7F"
+            android:textSize="22dp"
+            android:visibility="visible" />
+
         <Button
             android:id="@+id/btnJugar"
             android:layout_width="300dp"
