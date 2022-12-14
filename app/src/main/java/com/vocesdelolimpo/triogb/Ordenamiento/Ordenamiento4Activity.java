@@ -21,16 +21,24 @@ public class Ordenamiento4Activity extends AppCompatActivity {
     int minutes;
     int seconds;
     TextView timerTextView;
+    TextView mostrarvidas;
     TextView mostrarptj;
     int puntaje;
+    int vidas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordenamiento4);
+        //=====================================================
+        mostrarvidas=(TextView)findViewById(R.id.textovidas);
+        mostrarvidas.setText("Vidas:"+ vidas);
+        //=====================================================
         Bundle b = this.getIntent().getExtras();
         minutes = b.getInt("creonometro_minuto");
         seconds = b.getInt("creonometro_segundo");
         puntaje = b.getInt("puntaje_3");
+        vidas = b.getInt("vidas_3");
         Timer myTimer= new Timer();
         myTimer.schedule(new TimerTask(){
             @Override
@@ -102,6 +110,7 @@ public class Ordenamiento4Activity extends AppCompatActivity {
                     texto.setText(texto.getText().toString()+(int)numeros+" ");
 //                    texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
+                    puntaje = 0;
                     botonesinvisibles();
 
 
@@ -183,12 +192,14 @@ public class Ordenamiento4Activity extends AppCompatActivity {
             b.putInt("creonometro_minuto",minutes);
             b.putInt("creonometro_segundo",seconds);
             b.putInt("puntaje_4",puntaje);
+            b.putInt("vidas_4",vidas);
             in.putExtras(b);
             startActivity(in);
 
         } else {
-            mensaje = "fail";
 
+            mensaje = "fail";
+            vidas--;
             finish();
             startActivity(getIntent());
 
