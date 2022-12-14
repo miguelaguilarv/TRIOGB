@@ -20,6 +20,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Display;
@@ -114,7 +115,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
         //Se inicializan los objetos ourHolder y paint
         ourHolder = getHolder();
         paint = new Paint();
-
         musica.start();
         musica.setVolume(0.5f,0.5f);
 
@@ -330,7 +330,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
             bat.reset(screenX);
             ball.reverseYVelocity();
             ball.clearObstacleY(screenY - 150);
-
+            vibrar();
             // Pierde una vida
             lives --;
             soundPool.play(beep3ID, 1, 1, 0, 0, 1);
@@ -532,6 +532,13 @@ public class BreakoutEngine extends SurfaceView implements Runnable{
 
         }
         return true;
+    }
+
+    private void vibrar(){
+
+        Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(800);
+
     }
     private void enviarAPuntajePierde(){
 

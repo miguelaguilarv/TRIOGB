@@ -7,11 +7,13 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -63,7 +65,7 @@ public class PuntajeBreakout extends AppCompatActivity {
         Bundle recibido = this.getIntent().getExtras();
         puntaje = recibido.getInt("puntaje");
         final int vidasJ = recibido.getInt("vidas");
-
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 //        try {
 //            Bundle recibido = this.getIntent().getExtras();
 //            puntaje = recibido.getString("puntaje");
@@ -83,6 +85,7 @@ public class PuntajeBreakout extends AppCompatActivity {
             getUserName();
             mTextViewRes.setText("Bien, terminaste el Juego!, te ganaste un aplauso");
             mTextViewScore.setText("Tu puntaje fue: " + puntaje);
+            v.vibrate(800);
 
         }else{
             if (player == null){
@@ -92,6 +95,7 @@ public class PuntajeBreakout extends AppCompatActivity {
             getUserName();
             mTextViewRes.setText("Perdiste Amigo!");
             mTextViewScore.setText("Tu puntaje fue: " + puntaje);
+            v.vibrate(2000);
 
         }
 
@@ -105,6 +109,8 @@ public class PuntajeBreakout extends AppCompatActivity {
 
                     //Se guarda el puntaje que esta en la BD en una variable "puntos", previamente declarada como int.
                     puntos = Integer.parseInt(snapshot.child("breakscore").getValue().toString());
+
+
                     //Se pregunta si el puntaje obtenido en el juego es mayor al de la BD.
                     if (puntaje > puntos){
                         //Si se cumple se llama al metodo que sube el nuevo puntaje.
