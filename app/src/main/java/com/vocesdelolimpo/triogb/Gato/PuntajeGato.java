@@ -35,6 +35,7 @@ public class PuntajeGato extends AppCompatActivity {
     private TextView puntejeTV2;
     public int puntuacion_jugador_22=0;
     public int puntuacion_jugador_11=0;
+    public String jugador_2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +50,12 @@ public class PuntajeGato extends AppCompatActivity {
         Bundle a = this.getIntent().getExtras();
         Bundle b = this.getIntent().getExtras();
         Bundle c = this.getIntent().getExtras();
+        Bundle d = this.getIntent().getExtras();
+        jugador_2 = d.getString("jugador2");
         final int ganador = getIntent().getExtras().getInt("mensaje1");
         final int punteje1 = getIntent().getExtras().getInt("puntaje_1");
         final int punteje2 = getIntent().getExtras().getInt("puntaje_2");
+
         if (ganador == 1) {
             puntejeTV.setTextColor(GREEN);
             puntejeTV.setText(punteje1+" PUNTOS.");
@@ -64,7 +68,7 @@ public class PuntajeGato extends AppCompatActivity {
         } else if (ganador == 2) {
             puntejeTV.setTextColor(BLUE);
             TextViewGanador.setTextColor(BLUE);
-            TextViewGanador.setText("GANO EL INVITADO");
+            TextViewGanador.setText(jugador_2);
             puntejeTV.setText(punteje2+" PUNTOS.");
             puntejeTV2.setTextColor(GREEN);
             puntejeTV2.setText(punteje1+" PUNTOS.");
@@ -143,12 +147,16 @@ public class PuntajeGato extends AppCompatActivity {
 
         int p1 = puntuacion_jugador_11;
         int p2 = puntuacion_jugador_22;
+        Bundle d = new Bundle();
+        d.putString("jugador2",jugador_2);
         Bundle a = new Bundle();
         a.putInt("puntaje_11",puntuacion_jugador_11);
         a.putInt("puntaje_22",puntuacion_jugador_22);
+
         Intent in = new Intent(this, GatoActivity2.class);
         in.putExtra("puntaje_11",p1);
         in.putExtra("puntaje_22",p2);
+        in.putExtras(d);
         startActivity(in);
         finish();
     }

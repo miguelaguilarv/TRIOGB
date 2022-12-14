@@ -45,6 +45,7 @@ public class GatoActivity2 extends AppCompatActivity {
     private int puntaje1;
     private int puntaje2;
     private int puntajeF;
+    private TextView invitado2;
     MediaPlayer player;
     MediaPlayer player23;
     int turno=1;
@@ -53,6 +54,7 @@ public class GatoActivity2 extends AppCompatActivity {
     int sonido_de_Repoduccion;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    public String jugador_2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +62,16 @@ public class GatoActivity2 extends AppCompatActivity {
         fondo();
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        Bundle b = this.getIntent().getExtras();
         Bundle a = this.getIntent().getExtras();
         Bundle c = this.getIntent().getExtras();
+        Bundle d = this.getIntent().getExtras();
         puntaje1 = a.getInt("puntaje_11");
         puntaje2 = a.getInt("puntaje_22");
+        jugador_2 = d.getString("jugador2");
+        invitado2=(TextView)findViewById(R.id.invitado);
+        invitado2.setText(jugador_2);
         puntuacion_jugador_1=puntaje1;
         puntuacion_jugador_2=puntaje2;
 
@@ -72,6 +80,7 @@ public class GatoActivity2 extends AppCompatActivity {
 
         player1.setText("SCORE:" +puntuacion_jugador_1);
         player2.setText("SCORE:" +puntuacion_jugador_2);
+
         getUserInfo();
         crono();
         sp = new SoundPool(1, AudioManager.STREAM_MUSIC, 1);
@@ -359,7 +368,7 @@ public class GatoActivity2 extends AppCompatActivity {
     }
     protected void ganador_final(){
         Bundle c = new Bundle();
-
+        Bundle d = new Bundle();
         Intent in = new Intent(this, TablaPuntajes.class);
         if(puntuacion_jugador_1>puntuacion_jugador_2){
             mensaje=1;
@@ -373,6 +382,8 @@ public class GatoActivity2 extends AppCompatActivity {
             c.putInt("puntajeF",puntuacion_jugador_2);
             in.putExtra("puntajeF",puntuacion_jugador_2);
             in.putExtra("mensaje",mensaje);
+            d.putString("jugador2",jugador_2);
+            in.putExtras(d);
         }else if(puntuacion_jugador_1==puntuacion_jugador_2){
             mensaje=3;
             c.putInt("mensaje",mensaje);
@@ -384,6 +395,7 @@ public class GatoActivity2 extends AppCompatActivity {
         startActivity(in);
         timer.cancel();
         reloj.release();
+
         finish();
 
     }

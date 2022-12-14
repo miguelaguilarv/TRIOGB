@@ -16,6 +16,7 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.vocesdelolimpo.triogb.Breakout.PuntajeBreakout;
 import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
 
@@ -36,13 +38,12 @@ import java.util.Map;
 public class TablaPuntajes extends AppCompatActivity {
     MediaPlayer player;
     int sr;
+
     private TextView empatetext;
     private TextView ptos;
-    private ImageView primerLugar;
-    private ImageView empate2;
-    private TextView user1;
     private int puntajeF;
     private int puntos;
+    private Button salir;
     private TextView mTextViewRecord;
     private TextView TextViewGanador2;
     private TextView TextViewPuntajeF;
@@ -50,6 +51,7 @@ public class TablaPuntajes extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private final static String CHANNEL_ID ="NOTIFICACION";
     private final static int NOTIFICATION_ID= 0;
+    public String jugador_2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,22 +59,24 @@ public class TablaPuntajes extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         ptos = (TextView) findViewById(R.id.ptos);
+
         TextViewGanador2 = (TextView) findViewById(R.id.inf_1);
         mTextViewRecord = (TextView) findViewById(R.id.textViewRecord);
         TextViewPuntajeF = (TextView) findViewById(R.id.puntaje);
         empatetext=(TextView)findViewById(R.id.inf_2);
         Bundle c = this.getIntent().getExtras();
+        Bundle d = this.getIntent().getExtras();
         puntajeF = c.getInt("puntajeF");
         final int ganador = getIntent().getExtras().getInt("mensaje");
-
+        jugador_2 = d.getString("jugador2");
         if (ganador == 1) {
             getUserInfo();
             TextViewPuntajeF.setText("Puntaje Final:"+puntajeF);
-            notificacion();
+            guardarPuntaje();
             musica();
 
         } else if (ganador == 2) {
-            TextViewGanador2.setText("INVITADO");
+            TextViewGanador2.setText(jugador_2);
             TextViewPuntajeF.setText("Puntaje Final:"+puntajeF);
             musica();
         } else if (ganador == 3) {
@@ -82,7 +86,26 @@ public class TablaPuntajes extends AppCompatActivity {
             musica();
         }
         //Aqui se realiza una consulta a la BD del puntaje guardado en el perfil del usuario---------------
+        MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+        salir = (Button) findViewById(R.id.exit);
+        salir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                mp.start();
+
+                if(player != null){
+                    player.release();
+                    player = null;
+                }
+                startActivity(new Intent(TablaPuntajes.this, MainActivity.class));
+                finish();
+            }
+        });
+
+    }
+
+    public void guardarPuntaje(){
         String id = mAuth.getCurrentUser().getUid();
         mDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
             @Override
@@ -114,13 +137,16 @@ public class TablaPuntajes extends AppCompatActivity {
         });
     }
 
-    public void salir_home(View v) {
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
-        mp.start();
-        Intent sal = new Intent(this, MainActivity.class);
-        startActivity(sal);
-        player.release();
-    }
+      public void salir_home(View v) {
+          MediaPlayer mp = MediaPlayer.create(this, R.raw.click);
+          mp.start();
+          //Intent sal = new Intent(this, MainActivity.class);
+          startActivity(new Intent(TablaPuntajes.this, MainActivity.class));
+          //startActivity(sal);
+          player.release();
+
+           finish();
+      }
 
     public void musica() {
         if (player == null) {
