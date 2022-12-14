@@ -35,6 +35,7 @@ public class GatoActivity extends AppCompatActivity {
     private TextView user1;
     public TextView player1;
     private TextView player2;
+    private TextView invitado;
     int turno=1;
     int contador=0;
     MediaPlayer player;
@@ -42,11 +43,15 @@ public class GatoActivity extends AppCompatActivity {
     int sonido_de_Repoduccion;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    public String jugador_2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gato);
-
+        invitado=(TextView)findViewById(R.id.invitado);
+        Bundle d = this.getIntent().getExtras();
+        jugador_2 = d.getString("jugador2");
+        invitado.setText(jugador_2);
         fondo();
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -237,12 +242,15 @@ public class GatoActivity extends AppCompatActivity {
         Bundle a = new Bundle();
         Bundle b = new Bundle();
         Bundle c = new Bundle();
+        Bundle d = new Bundle();
         a.putInt("puntaje_1",puntuacion_jugador_1);
         b.putInt("mensaje1",mensaje);
         c.putInt("puntaje_2",puntuacion_jugador_2);
+        d.putString("jugador2",jugador_2);
         in.putExtras(a);
         in.putExtras(b);
         in.putExtras(c);
+        in.putExtras(d);
         player.release();
         startActivity(in);
         finish();
@@ -292,5 +300,11 @@ public class GatoActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        player.release();
     }
 }
