@@ -219,23 +219,34 @@ public class Ordenamiento4Activity extends AppCompatActivity {
                 timerTextView.setVisibility(View.VISIBLE);
 
 
-            if(seconds==9 && minutes==0){
-                puntaje -= 25;
-            }if(seconds==19 && minutes==0){
-                puntaje -=25;
-
-
-            }if(seconds==29 && minutes==0){
-                puntaje -=25;
-
-            }if(seconds==39 && minutes==0){
-                puntaje -=25;
-
-            }if(seconds==49 && minutes==0){
-                puntaje -=25;
-
+            if(seconds==2 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==6 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==10 && minutes==0){
+                puntaje -= 3;
+            }if(seconds== 14 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==18 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==22 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==26 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==30 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==34 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==38 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==44 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==46 && minutes==0){
+                puntaje -= 3;
+            }if(seconds==50 && minutes==0){
+                puntaje -= 3;
             }if(seconds==59 && minutes==0){
-                puntaje -=25;
+                puntaje -= 3;
             }
 //==========================================================================================
             if (seconds == 60) {

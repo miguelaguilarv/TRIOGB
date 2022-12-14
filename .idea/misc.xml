@@ -6,6 +6,8 @@
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/drawable/border.xml" value="0.169" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/drawable/border2.xml" value="0.167" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/drawable/circular.xml" value="0.1425" />
+        <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/drawable/linea.xml" value="0.168" />
+        <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_decision.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_gato.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_gato2.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -17,9 +19,9 @@
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_puntaje_breakout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_puntaje_gato.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_ranking_break.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_registro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/activity_registro.xml" value="0.25" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/fragment_break_out.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/fragment_gato.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/fragment_gato.xml" value="0.25" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/fragment_orden.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/fragment_orden_fragment2_nivel.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Miguel/AndroidStudioProjects/TRIOGB/app/src/main/res/layout/paises.xml" value="0.20416666666666666" />
