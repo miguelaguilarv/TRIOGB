@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,8 +23,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.vocesdelolimpo.triogb.Gato.GatoActivity;
 import com.vocesdelolimpo.triogb.Gato.GatoCpu;
 
+import com.vocesdelolimpo.triogb.Gato.invitado;
 import com.vocesdelolimpo.triogb.R;
 import com.vocesdelolimpo.triogb.Ranking.Ranking;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GatoFragment extends Fragment {
 
@@ -31,6 +36,7 @@ public class GatoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_gato, container, false);
 
@@ -41,7 +47,7 @@ public class GatoFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent in = new Intent(getActivity(), GatoActivity.class);
+                Intent in = new Intent(getActivity(), invitado.class);
                 startActivity(in);
             }
         });

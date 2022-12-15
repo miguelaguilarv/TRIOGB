@@ -63,28 +63,37 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
             android:textColor="@color/white"
+            android:inputType="number"
             android:backgroundTint="#653B9F"
             android:hint="Edad" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/linea"
+        android:orientation="horizontal">
+
         <TextView
-            android:textColorHint="#838383"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/triogb"
-            android:textColor="@color/white"
-            android:backgroundTint="#653B9F"
-            android:hint="Selecciona país" />
+            android:textColor="#838383"
+            android:layout_marginLeft="4dp"
+            android:textSize="17dp"
+
+            android:text="Selecciona país:" />
 
 
         <Spinner
         android:id="@+id/paises"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    </LinearLayout>
 
         <EditText
             android:id="@+id/editTextEmail"

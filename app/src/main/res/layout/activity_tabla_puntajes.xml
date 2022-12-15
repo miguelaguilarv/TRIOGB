@@ -129,14 +129,13 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout4">
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/exit"
             android:layout_width="280dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="#FF0016"
             android:fontFamily="@font/triogb"
-            android:onClick="salir_home"
             android:text="SALIR"
             android:textColor="#000000"
             android:textSize="20dp"

@@ -13,6 +13,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.os.Handler;
+
+import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
 
 import org.w3c.dom.Text;
@@ -27,20 +29,19 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
     MediaPlayer player;
     TextView timerTextView;
+    TextView textVidas;
     int minutes=0;
     int seconds=0;
+    int vidas = 3;
     TextView mostrarptj;
-    TextView mostrarvidas;
     int puntaje = 500;
-    int vidas = 3 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordenamiento);
-        mostrarvidas=(TextView)findViewById(R.id.textovidas);
-        mostrarvidas.setText("Vidas:"+ vidas);
 
         timerTextView =(TextView)findViewById(R.id.crono);
+        textVidas = (TextView) findViewById(R.id.textovidas);
         Timer myTimer= new Timer();
         myTimer.schedule(new TimerTask(){
             @Override
@@ -50,7 +51,14 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
         }, 0,1000);
 
+        try {
+            Bundle lives = this.getIntent().getExtras();
+            vidas = lives.getInt("vidas");
+        }catch(Exception e){
 
+        }
+
+        textVidas.setText("Vidas: "+vidas);
         ArrayList<Button> listado = new ArrayList<Button>();
 
         listado.add((Button) findViewById(R.id.bt1));
@@ -104,7 +112,6 @@ public class OrdenamientoActivity extends AppCompatActivity {
                     texto.setText(texto.getText().toString()+(int)numeros+" ");
   //                  texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
-                    puntaje = 0;
                     botonesinvisibles();
 
 
@@ -151,8 +158,6 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
 
     public void validarContenido(TextView texto, ArrayList numeros){
-
-
         Collections.sort(numeros);
         String cadena="";
         for (Object num: numeros){
@@ -172,18 +177,22 @@ public class OrdenamientoActivity extends AppCompatActivity {
             in.putExtras(b);
             startActivity(in);
         } else {
+            if (vidas > 0){
 
-            mensaje = "fail";
-            vidas();
-            finish();
-            startActivity(getIntent());
+                vidas -= 1;
+                Bundle lives = new Bundle();
+                lives.putInt("vidas", vidas);
+                Intent in = new Intent(getIntent());
+                in.putExtra("vidas",vidas);
+                startActivity(in);
+                finish();
+            }else{
+                Intent fin = new Intent(this, MainActivity.class);
+                startActivity(fin);
+                finish();
+            }
 
         }
-
-    }
-    public void vidas(){
-        vidas=vidas-1;
-
     }
 
     public void musica() {
@@ -192,9 +201,6 @@ public class OrdenamientoActivity extends AppCompatActivity {
         }
         player.start();
     }
-
-
-
 
     private void TimerMethod() { this.runOnUiThread(Timer_Tick);}
     private Runnable Timer_Tick = new Runnable(){
@@ -205,7 +211,6 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
             mostrarptj = (TextView)findViewById(R.id.textopuntaje);
             mostrarptj.setText("Puntaje: "+puntaje);
-
 //==========================================================================================
             if(seconds==0)
                 timerTextView.setVisibility(View.VISIBLE);
