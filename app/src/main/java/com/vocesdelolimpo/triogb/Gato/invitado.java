@@ -68,7 +68,7 @@ public class invitado extends AppCompatActivity {
         mDatabase=FirebaseDatabase.getInstance();
         DatabaseReference ref1=mDatabase.getReference("Users");
 
-        ref1.addValueEventListener(new ValueEventListener() {
+        ref1.orderByChild("alias").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final List<String> areas= new ArrayList<>();

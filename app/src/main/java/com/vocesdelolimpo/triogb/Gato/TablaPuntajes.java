@@ -10,11 +10,13 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -59,7 +61,7 @@ public class TablaPuntajes extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         ptos = (TextView) findViewById(R.id.ptos);
-
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         TextViewGanador2 = (TextView) findViewById(R.id.inf_1);
         mTextViewRecord = (TextView) findViewById(R.id.textViewRecord);
         TextViewPuntajeF = (TextView) findViewById(R.id.puntaje);
@@ -72,17 +74,20 @@ public class TablaPuntajes extends AppCompatActivity {
         if (ganador == 1) {
             getUserInfo();
             TextViewPuntajeF.setText("Puntaje Final:"+puntajeF);
+            //v.vibrate(1300);
             guardarPuntaje();
             musica();
 
         } else if (ganador == 2) {
             TextViewGanador2.setText(jugador_2);
             TextViewPuntajeF.setText("Puntaje Final:"+puntajeF);
+            //v.vibrate(1500);
             musica();
         } else if (ganador == 3) {
             TextViewGanador2.setText("EMPATE");
             empatetext.setText("¡¡¡GAME OVER!!!");
             TextViewPuntajeF.setText("Puntaje:"+puntajeF);
+            //v.vibrate(2000);
             musica();
         }
         //Aqui se realiza una consulta a la BD del puntaje guardado en el perfil del usuario---------------

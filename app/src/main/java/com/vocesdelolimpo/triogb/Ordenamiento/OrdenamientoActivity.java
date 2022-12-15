@@ -13,6 +13,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.os.Handler;
+
+import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
 
 import org.w3c.dom.Text;
@@ -27,8 +29,10 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
     MediaPlayer player;
     TextView timerTextView;
+    TextView textVidas;
     int minutes=0;
     int seconds=0;
+    int vidas = 3;
     TextView mostrarptj;
     int puntaje = 500;
     @Override
@@ -37,6 +41,7 @@ public class OrdenamientoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ordenamiento);
 
         timerTextView =(TextView)findViewById(R.id.crono);
+        textVidas = (TextView) findViewById(R.id.textovidas);
         Timer myTimer= new Timer();
         myTimer.schedule(new TimerTask(){
             @Override
@@ -46,7 +51,14 @@ public class OrdenamientoActivity extends AppCompatActivity {
 
         }, 0,1000);
 
+        try {
+            Bundle lives = this.getIntent().getExtras();
+            vidas = lives.getInt("vidas");
+        }catch(Exception e){
 
+        }
+
+        textVidas.setText("Vidas: "+vidas);
         ArrayList<Button> listado = new ArrayList<Button>();
 
         listado.add((Button) findViewById(R.id.bt1));
@@ -165,11 +177,21 @@ public class OrdenamientoActivity extends AppCompatActivity {
             in.putExtras(b);
             startActivity(in);
         } else {
+            if (vidas > 0){
 
-            mensaje = "fail";
+                vidas -= 1;
+                Bundle lives = new Bundle();
+                lives.putInt("vidas", vidas);
+                Intent in = new Intent(getIntent());
+                in.putExtra("vidas",vidas);
+                startActivity(in);
+                finish();
+            }else{
+                Intent fin = new Intent(this, MainActivity.class);
+                startActivity(fin);
+                finish();
+            }
 
-            finish();
-            startActivity(getIntent());
         }
     }
 
