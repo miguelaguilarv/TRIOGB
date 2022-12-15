@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.vocesdelolimpo.triogb.MainActivity;
 import com.vocesdelolimpo.triogb.R;
 
 import java.util.ArrayList;
@@ -20,8 +21,9 @@ public class Ordenamiento4Activity extends AppCompatActivity {
     MediaPlayer player;
     int minutes;
     int seconds;
+    TextView textVidas;
     TextView timerTextView;
-    TextView mostrarvidas;
+
     TextView mostrarptj;
     int puntaje;
     int vidas;
@@ -31,14 +33,24 @@ public class Ordenamiento4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordenamiento4);
         //=====================================================
-        mostrarvidas=(TextView)findViewById(R.id.textovidas);
-        mostrarvidas.setText("Vidas:"+ vidas);
+        textVidas=(TextView)findViewById(R.id.textovidas);
+        timerTextView=(TextView) findViewById(R.id.crono);
         //=====================================================
-        Bundle b = this.getIntent().getExtras();
-        minutes = b.getInt("creonometro_minuto");
-        seconds = b.getInt("creonometro_segundo");
-        puntaje = b.getInt("puntaje_3");
-        vidas = b.getInt("vidas_3");
+        try{
+            Bundle recibido = this.getIntent().getExtras();
+            Bundle b = this.getIntent().getExtras();
+            Bundle lives = this.getIntent().getExtras();
+            vidas = lives.getInt("vidas");
+            final String mensaje = recibido.getString("mensaje");
+            minutes = b.getInt("creonometro_minuto");
+            seconds = b.getInt("creonometro_segundo");
+            puntaje = b.getInt("puntaje_1");
+            vidas = b.getInt("vidas");
+        }
+        catch (Exception e)
+        {}
+
+        textVidas.setText("Vidas:"+ vidas);
         Timer myTimer= new Timer();
         myTimer.schedule(new TimerTask(){
             @Override
@@ -192,16 +204,24 @@ public class Ordenamiento4Activity extends AppCompatActivity {
             b.putInt("creonometro_minuto",minutes);
             b.putInt("creonometro_segundo",seconds);
             b.putInt("puntaje_4",puntaje);
-            b.putInt("vidas_4",vidas);
+            b.putInt("vidas",vidas);
             in.putExtras(b);
             startActivity(in);
 
         } else {
-
-            mensaje = "fail";
-            vidas--;
-            finish();
-            startActivity(getIntent());
+            if (vidas > 0){
+                Bundle lives = new Bundle();
+                vidas -= 1;
+                lives.putInt("vidas", vidas);
+                Intent in = new Intent(getIntent());
+                in.putExtra("vidas",vidas);
+                startActivity(in);
+                finish();
+            }else{
+                Intent fin = new Intent(this, MainActivity.class);
+                startActivity(fin);
+                finish();
+            }
 
         }
     }
