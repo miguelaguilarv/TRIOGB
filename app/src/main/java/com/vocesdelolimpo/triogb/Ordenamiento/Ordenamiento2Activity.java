@@ -20,8 +20,10 @@ public class Ordenamiento2Activity extends AppCompatActivity {
     MediaPlayer player;
 
     TextView timerTextView;
+    TextView textVidas;
     int minutes;
     int seconds;
+    int vidas;
     TextView mostrarptj;
     int puntaje;
     @Override
@@ -33,6 +35,8 @@ public class Ordenamiento2Activity extends AppCompatActivity {
 
         try{
             Bundle recibido = this.getIntent().getExtras();
+            Bundle lives = this.getIntent().getExtras();
+            vidas = lives.getInt("vidas");
             Bundle b = this.getIntent().getExtras();
             final String mensaje = recibido.getString("mensaje");
             minutes = b.getInt("creonometro_minuto");
@@ -41,6 +45,9 @@ public class Ordenamiento2Activity extends AppCompatActivity {
         }
         catch (Exception e)
         {}
+
+        textVidas = (TextView) findViewById(R.id.textovidas);
+        textVidas.setText("Vidas: "+vidas);
         Timer myTimer= new Timer();
         myTimer.schedule(new TimerTask(){
             @Override
