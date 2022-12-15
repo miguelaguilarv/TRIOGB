@@ -30,8 +30,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:textSize="30dp"
-            android:textColor="#7E8C56"
-            android:fontFamily="@font/triogb" />
+            android:fontFamily="@font/triogb"/>
         <TextView
             android:id="@+id/crono"
             android:layout_width="wrap_content"

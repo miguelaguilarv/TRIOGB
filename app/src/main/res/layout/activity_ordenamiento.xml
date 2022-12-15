@@ -23,6 +23,14 @@
             android:layout_marginLeft="15dp"
             android:textSize="30dp"
             android:fontFamily="@font/triogb"/>
+        <TextView
+            android:id="@+id/textovidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="30dp"
+            android:fontFamily="@font/triogb"/>
 
         <TextView
             android:id="@+id/textovidas"
@@ -231,7 +239,6 @@
             android:text="Validar"
             android:textColor="#000000"
             android:textSize="34sp" />
-
         <Button
             android:id="@+id/btCompletar"
             android:layout_width="205dp"
@@ -241,6 +248,7 @@
             android:text="COMPLETAR"
             android:textColor="#000000"
             android:textSize="34sp" />
+
     </LinearLayout>
 
 

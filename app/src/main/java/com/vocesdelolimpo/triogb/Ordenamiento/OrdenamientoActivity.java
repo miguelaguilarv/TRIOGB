@@ -167,6 +167,9 @@ public class OrdenamientoActivity extends AppCompatActivity {
         String mensaje;
 
         if(cadena.equals(cadena2)){
+
+            Bundle lives = new Bundle();
+            lives.putInt("vidas", vidas);
             mensaje= "Ok";
             Intent in = new Intent(this,Ordenamiento2Activity.class);
             Bundle b = new Bundle();
@@ -175,12 +178,12 @@ public class OrdenamientoActivity extends AppCompatActivity {
             b.putInt("creonometro_segundo",seconds);
             b.putInt("puntaje_1",puntaje);
             in.putExtras(b);
+            in.putExtra("vidas",vidas);
             startActivity(in);
         } else {
             if (vidas > 0){
-
-                vidas -= 1;
                 Bundle lives = new Bundle();
+                vidas -= 1;
                 lives.putInt("vidas", vidas);
                 Intent in = new Intent(getIntent());
                 in.putExtra("vidas",vidas);

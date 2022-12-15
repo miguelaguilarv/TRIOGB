@@ -20,32 +20,34 @@ public class Ordenamiento2Activity extends AppCompatActivity {
     MediaPlayer player;
 
     TextView timerTextView;
+    TextView textVidas;
     int minutes;
     int seconds;
-    TextView mostrarvidas;
+    int vidas;
     TextView mostrarptj;
     int puntaje;
-    int vidas;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ordenamiento2);
-        mostrarvidas=(TextView)findViewById(R.id.textovidas);
-        mostrarvidas.setText("Vidas:"+ vidas);
+
         timerTextView=(TextView) findViewById(R.id.crono);
 
         try{
             Bundle recibido = this.getIntent().getExtras();
+            Bundle lives = this.getIntent().getExtras();
+            vidas = lives.getInt("vidas");
             Bundle b = this.getIntent().getExtras();
             final String mensaje = recibido.getString("mensaje");
             minutes = b.getInt("creonometro_minuto");
             seconds = b.getInt("creonometro_segundo");
             puntaje = b.getInt("puntaje_1");
-            vidas = b.getInt("vidas_1");
         }
         catch (Exception e)
         {}
+
+        textVidas = (TextView) findViewById(R.id.textovidas);
+        textVidas.setText("Vidas: "+vidas);
         Timer myTimer= new Timer();
         myTimer.schedule(new TimerTask(){
             @Override
@@ -116,7 +118,6 @@ public class Ordenamiento2Activity extends AppCompatActivity {
 
  //                   texto.setVisibility(View.INVISIBLE);
                     completar.setVisibility(View.INVISIBLE);
-                    puntaje = 0;
                     botonesinvisibles();
 
 
@@ -183,16 +184,10 @@ public class Ordenamiento2Activity extends AppCompatActivity {
 
     }
 
-    public void vidas(){
-        vidas=vidas-1;
-
-    }
-
 
     public void validarContenido2(TextView texto, ArrayList numeros){
         Collections.sort(numeros);
         String cadena="";
-
         for (Object num: numeros){
             cadena+=(int)num+"";
         }
@@ -207,13 +202,11 @@ public class Ordenamiento2Activity extends AppCompatActivity {
             b.putInt("creonometro_segundo",seconds);
             b.putString("mensaje",mensaje);
             b.putInt("puntaje_2",puntaje);
-            b.putInt("vidas_2",vidas);
             in.putExtras(b);
             startActivity(in);
         } else {
 
             mensaje = "fail";
-            vidas();
             finish();
             startActivity(getIntent());
         }
